@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1410">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dough">
+<title>Pizza Dough Calculator</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a1410'/%3E%3Ccircle cx='50' cy='50' r='28' fill='%23e8a04a'/%3E%3Ccircle cx='42' cy='44' r='3' fill='%23a83232'/%3E%3Ccircle cx='58' cy='48' r='3' fill='%23a83232'/%3E%3Ccircle cx='48' cy='58' r='3' fill='%23a83232'/%3E%3Ccircle cx='56' cy='38' r='2' fill='%234a7c2a'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231a1410'/%3E%3Ccircle cx='90' cy='90' r='52' fill='%23e8a04a'/%3E%3Ccircle cx='76' cy='80' r='6' fill='%23a83232'/%3E%3Ccircle cx='104' cy='86' r='6' fill='%23a83232'/%3E%3Ccircle cx='86' cy='104' r='6' fill='%23a83232'/%3E%3Ccircle cx='100' cy='70' r='4' fill='%234a7c2a'/%3E%3Ccircle cx='72' cy='100' r='4' fill='%234a7c2a'/%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #1a1410;
+    color: #f5e6d3;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(135deg, #1a1410 0%, #2d1f15 100%);
+    padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  }
+  .wrap { max-width: 520px; margin: 0 auto; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .header { text-align: center; margin-bottom: 28px; }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #c9a86b;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+  .divider { width: 60px; height: 1px; background: #c9a86b; margin: 16px auto; }
+  .card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #3d2a1c;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .results {
+    background: linear-gradient(180deg, rgba(232,160,74,0.08) 0%, rgba(232,160,74,0.02) 100%);
+    border: 1px solid #6b4a2d;
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #c9a86b;
+    text-transform: uppercase;
+    display: block;
+  }
+  input[type="number"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #4a3525;
+    color: #f5e6d3;
+    font-size: 32px;
+    padding: 4px 0;
+    margin-top: 4px;
+    outline: none;
+    font-family: 'JetBrains Mono', monospace;
+    -moz-appearance: textfield;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"]:focus { border-bottom-color: #e8a04a; }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #4a3525;
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: #e8a04a;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(232,160,74,0.4);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    background: #e8a04a;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+  .slider-row { margin-bottom: 16px; }
+  .slider-row:last-child { margin-bottom: 0; }
+  .slider-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .slider-val { color: #e8a04a; }
+  .preset-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #c9a86b;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .presets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  .preset {
+    background: rgba(201,168,107,0.08);
+    border: 1px solid #4a3525;
+    border-radius: 4px;
+    padding: 10px 12px;
+    color: #f5e6d3;
+    font-family: inherit;
+    font-size: 14px;
+    font-style: italic;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+  .preset:hover, .preset:active {
+    background: rgba(232,160,74,0.15);
+    border-color: #c9a86b;
+  }
+  .preset.active {
+    background: rgba(232,160,74,0.2);
+    border-color: #e8a04a;
+  }
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #4a3525;
+  }
+  .total-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #c9a86b;
+    text-transform: uppercase;
+  }
+  .total-val { font-size: 20px; color: #e8a04a; }
+  .ing-row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(74,53,37,0.4);
+  }
+  .ing-row:last-child { border-bottom: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .ing-name { font-size: 17px; font-style: italic; }
+  .ing-pct {
+    font-size: 11px;
+    color: #8a7560;
+    min-width: 50px;
+    text-align: right;
+  }
+  .ing-val {
+    font-size: 18px;
+    color: #f5e6d3;
+    min-width: 80px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #8a7560;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="eyebrow">Baker's Percentage</div>
+    <h1>Pizza Dough Calculator</h1>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <label>Dough balls</label>
+        <input type="number" id="ballCount" value="10" min="1" max="100" inputmode="numeric">
+      </div>
+      <div>
+        <label>Ball weight (g)</label>
+        <input type="number" id="ballWeight" value="300" min="50" max="1000" step="10" inputmode="numeric">
+      </div>
+    </div>
+  </div>
+
+  <div class="preset-label">Style preset</div>
+  <div class="presets" id="presets"></div>
+
+  <div class="card">
+    <div class="slider-row">
+      <div class="slider-head">
+        <span>Hydration</span>
+        <span class="mono slider-val"><span id="hydrationVal">67</span>%</span>
+      </div>
+      <input type="range" id="hydration" min="50" max="80" step="1" value="67">
+    </div>
+    <div class="slider-row">
+      <div class="slider-head">
+        <span>Salt</span>
+        <span class="mono slider-val"><span id="saltVal">2.5</span>%</span>
+      </div>
+      <input type="range" id="salt" min="1.5" max="3.5" step="0.1" value="2.5">
+    </div>
+    <div class="slider-row">
+      <div class="slider-head">
+        <span>Olive oil</span>
+        <span class="mono slider-val"><span id="oilVal">1.0</span>%</span>
+      </div>
+      <input type="range" id="oil" min="0" max="5" step="0.5" value="1">
+    </div>
+    <div class="slider-row">
+      <div class="slider-head">
+        <span>Yeast (IDY)</span>
+        <span class="mono slider-val"><span id="yeastVal">0.05</span>%</span>
+      </div>
+      <input type="range" id="yeast" min="0.05" max="1" step="0.05" value="0.05">
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="total-row">
+      <div class="total-label">Total dough</div>
+      <div class="mono total-val"><span id="totalVal">3000</span> g</div>
+    </div>
+    <div id="ingredients"></div>
+  </div>
+
+  <div class="footer">
+    Tip: yeast under 1g is hard to measure — round to 1g<br>
+    or use a 0.01g micro scale for accuracy.
+  </div>
+</div>
+
+<script>
+  const styles = [
+    { name: "Neapolitan", h: 62, s: 3.0, o: 0,   y: 0.05 },
+    { name: "New York",   h: 63, s: 2.2, o: 2,   y: 0.2  },
+    { name: "Your recipe",h: 67, s: 2.5, o: 1,   y: 0.05 },
+    { name: "Detroit",    h: 70, s: 2.5, o: 3,   y: 0.4  },
+  ];
+
+  const ingredients = [
+    { key: "flour", label: "Flour",     color: "#e8d5a2" },
+    { key: "water", label: "Water",     color: "#7eb8d9" },
+    { key: "salt",  label: "Sea salt",  color: "#f0f0f0" },
+    { key: "oil",   label: "Olive oil", color: "#c9a86b" },
+    { key: "yeast", label: "Yeast",     color: "#d4a574" },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+
+  const presetWrap = $("presets");
+  styles.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.className = "preset";
+    b.textContent = s.name;
+    b.dataset.idx = i;
+    b.addEventListener("click", () => applyStyle(s, b));
+    presetWrap.appendChild(b);
+  });
+
+  function applyStyle(s, btn) {
+    $("hydration").value = s.h;
+    $("salt").value = s.s;
+    $("oil").value = s.o;
+    $("yeast").value = s.y;
+    document.querySelectorAll(".preset").forEach(p => p.classList.remove("active"));
+    if (btn) btn.classList.add("active");
+    save();
+    update();
+  }
+
+  function fmt(n) {
+    if (n < 1) return n.toFixed(2);
+    if (n < 10) return n.toFixed(1);
+    return Math.round(n).toString();
+  }
+
+  function update() {
+    const ballCount = Math.max(1, parseInt($("ballCount").value) || 1);
+    const ballWeight = Math.max(50, parseInt($("ballWeight").value) || 50);
+    const hydration = parseFloat($("hydration").value);
+    const salt = parseFloat($("salt").value);
+    const oil = parseFloat($("oil").value);
+    const yeast = parseFloat($("yeast").value);
+
+    $("hydrationVal").textContent = hydration.toFixed(0);
+    $("saltVal").textContent = salt.toFixed(1);
+    $("oilVal").textContent = oil.toFixed(1);
+    $("yeastVal").textContent = yeast.toFixed(2);
+
+    const total = ballCount * ballWeight;
+    const totalPct = 100 + hydration + salt + oil + yeast;
+    const flour = (total / totalPct) * 100;
+
+    const values = {
+      flour: flour,
+      water: flour * hydration / 100,
+      salt:  flour * salt / 100,
+      oil:   flour * oil / 100,
+      yeast: flour * yeast / 100,
+    };
+    const pcts = { flour: 100, water: hydration, salt: salt, oil: oil, yeast: yeast };
+
+    $("totalVal").textContent = Math.round(total);
+
+    const wrap = $("ingredients");
+    wrap.innerHTML = "";
+    ingredients.forEach(ing => {
+      const row = document.createElement("div");
+      row.className = "ing-row";
+      const p = pcts[ing.key];
+      row.innerHTML = `
+        <div class="dot" style="background:${ing.color}"></div>
+        <div class="ing-name">${ing.label}</div>
+        <div class="mono ing-pct">${p < 1 ? p.toFixed(2) : p}%</div>
+        <div class="mono ing-val">${fmt(values[ing.key])} g</div>
+      `;
+      wrap.appendChild(row);
+    });
+
+    save();
+  }
+
+  function save() {
+    try {
+      localStorage.setItem("doughCalc", JSON.stringify({
+        ballCount: $("ballCount").value,
+        ballWeight: $("ballWeight").value,
+        hydration: $("hydration").value,
+        salt: $("salt").value,
+        oil: $("oil").value,
+        yeast: $("yeast").value,
+      }));
+    } catch(e) {}
+  }
+
+  function load() {
+    try {
+      const s = JSON.parse(localStorage.getItem("doughCalc"));
+      if (!s) return;
+      $("ballCount").value = s.ballCount;
+      $("ballWeight").value = s.ballWeight;
+      $("hydration").value = s.hydration;
+      $("salt").value = s.salt;
+      $("oil").value = s.oil;
+      $("yeast").value = s.yeast;
+    } catch(e) {}
+  }
+
+  ["ballCount", "ballWeight", "hydration", "salt", "oil", "yeast"].forEach(id => {
+    $(id).addEventListener("input", update);
+  });
+
+  load();
+  update();
+</script>
+</body>
+</html>
