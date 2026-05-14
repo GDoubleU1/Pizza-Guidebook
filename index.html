@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Dough">
-<title>Pizza Dough Calculator</title>
+<title>Pizza Dough · Calculator & Guide</title>
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a1410'/%3E%3Ccircle cx='50' cy='50' r='28' fill='%23e8a04a'/%3E%3Ccircle cx='42' cy='44' r='3' fill='%23a83232'/%3E%3Ccircle cx='58' cy='48' r='3' fill='%23a83232'/%3E%3Ccircle cx='48' cy='58' r='3' fill='%23a83232'/%3E%3Ccircle cx='56' cy='38' r='2' fill='%234a7c2a'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231a1410'/%3E%3Ccircle cx='90' cy='90' r='52' fill='%23e8a04a'/%3E%3Ccircle cx='76' cy='80' r='6' fill='%23a83232'/%3E%3Ccircle cx='104' cy='86' r='6' fill='%23a83232'/%3E%3Ccircle cx='86' cy='104' r='6' fill='%23a83232'/%3E%3Ccircle cx='100' cy='70' r='4' fill='%234a7c2a'/%3E%3Ccircle cx='72' cy='100' r='4' fill='%234a7c2a'/%3E%3C/svg%3E">
@@ -17,8 +18,7 @@
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background: #1a1410;
     color: #f5e6d3;
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -31,24 +31,52 @@
     background: linear-gradient(135deg, #1a1410 0%, #2d1f15 100%);
     padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
   }
-  .wrap { max-width: 520px; margin: 0 auto; }
+  .wrap { max-width: 560px; margin: 0 auto; }
   .mono { font-family: 'JetBrains Mono', monospace; }
-  .header { text-align: center; margin-bottom: 28px; }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 20px; }
   .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: #c9a86b;
-    text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.3em;
+    color: #c9a86b; text-transform: uppercase;
     margin-bottom: 6px;
   }
   h1 {
-    font-size: 38px;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: -0.02em;
-    font-style: italic;
+    font-size: 38px; font-weight: 600; margin: 0;
+    letter-spacing: -0.02em; font-style: italic;
   }
-  .divider { width: 60px; height: 1px; background: #c9a86b; margin: 16px auto; }
+  .divider { width: 60px; height: 1px; background: #c9a86b; margin: 12px auto 0; }
+
+  /* Tabs */
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid #3d2a1c;
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 24px;
+  }
+  .tab {
+    background: transparent;
+    border: none;
+    color: #8a7560;
+    font-family: inherit;
+    font-size: 14px;
+    font-style: italic;
+    padding: 10px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .tab.active {
+    background: rgba(232,160,74,0.18);
+    color: #f5e6d3;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Cards */
   .card {
     background: rgba(0,0,0,0.3);
     border: 1px solid #3d2a1c;
@@ -62,15 +90,16 @@
     border-radius: 8px;
     padding: 24px;
   }
+
+  /* Inputs */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   label {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: #c9a86b;
-    text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: #c9a86b; text-transform: uppercase;
     display: block;
   }
-  input[type="number"] {
+  input[type="number"], input[type="time"] {
     width: 100%;
     background: transparent;
     border: none;
@@ -82,57 +111,33 @@
     outline: none;
     font-family: 'JetBrains Mono', monospace;
     -moz-appearance: textfield;
+    color-scheme: dark;
   }
+  input[type="time"] { font-size: 22px; }
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    -webkit-appearance: none; margin: 0;
   }
   input[type="number"]:focus { border-bottom-color: #e8a04a; }
-  input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 4px;
-    background: #4a3525;
-    border-radius: 2px;
-    outline: none;
+  input[type="number"].small { font-size: 22px; }
+  input[type="number"]:disabled {
+    color: #8a7560;
+    border-bottom-style: dotted;
   }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 22px;
-    height: 22px;
-    background: #e8a04a;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(232,160,74,0.4);
-  }
-  input[type="range"]::-moz-range-thumb {
-    width: 22px;
-    height: 22px;
-    background: #e8a04a;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-  }
-  .slider-row { margin-bottom: 16px; }
-  .slider-row:last-child { margin-bottom: 0; }
-  .slider-head {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    font-size: 13px;
-  }
-  .slider-val { color: #e8a04a; }
+
+  /* Preset buttons (now 5 incl. Custom) */
   .preset-label {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: #c9a86b;
-    text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: #c9a86b; text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .presets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  .presets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .preset-custom { grid-column: 1 / -1; }
   .preset {
     background: rgba(201,168,107,0.08);
     border: 1px solid #4a3525;
@@ -144,30 +149,98 @@
     font-style: italic;
     cursor: pointer;
     transition: all 0.2s;
-    -webkit-touch-callout: none;
     user-select: none;
   }
-  .preset:hover, .preset:active {
-    background: rgba(232,160,74,0.15);
-    border-color: #c9a86b;
-  }
-  .preset.active {
-    background: rgba(232,160,74,0.2);
+  .preset:active { background: rgba(232,160,74,0.15); border-color: #c9a86b; }
+  .preset.active { background: rgba(232,160,74,0.22); border-color: #e8a04a; }
+  .preset-custom.active {
+    background: linear-gradient(90deg, rgba(232,160,74,0.22) 0%, rgba(126,184,217,0.18) 100%);
     border-color: #e8a04a;
   }
+
+  /* Style description card */
+  .style-desc {
+    background: rgba(232,160,74,0.05);
+    border-left: 2px solid #e8a04a;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #d4c0a3;
+  }
+  .style-desc strong { color: #e8a04a; font-weight: 600; }
+  .style-desc .meta {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #8a7560;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* Percentage input rows */
+  .pct-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(74,53,37,0.4);
+  }
+  .pct-row:last-child { border-bottom: none; }
+  .pct-row label { margin-bottom: 0; cursor: default; }
+  .pct-input-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .pct-input {
+    width: 70px;
+    background: transparent;
+    border: 1px solid #4a3525;
+    border-radius: 4px;
+    color: #f5e6d3;
+    font-size: 18px;
+    padding: 6px 8px;
+    text-align: right;
+    outline: none;
+    font-family: 'JetBrains Mono', monospace;
+    -moz-appearance: textfield;
+  }
+  .pct-input::-webkit-outer-spin-button,
+  .pct-input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  .pct-input:focus { border-color: #e8a04a; }
+  .pct-input:disabled {
+    color: #8a7560;
+    border-style: dotted;
+    background: rgba(0,0,0,0.2);
+  }
+  .pct-unit { color: #8a7560; font-size: 14px; }
+  .pct-name {
+    font-size: 15px;
+    color: #f5e6d3;
+  }
+  .pct-info {
+    font-size: 11px;
+    color: #8a7560;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* Recipe output rows */
   .total-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     padding-bottom: 12px;
     border-bottom: 1px solid #4a3525;
   }
   .total-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: #c9a86b;
-    text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: #c9a86b; text-transform: uppercase;
   }
   .total-val { font-size: 20px; color: #e8a04a; }
   .ing-row {
@@ -177,108 +250,928 @@
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid rgba(74,53,37,0.4);
+    cursor: pointer;
+    user-select: none;
   }
   .ing-row:last-child { border-bottom: none; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .ing-row.checked .dot { background: currentColor; }
+  .ing-row.checked .dot::after {
+    content: "✓";
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #1a1410; font-size: 10px; font-weight: 700;
+  }
+  .ing-row.checked .ing-name,
+  .ing-row.checked .ing-val { text-decoration: line-through; color: #6b5240; }
+  .ing-row.checked .ing-pct { color: #4a3525; }
   .ing-name { font-size: 17px; font-style: italic; }
   .ing-pct {
-    font-size: 11px;
-    color: #8a7560;
-    min-width: 50px;
-    text-align: right;
+    font-size: 11px; color: #8a7560;
+    min-width: 50px; text-align: right;
   }
   .ing-val {
-    font-size: 18px;
-    color: #f5e6d3;
-    min-width: 80px;
-    text-align: right;
-    font-weight: 600;
+    font-size: 18px; color: #f5e6d3;
+    min-width: 80px; text-align: right; font-weight: 600;
   }
+
+  /* Section heading */
+  .section-head {
+    display: flex; align-items: center;
+    gap: 12px; margin: 28px 0 12px;
+  }
+  .section-head .line { flex: 1; height: 1px; background: #3d2a1c; }
+  .section-head .title {
+    font-size: 11px; letter-spacing: 0.25em;
+    color: #c9a86b; text-transform: uppercase;
+  }
+
+  /* Water temp readout */
+  .water-readout { text-align: center; padding: 8px 0; }
+  .water-readout .value {
+    font-size: 48px; color: #7eb8d9;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600; line-height: 1;
+  }
+  .water-readout .unit { font-size: 22px; color: #8a7560; margin-left: 4px; }
+  .water-readout .hint {
+    font-size: 12px; color: #8a7560;
+    font-style: italic; margin-top: 10px;
+  }
+
+  /* Schedule */
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(74,53,37,0.4);
+  }
+  .schedule-row:last-child { border-bottom: none; }
+  .schedule-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(232,160,74,0.15);
+    border: 1px solid #6b4a2d;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #e8a04a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .schedule-label { font-size: 16px; font-style: italic; }
+  .schedule-sub { font-size: 11px; color: #8a7560; margin-top: 2px; line-height: 1.3; }
+  .schedule-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px; color: #f5e6d3;
+    font-weight: 600; text-align: right;
+  }
+  .schedule-day { font-size: 10px; color: #c9a86b; text-align: right; }
+
+  /* Method segmented toggle (replaces slider) */
+  .method-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #3d2a1c;
+    border-radius: 6px;
+    padding: 3px;
+    gap: 3px;
+  }
+  .method-toggle button {
+    background: transparent;
+    border: none;
+    color: #8a7560;
+    font-family: inherit;
+    font-size: 13px;
+    font-style: italic;
+    padding: 9px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .method-toggle button.active {
+    background: rgba(232,160,74,0.2);
+    color: #f5e6d3;
+  }
+  .method-toggle .icon {
+    font-size: 11px;
+    margin-right: 4px;
+    color: #c9a86b;
+  }
+
+  /* Temp unit toggle */
+  .unit-toggle {
+    display: inline-flex;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #3d2a1c;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .unit-toggle button {
+    background: transparent; border: none;
+    color: #8a7560;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; padding: 4px 10px;
+    cursor: pointer;
+  }
+  .unit-toggle button.active {
+    background: rgba(232,160,74,0.2); color: #e8a04a;
+  }
+
+  /* Yeast suggestion banner */
+  .yeast-hint {
+    background: rgba(126,184,217,0.06);
+    border-left: 2px solid #7eb8d9;
+    padding: 10px 14px;
+    margin-top: 12px;
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+    color: #b8d4e3;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .yeast-hint .pct {
+    font-family: 'JetBrains Mono', monospace;
+    color: #7eb8d9;
+    font-weight: 600;
+    font-style: normal;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+  }
+
+  /* Reset button */
+  .reset-btn {
+    background: transparent;
+    border: 1px solid #4a3525;
+    color: #8a7560;
+    font-family: inherit;
+    font-size: 12px; font-style: italic;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 16px auto 0;
+  }
+  .reset-btn:active { background: rgba(232,160,74,0.1); }
+
+  /* ===== GUIDES & REFERENCE TYPOGRAPHY ===== */
+  .article h2 {
+    font-size: 26px;
+    font-weight: 600;
+    font-style: italic;
+    margin: 28px 0 4px;
+    color: #f5e6d3;
+    letter-spacing: -0.01em;
+  }
+  .article h2:first-child { margin-top: 0; }
+  .article .sub {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a86b;
+    margin-bottom: 14px;
+  }
+  .article h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e8a04a;
+    margin: 22px 0 6px;
+    font-style: italic;
+  }
+  .article p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #d4c0a3;
+    margin: 8px 0;
+  }
+  .article p strong { color: #f5e6d3; }
+  .article .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 18px;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 6px;
+    border: 1px solid #3d2a1c;
+  }
+  .article .meta-grid div {
+    font-size: 13px;
+    color: #d4c0a3;
+  }
+  .article .meta-grid strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #c9a86b;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  /* Accordion (used for troubleshooting & glossary) */
+  .accordion {
+    border-top: 1px solid #3d2a1c;
+  }
+  .accordion-item {
+    border-bottom: 1px solid #3d2a1c;
+  }
+  .accordion-head {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #f5e6d3;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: italic;
+    text-align: left;
+    padding: 14px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .accordion-head .chev {
+    font-family: 'JetBrains Mono', monospace;
+    color: #c9a86b;
+    font-size: 14px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .accordion-item.open .chev { transform: rotate(90deg); }
+  .accordion-body {
+    display: none;
+    padding: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d4c0a3;
+  }
+  .accordion-item.open .accordion-body { display: block; }
+  .accordion-body strong { color: #e8a04a; font-weight: 600; }
+  .accordion-body p { margin: 0 0 8px; }
+  .accordion-body .label {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #7eb8d9;
+    text-transform: uppercase;
+    margin-right: 6px;
+  }
+
+  /* Subnav inside Guides/Reference */
+  .subnav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid #3d2a1c;
+    border-radius: 6px;
+    padding: 3px;
+    gap: 3px;
+    margin-bottom: 20px;
+  }
+  .subnav button {
+    background: transparent;
+    border: none;
+    color: #8a7560;
+    font-family: inherit;
+    font-size: 13px;
+    font-style: italic;
+    padding: 9px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .subnav button.active {
+    background: rgba(232,160,74,0.18);
+    color: #f5e6d3;
+  }
+  .sub-section { display: none; }
+  .sub-section.active { display: block; }
+
   .footer {
-    margin-top: 20px;
+    margin-top: 24px;
     font-size: 12px;
     color: #8a7560;
     text-align: center;
     font-style: italic;
     line-height: 1.6;
   }
+
+  /* Step list (technique tutorials) */
+  .steps { counter-reset: step; }
+  .step {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(74,53,37,0.4);
+  }
+  .step:last-child { border-bottom: none; }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(232,160,74,0.15);
+    border: 1px solid #6b4a2d;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #e8a04a;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 2px;
+  }
+  .step h4 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-style: italic;
+    color: #f5e6d3;
+    font-weight: 600;
+  }
+  .step p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #d4c0a3;
+  }
 </style>
+
 </head>
 <body>
 <div class="wrap">
+
   <div class="header">
-    <div class="eyebrow">Baker's Percentage</div>
-    <h1>Pizza Dough Calculator</h1>
+    <div class="eyebrow">The Dough Lab</div>
+    <h1>Pizza Dough</h1>
     <div class="divider"></div>
   </div>
 
-  <div class="card">
-    <div class="grid-2">
-      <div>
-        <label>Dough balls</label>
-        <input type="number" id="ballCount" value="10" min="1" max="100" inputmode="numeric">
+  <!-- ============ MAIN TABS ============ -->
+
+  <div class="tabs" id="mainTabs">
+    <button class="tab active" data-tab="calc">Calculator</button>
+    <button class="tab" data-tab="guides">Guides</button>
+    <button class="tab" data-tab="reference">Reference</button>
+  </div>
+
+  <!-- ============ CALCULATOR TAB ============ -->
+
+  <div class="tab-content active" id="tab-calc">
+
+```
+<div class="card">
+  <div class="grid-2">
+    <div>
+      <label>Dough balls</label>
+      <input type="number" id="ballCount" value="10" min="1" max="100" inputmode="numeric">
+    </div>
+    <div>
+      <label>Ball weight (g)</label>
+      <input type="number" id="ballWeight" value="300" min="50" max="1000" step="10" inputmode="numeric">
+    </div>
+  </div>
+</div>
+
+<div class="preset-label">Style preset</div>
+<div class="presets" id="presets"></div>
+
+<!-- Per-preset description -->
+<div class="style-desc" id="styleDesc"></div>
+
+<!-- Percentage inputs (replaces sliders) -->
+<div class="card">
+  <div class="pct-row">
+    <div>
+      <div class="pct-name">Hydration</div>
+      <div class="pct-info">Water as % of flour weight</div>
+    </div>
+    <div class="pct-input-wrap">
+      <input type="number" id="hydration" class="pct-input" value="67" min="40" max="90" step="0.5" inputmode="decimal" disabled>
+      <span class="pct-unit">%</span>
+    </div>
+  </div>
+  <div class="pct-row">
+    <div>
+      <div class="pct-name">Salt</div>
+      <div class="pct-info">Flavor, gluten strength, fermentation control</div>
+    </div>
+    <div class="pct-input-wrap">
+      <input type="number" id="salt" class="pct-input" value="2.5" min="0" max="5" step="0.1" inputmode="decimal" disabled>
+      <span class="pct-unit">%</span>
+    </div>
+  </div>
+  <div class="pct-row">
+    <div>
+      <div class="pct-name">Olive oil</div>
+      <div class="pct-info">Tenderizer; aids browning at low temp</div>
+    </div>
+    <div class="pct-input-wrap">
+      <input type="number" id="oil" class="pct-input" value="1" min="0" max="10" step="0.5" inputmode="decimal" disabled>
+      <span class="pct-unit">%</span>
+    </div>
+  </div>
+  <div class="pct-row">
+    <div>
+      <div class="pct-name">Yeast (IDY)</div>
+      <div class="pct-info">Instant dry yeast; controls rise speed</div>
+    </div>
+    <div class="pct-input-wrap">
+      <input type="number" id="yeast" class="pct-input" value="0.05" min="0.01" max="2" step="0.01" inputmode="decimal" disabled>
+      <span class="pct-unit">%</span>
+    </div>
+  </div>
+  <div class="yeast-hint" id="yeastHint"></div>
+</div>
+
+<!-- RECIPE OUTPUT -->
+<div class="section-head">
+  <div class="line"></div>
+  <div class="title">Recipe · tap to check off</div>
+  <div class="line"></div>
+</div>
+<div class="results">
+  <div class="total-row">
+    <div class="total-label">Total dough</div>
+    <div class="mono total-val"><span id="totalVal">3000</span> g</div>
+  </div>
+  <div id="ingredients"></div>
+  <button class="reset-btn" id="resetChecks">Reset checkmarks</button>
+</div>
+
+<!-- WATER TEMP -->
+<div class="section-head">
+  <div class="line"></div>
+  <div class="title">Water Temperature</div>
+  <div class="line"></div>
+</div>
+<div class="card">
+  <div style="display:flex; justify-content:flex-end; margin-bottom:12px;">
+    <div class="unit-toggle" id="tempUnitToggle">
+      <button data-unit="F" class="active">°F</button>
+      <button data-unit="C">°C</button>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom:18px;">
+    <div>
+      <label>Room temp</label>
+      <input type="number" id="roomTemp" value="72" min="32" max="110" inputmode="decimal" class="small">
+    </div>
+    <div>
+      <label>Flour temp</label>
+      <input type="number" id="flourTemp" value="70" min="32" max="110" inputmode="decimal" class="small">
+    </div>
+  </div>
+  <div class="water-readout">
+    <div style="font-size:11px; letter-spacing:0.2em; color:#c9a86b; text-transform:uppercase; margin-bottom:10px;">
+      Target water temp
+    </div>
+    <div>
+      <span class="value mono" id="waterTempVal">68</span><span class="unit" id="waterTempUnit">°F</span>
+    </div>
+    <div class="hint">Targets a final dough temp of <span id="fdtTarget">78°F</span></div>
+  </div>
+</div>
+
+<!-- BAKE SCHEDULE -->
+<div class="section-head">
+  <div class="line"></div>
+  <div class="title">Bake Schedule</div>
+  <div class="line"></div>
+</div>
+<div class="card">
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div>
+      <label>Bake time</label>
+      <input type="time" id="bakeTime" value="18:00">
+    </div>
+    <div>
+      <label>Ferment hours</label>
+      <input type="number" id="fermentHours" value="24" min="4" max="72" inputmode="numeric" class="small">
+    </div>
+  </div>
+  <label style="margin-bottom:8px;">Method</label>
+  <div class="method-toggle" id="methodToggle">
+    <button data-method="room" class="active"><span class="icon">☀</span>Room temp</button>
+    <button data-method="cold"><span class="icon">❄</span>Cold ferment</button>
+  </div>
+  <div id="schedule" style="margin-top:16px;"></div>
+</div>
+```
+
+  </div>
+
+  <!-- ============ GUIDES TAB ============ -->
+
+  <div class="tab-content" id="tab-guides">
+
+```
+<div class="subnav" id="guidesSubnav">
+  <button data-sub="styles" class="active">Style guides</button>
+  <button data-sub="techniques">Techniques</button>
+</div>
+
+<!-- Style Guides -->
+<div class="sub-section active" id="sub-styles">
+  <div class="article">
+
+    <h2>Neapolitan</h2>
+    <div class="sub">Naples, Italy · UNESCO heritage</div>
+    <p>The original. A soft, pliable disc with a puffy <strong>cornicione</strong> (raised edge) and a moist, almost wet center. Toppings are minimal — San Marzano tomatoes, fresh mozzarella, basil, a drizzle of olive oil. The dough bakes in 60–90 seconds in an 800–900°F wood-fired oven, which is what creates the signature <strong>leopard spotting</strong> — those black blistered char marks on the crust.</p>
+    <div class="meta-grid">
+      <div><strong>Hydration</strong>62%</div>
+      <div><strong>Salt</strong>3%</div>
+      <div><strong>Oil</strong>None</div>
+      <div><strong>Flour</strong>00, 11–12% protein</div>
+      <div><strong>Bake temp</strong>800–900°F ideal</div>
+      <div><strong>Ferment</strong>8–24h room temp</div>
+    </div>
+    <p><strong>Home oven workaround:</strong> Crank to 550°F with a preheated steel on the top rack for at least an hour, then run the broiler for 5 minutes before launching. Bake 2 minutes under broiler, then 2 minutes on bake. Bumping hydration to 65–68% helps the dough stay extensible through the longer bake.</p>
+
+    <h2>New York</h2>
+    <div class="sub">Italian-American · Foldable, by the slice</div>
+    <p>A thin, sturdy, foldable crust with crisp bottom and chewy interior. Built to support a generous load of low-moisture mozzarella and a sweet, slow-cooked tomato sauce. The slice is large enough to fold lengthwise — that's the test.</p>
+    <div class="meta-grid">
+      <div><strong>Hydration</strong>63%</div>
+      <div><strong>Salt</strong>2.2%</div>
+      <div><strong>Oil</strong>2%</div>
+      <div><strong>Flour</strong>High-gluten, 13–14% protein</div>
+      <div><strong>Bake temp</strong>500–600°F, 5–7 min</div>
+      <div><strong>Ferment</strong>24–72h cold</div>
+    </div>
+    <p><strong>Why oil matters here:</strong> At 500°F the dough has more time on the deck than Neapolitan. The 2% oil tenderizes the crumb so it doesn't go cardboard-stiff, and helps the bottom crisp without burning. Cold ferment for at least 24 hours; 48–72h produces the deep, slightly sweet, almost-sourdough flavor that defines a real NY slice.</p>
+
+    <h2>Detroit</h2>
+    <div class="sub">Square pan · Crispy frico edge</div>
+    <p>Born in Buddy's Restaurant in post-war Detroit, baked in blue-steel automotive drip pans. Thick, focaccia-like crust pressed into a well-oiled rectangular pan. The defining feature is the <strong>frico</strong>: cubed brick cheese pushed all the way to the pan walls, where it caramelizes against the metal into a crispy, lacy edge. Sauce goes on top of the cheese in racing stripes, applied after the bake.</p>
+    <div class="meta-grid">
+      <div><strong>Hydration</strong>70%</div>
+      <div><strong>Salt</strong>2.5%</div>
+      <div><strong>Oil</strong>3%</div>
+      <div><strong>Flour</strong>Bread, 12–13% protein</div>
+      <div><strong>Bake temp</strong>500–550°F, 12–15 min</div>
+      <div><strong>Ferment</strong>24–48h cold</div>
+    </div>
+    <p><strong>The pan is the recipe:</strong> Use a 10×14" anodized steel Detroit pan, or a quality non-stick equivalent. Oil it generously — the dough should swim a little. Authentic versions use Wisconsin brick cheese; if you can't find it, a 50/50 blend of low-moisture mozzarella and mild white cheddar gets you close.</p>
+
+    <h2>My Recipe</h2>
+    <div class="sub">A reliable home-baker default</div>
+    <p>A balanced middle-ground recipe designed for a home oven and average flour. Hydration is high enough for an open crumb but low enough to handle without sticking to everything. A small amount of oil keeps the crust tender through a longer home-oven bake. Long cold ferment for flavor.</p>
+    <div class="meta-grid">
+      <div><strong>Hydration</strong>67%</div>
+      <div><strong>Salt</strong>2.5%</div>
+      <div><strong>Oil</strong>1%</div>
+      <div><strong>Flour</strong>Bread flour or strong 00</div>
+      <div><strong>Bake temp</strong>500–550°F on steel</div>
+      <div><strong>Ferment</strong>24–48h cold</div>
+    </div>
+    <p>This is the preset to clone if you want to start experimenting. Tap <strong>Custom</strong> to unlock the fields and tune to your kitchen, your oven, and your taste.</p>
+
+  </div>
+</div>
+
+<!-- Techniques -->
+<div class="sub-section" id="sub-techniques">
+  <div class="article">
+    <h2>The Process</h2>
+    <div class="sub">From mix to launch · The essentials</div>
+
+    <h3>Mixing & Kneading</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Combine dry, then add water</h4>
+        <p>Whisk flour, salt, and instant yeast in a large bowl. Make a well, pour in your water at the target temp (see the Water Temperature tool). Mix with a spoon or hand until shaggy.</p>
       </div>
-      <div>
-        <label>Ball weight (g)</label>
-        <input type="number" id="ballWeight" value="300" min="50" max="1000" step="10" inputmode="numeric">
+      <div class="step">
+        <h4>Autolyse (optional, recommended)</h4>
+        <p>Cover and rest 20–30 minutes before kneading. The flour fully hydrates, enzymes start working, and you'll need to knead noticeably less. This is the cheapest dough upgrade there is.</p>
+      </div>
+      <div class="step">
+        <h4>Knead until smooth</h4>
+        <p>Hand: 8–10 minutes. Stand mixer with dough hook: 5–7 minutes on low. The dough should be smooth, elastic, and tacky — not sticky. Stop when it passes the windowpane test: a small piece stretched between your fingers should form a thin translucent membrane without tearing.</p>
+      </div>
+      <div class="step">
+        <h4>Bulk ferment</h4>
+        <p>30 min to 1 hour at room temp, covered. The dough should soften and start to puff. This step is when most of the structure forms.</p>
+      </div>
+    </div>
+
+    <h3>Balling</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Divide</h4>
+        <p>Use a bench scraper and weigh each piece on a scale. Aim within ±5g — uneven balls cook unevenly.</p>
+      </div>
+      <div class="step">
+        <h4>Shape into taut balls</h4>
+        <p>Pinch the underside while rotating, pulling skin down and tucking it under. Surface should be smooth and tight; seam should be on the bottom. Practice — your first ones will look wrong, and that's fine.</p>
+      </div>
+      <div class="step">
+        <h4>Rest seam-down</h4>
+        <p>Place in a lightly oiled container, seam side down, with at least 2x the ball's volume in space for expansion. Cover airtight. Into the fridge for cold ferment, or onto the counter for room temp.</p>
+      </div>
+    </div>
+
+    <h3>Stretching</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Come to room temperature</h4>
+        <p>Pull cold dough from the fridge at least 1–2 hours before stretching. Cold dough tightens up and tears. Warm dough — around 70–75°F — is supple and forgiving.</p>
+      </div>
+      <div class="step">
+        <h4>Flour the work surface generously</h4>
+        <p>Don't be precious about flour at this stage. You can brush excess off the bottom before launching.</p>
+      </div>
+      <div class="step">
+        <h4>Press out from the center</h4>
+        <p>Use fingertips, not palms. Press from the center toward the edge, leaving an inch of untouched rim — that's your cornicione. Push gas outward into the edge, don't deflate it.</p>
+      </div>
+      <div class="step">
+        <h4>Stretch over knuckles</h4>
+        <p>Drape the disc over your knuckles (loose fists) and let gravity do most of the work, rotating slowly. For Neapolitan-style, never use a rolling pin — it kills the bubbles you spent days building.</p>
+      </div>
+    </div>
+
+    <h3>Launching</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Build on the peel, not the counter</h4>
+        <p>A stretched dough left on the counter while you top it will stick. Move the stretched dough to a well-floured (or semolina-dusted) peel first, then top quickly.</p>
+      </div>
+      <div class="step">
+        <h4>Top sparingly</h4>
+        <p>A thin layer of sauce, modest cheese, a few toppings. Too much weight = soggy, stuck dough that won't launch cleanly.</p>
+      </div>
+      <div class="step">
+        <h4>Shake test before launch</h4>
+        <p>Give the peel a small back-and-forth shake. If the pizza moves freely, you're good. If it's stuck, lift the edge and toss flour underneath.</p>
+      </div>
+      <div class="step">
+        <h4>Launch with confidence</h4>
+        <p>Tip the peel to about 20°, anchor the front edge on the stone or steel, and pull the peel out from under in one smooth motion. Hesitation is the enemy.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ============ REFERENCE TAB ============ -->
+
+  <div class="tab-content" id="tab-reference">
+
+```
+<div class="subnav" id="referenceSubnav">
+  <button data-sub="troubleshooting" class="active">Troubleshooting</button>
+  <button data-sub="glossary">Glossary</button>
+</div>
+
+<!-- Troubleshooting -->
+<div class="sub-section active" id="sub-troubleshooting">
+  <div class="article">
+    <h2>Troubleshooting</h2>
+    <div class="sub">When something goes wrong · Tap to expand</div>
+
+    <div class="accordion" id="troubleAccordion">
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Dough is too sticky and unworkable</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Most likely</span> Hydration too high for your flour. Strong flour (13%+ protein) handles 70%+ hydration; weaker flour starts struggling around 65%.</p>
+          <p><span class="label">Also possible</span> Under-kneaded — the gluten hasn't pulled the water in yet. Knead 3–5 more minutes and re-check.</p>
+          <p><span class="label">Quick fix</span> Generous flour on the work surface and your hands. Use a bench scraper instead of fingers to move it. Resist dumping flour into the dough itself — you'll change the whole recipe.</p>
+          <p><span class="label">Next time</span> Drop hydration 2–3% or switch to a stronger flour.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Dough tears when I try to stretch it</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">First check</span> Tight and springy (snapping back) or soft and slack (spreading and tearing)? Tight = under-kneaded or too cold. Slack = overproofed.</p>
+          <p><span class="label">Tight & tearing</span> Cover it and rest 15–30 more minutes. Cold dough needs at least 1–2 hours at room temp before stretching.</p>
+          <p><span class="label">Slack & tearing</span> Overproofed — fermentation went too long. The gluten network has broken down. Reball gently if you can; bake sooner next time or use less yeast.</p>
+          <p><span class="label">Always tearing</span> Insufficient gluten development. Knead longer, use stronger flour, or try a 20-minute autolyse before kneading.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Dough won't rise</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Most likely</span> Yeast is dead or expired. Test it: 1/4 tsp yeast + 1/4 cup warm water (100°F) + a pinch of sugar. Should foam visibly in 5–10 minutes.</p>
+          <p><span class="label">Also possible</span> Water was too hot when mixing — anything over 130°F kills yeast. Or the room is too cold; below 60°F yeast activity drops significantly.</p>
+          <p><span class="label">Less obvious</span> Salt dumped directly on yeast can stall it. Always mix salt into flour first.</p>
+          <p><span class="label">Patience play</span> Cold-fermented dough barely rises in the fridge by design. The rise happens after you pull it out. Give it 2 hours at room temp.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Dough sticks to the peel before launching</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Why it happens</span> Too much time between stretching and launching. The dough's moisture seeps into the flour bed and pastes itself to the peel.</p>
+          <p><span class="label">Prevention</span> Build the pizza on the peel and launch within 60–90 seconds. Have all your toppings prepped before you stretch.</p>
+          <p><span class="label">Better dust</span> Semolina or rice flour rolls under the dough like ball bearings; regular flour absorbs moisture and glues things together.</p>
+          <p><span class="label">Stuck right now</span> Gently lift the stuck edge with a bench scraper and shoot more flour underneath. Shake the peel — if it moves freely, launch.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Crust is pale and undercooked-looking</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Most likely</span> Oven not hot enough, or stone/steel not preheated long enough. Steels need a full 45–60 minutes to fully saturate.</p>
+          <p><span class="label">Overproofed</span> Long fermentation eats sugars — fewer sugars left = less Maillard browning. The crust stays pale even when fully baked through.</p>
+          <p><span class="label">Quick fix</span> Hit it with the broiler for 30–60 seconds at the end. Watch closely; pale to charred takes about 45 seconds.</p>
+          <p><span class="label">Next time</span> Preheat longer, bake higher, or shorten the ferment.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Crust is dense, doughy, and gummy</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Most likely</span> Underbaked. The bottom can look done while the middle is still wet. Stick a thermometer in the crust — done is 195–210°F internal.</p>
+          <p><span class="label">Too many toppings</span> A wet sauce or pile of cheese steams the dough from above. Less is more.</p>
+          <p><span class="label">Cold dough launched too soon</span> Cold dough from the fridge resists internal cooking. Always come to room temp first.</p>
+          <p><span class="label">Underproofed</span> Dough that didn't ferment long enough never develops the open structure needed to bake through.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Dough snaps back and won't hold its shape</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Most likely</span> Underproofed — gluten is still tight and tense.</p>
+          <p><span class="label">Fix it now</span> Cover and rest 30 minutes to an hour. The gluten will relax and stretching becomes easy.</p>
+          <p><span class="label">Also possible</span> You're trying to stretch cold dough straight from the fridge. Pull it 1–2 hours before you plan to bake.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Top is burnt before the bottom is done</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Move the rack down</span> Top rack gets direct radiant heat; middle rack lets the steel do more work.</p>
+          <p><span class="label">Skip the broiler</span> If you're using broiler-finish technique, you may be running it too long. 30–60 seconds is plenty.</p>
+          <p><span class="label">Heat from below</span> A baking steel (vs. a stone) conducts heat 18x faster from below — that's how you get bottom-crust char without top burn.</p>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="preset-label">Style preset</div>
-  <div class="presets" id="presets"></div>
+<!-- Glossary -->
+<div class="sub-section" id="sub-glossary">
+  <div class="article">
+    <h2>Glossary</h2>
+    <div class="sub">The jargon, demystified · Tap to expand</div>
 
-  <div class="card">
-    <div class="slider-row">
-      <div class="slider-head">
-        <span>Hydration</span>
-        <span class="mono slider-val"><span id="hydrationVal">67</span>%</span>
+    <div class="accordion" id="glossaryAccordion">
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Autolyse</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>A 20–60 minute rest after mixing flour and water, before adding salt and yeast (or before kneading). During this pause, flour fully hydrates, enzymes begin converting starch to sugar, and gluten starts forming on its own. Result: less kneading needed, more extensible dough, often better flavor.</p>
+        </div>
       </div>
-      <input type="range" id="hydration" min="50" max="80" step="1" value="67">
-    </div>
-    <div class="slider-row">
-      <div class="slider-head">
-        <span>Salt</span>
-        <span class="mono slider-val"><span id="saltVal">2.5</span>%</span>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Baker's percentage</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The standard system for expressing dough recipes. Flour is always 100%. Every other ingredient is a percentage of flour weight. Water at 65% means 650g water per 1000g flour. The math makes scaling trivial and lets you compare any recipe to any other regardless of batch size.</p>
+        </div>
       </div>
-      <input type="range" id="salt" min="1.5" max="3.5" step="0.1" value="2.5">
-    </div>
-    <div class="slider-row">
-      <div class="slider-head">
-        <span>Olive oil</span>
-        <span class="mono slider-val"><span id="oilVal">1.0</span>%</span>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Biga</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>An Italian-style pre-ferment: a stiff dough of flour, water (around 50% hydration), and a tiny amount of yeast, mixed 12–24 hours before the main dough. Adds complex flavor and improved structure. Compare to <strong>poolish</strong>, the wetter French version.</p>
+        </div>
       </div>
-      <input type="range" id="oil" min="0" max="5" step="0.5" value="1">
-    </div>
-    <div class="slider-row">
-      <div class="slider-head">
-        <span>Yeast (IDY)</span>
-        <span class="mono slider-val"><span id="yeastVal">0.05</span>%</span>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Bulk fermentation</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The first rise — when the dough ferments as one big mass, before being divided into balls. Most flavor and structure development happens here.</p>
+        </div>
       </div>
-      <input type="range" id="yeast" min="0.05" max="1" step="0.05" value="0.05">
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Cold ferment</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>Letting dough rise slowly in the refrigerator, typically 24–72 hours. Cold slows yeast activity dramatically but doesn't stop enzymatic and bacterial activity that develops flavor. Cold-fermented dough is more flavorful, more extensible, and more digestible than same-day dough.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Cornicione</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>(Cor-ni-CHO-nay.) The raised, puffy edge of a Neapolitan pizza. The untouched border of dough that wasn't pressed flat during stretching, which puffs dramatically in a hot oven into an airy, blistered ring.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>DDT — Desired Dough Temperature</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The temperature you want your dough to be at the end of mixing — typically 75–80°F for pizza. Hit it by adjusting your water temp using: <strong>water = (DDT × 3) − room temp − flour temp − friction</strong>. Friction is heat added by kneading: ~5°F for hand mixing, 15–25°F for a stand mixer.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Frico</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The crispy, caramelized cheese edge that defines Detroit-style pizza. Cubed brick cheese is pushed all the way to the pan walls; in the hot oven, it melts, oozes against the metal, and crisps into a lacy golden crust around the perimeter.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Gluten</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The protein network formed when wheat flour meets water and gets agitated (kneading, mixing, folding). Made of two proteins — glutenin (strength) and gliadin (extensibility) — that bond into a stretchy web. Gluten traps the gas yeast produces, which is how dough rises and bread holds shape.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Hydration</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>Water as a percentage of flour weight. 60% = 600g water per 1000g flour. Higher hydration = more open crumb, lighter texture, but stickier and harder to handle. Lower hydration = easier to work with but denser.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>IDY · ADY · Fresh yeast</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><strong>IDY</strong> (Instant Dry Yeast) goes straight into the flour; no proofing needed. <strong>ADY</strong> (Active Dry) needs to bloom in warm water first; use about 25% more than IDY. <strong>Fresh</strong> (cake) yeast is highly perishable; use about 3x the IDY weight. All do the same job — eat sugar, make CO₂ and flavor compounds.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Leopard spotting</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The dark, almost-black blistered char marks on a properly baked Neapolitan crust. Caused by extremely high heat (800–900°F) puffing the dough's surface into bubbles that briefly touch the dome of a wood-fired oven. Marks of authenticity, not burning.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Maillard reaction</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The browning chemistry between amino acids and reducing sugars that creates the golden color and toasty flavor in baked crust (and seared meat). Different from caramelization, which is sugar browning alone. Needs heat above ~285°F and isn't blocked by water, but moist surfaces brown more slowly.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Overproofing / Underproofing</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><strong>Overproofed:</strong> dough has fermented too long. Gluten has broken down, structure is collapsing, dough is slack and tears easily. Result is pale, dense, deflated pizza.</p>
+          <p><strong>Underproofed:</strong> dough hasn't fermented enough. Gluten is tight and tense, snaps back when stretched. Result is dense, gummy, bread-like crust without an open crumb.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Poolish</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>A wet (100% hydration) pre-ferment originating in Polish baking. Equal weights of flour and water, a tiny amount of yeast, mixed 12–16 hours before the main dough. Adds flavor complexity and improved extensibility. Wetter and looser than a <strong>biga</strong>.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Windowpane test</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>How to check gluten development. Pinch off a small piece of dough and gently stretch it between thumbs and forefingers. If it stretches into a thin, almost translucent membrane without tearing, gluten is fully developed. If it tears immediately, keep kneading.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>00 flour</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The Italian flour grading scale (00, 0, 1, 2) refers to fineness of grind — 00 is the most finely milled, like silk. It's not a measure of protein. Protein in 00 flours varies: Caputo Pizzeria is ~12.5% (medium-strong), Caputo Saccorosso is 13%+ (strong). For 90-second wood-fired bakes, medium-strength 00 is ideal. For longer home-oven bakes, you may want stronger flour.</p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+```
 
-  <div class="results">
-    <div class="total-row">
-      <div class="total-label">Total dough</div>
-      <div class="mono total-val"><span id="totalVal">3000</span> g</div>
-    </div>
-    <div id="ingredients"></div>
   </div>
 
   <div class="footer">
-    Tip: yeast under 1g is hard to measure — round to 1g<br>
-    or use a 0.01g micro scale for accuracy.
+    Built with care for the kitchen iPad.<br>
+    Watch the dough, not the clock.
   </div>
 </div>
 
 <script>
+  // ============ CONFIG ============
   const styles = [
-    { name: "Neapolitan", h: 62, s: 3.0, o: 0,   y: 0.05 },
-    { name: "New York",   h: 63, s: 2.2, o: 2,   y: 0.2  },
-    { name: "Your recipe",h: 67, s: 2.5, o: 1,   y: 0.05 },
-    { name: "Detroit",    h: 70, s: 2.5, o: 3,   y: 0.4  },
+    { key: "neapolitan", name: "Neapolitan", h: 62, s: 3.0, o: 0,   y: 0.05, locked: true,
+      desc: '<strong>Naples classic.</strong> Soft, pliable, leopard-spotted edge. No oil — pure flour, water, salt, yeast. Hydration kept low because 900°F ovens cook in 90 seconds.<div class="meta">62% hydration · 3% salt · No oil · 8–24h ferment</div>' },
+    { key: "newyork",    name: "New York",   h: 63, s: 2.2, o: 2,   y: 0.2,  locked: true,
+      desc: '<strong>Foldable slice.</strong> Sturdy, chewy, slightly sweet. The 2% oil tenderizes the crust through a longer 500°F bake. Long cold ferment for that NY-deli flavor.<div class="meta">63% hydration · 2.2% salt · 2% oil · 24–72h cold</div>' },
+    { key: "myrecipe",   name: "My Recipe",  h: 67, s: 2.5, o: 1,   y: 0.05, locked: true,
+      desc: '<strong>Home-baker default.</strong> Middle hydration for an open crumb without sticky hands. Light oil for tenderness in a home oven. Salt at the sweet spot.<div class="meta">67% hydration · 2.5% salt · 1% oil · 24–48h cold</div>' },
+    { key: "detroit",    name: "Detroit",    h: 70, s: 2.5, o: 3,   y: 0.4,  locked: true,
+      desc: '<strong>Square pan, crispy frico edge.</strong> High hydration for a focaccia-like crumb, heavy oil to grease the pan and tenderize. Cubed brick cheese, sauce on top.<div class="meta">70% hydration · 2.5% salt · 3% oil · 24–48h cold</div>' },
+    { key: "custom",     name: "Custom",     h: 65, s: 2.5, o: 1,   y: 0.1,  locked: false,
+      desc: '<strong>Build your own.</strong> All percentages unlocked. Tap each value to edit. Use the guides and glossary to understand what each lever does. Recipe persists across sessions.<div class="meta">All fields editable</div>' },
   ];
 
   const ingredients = [
@@ -290,25 +1183,87 @@
   ];
 
   const $ = (id) => document.getElementById(id);
+  let tempUnit = "F";
+  let fermentMethod = "room"; // "room" or "cold"
+  let checkedIngredients = new Set();
+  let activePreset = "myrecipe";
+  let customValues = { h: 65, s: 2.5, o: 1, y: 0.1 };
 
+  // ============ TAB SWITCHING ============
+  document.querySelectorAll("#mainTabs .tab").forEach(t => {
+    t.addEventListener("click", () => {
+      document.querySelectorAll("#mainTabs .tab").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+      t.classList.add("active");
+      $("tab-" + t.dataset.tab).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  // Subnav
+  function setupSubnav(navId) {
+    document.querySelectorAll("#" + navId + " button").forEach(b => {
+      b.addEventListener("click", () => {
+        const parent = b.closest(".tab-content");
+        parent.querySelectorAll(".subnav button").forEach(x => x.classList.remove("active"));
+        parent.querySelectorAll(".sub-section").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        parent.querySelector("#sub-" + b.dataset.sub).classList.add("active");
+      });
+    });
+  }
+  setupSubnav("guidesSubnav");
+  setupSubnav("referenceSubnav");
+
+  // Accordion
+  document.querySelectorAll(".accordion-head").forEach(h => {
+    h.addEventListener("click", () => {
+      h.closest(".accordion-item").classList.toggle("open");
+    });
+  });
+
+  // ============ PRESETS ============
   const presetWrap = $("presets");
-  styles.forEach((s, i) => {
+  styles.forEach((s) => {
     const b = document.createElement("button");
-    b.className = "preset";
+    b.className = "preset" + (s.key === "custom" ? " preset-custom" : "");
     b.textContent = s.name;
-    b.dataset.idx = i;
-    b.addEventListener("click", () => applyStyle(s, b));
+    b.dataset.key = s.key;
+    b.addEventListener("click", () => applyStyle(s.key));
     presetWrap.appendChild(b);
   });
 
-  function applyStyle(s, btn) {
-    $("hydration").value = s.h;
-    $("salt").value = s.s;
-    $("oil").value = s.o;
-    $("yeast").value = s.y;
-    document.querySelectorAll(".preset").forEach(p => p.classList.remove("active"));
-    if (btn) btn.classList.add("active");
-    save();
+  function applyStyle(key) {
+    activePreset = key;
+    const s = styles.find(x => x.key === key);
+
+    // For "myrecipe", always reset to defaults (h:67, s:2.5, o:1, y:0.05)
+    // For other locked presets, set their values
+    // For custom, restore stored custom values
+    if (s.key === "custom") {
+      $("hydration").value = customValues.h;
+      $("salt").value = customValues.s;
+      $("oil").value = customValues.o;
+      $("yeast").value = customValues.y;
+    } else {
+      $("hydration").value = s.h;
+      $("salt").value = s.s;
+      $("oil").value = s.o;
+      $("yeast").value = s.y;
+    }
+
+    // Lock/unlock inputs
+    const disabled = s.locked;
+    ["hydration","salt","oil","yeast"].forEach(id => $(id).disabled = disabled);
+
+    // Update active button
+    document.querySelectorAll(".preset").forEach(p => {
+      p.classList.toggle("active", p.dataset.key === key);
+    });
+
+    // Update description
+    $("styleDesc").innerHTML = s.desc;
+
     update();
   }
 
@@ -318,18 +1273,36 @@
     return Math.round(n).toString();
   }
 
+  // ============ YEAST MODEL ============
+  function suggestYeast(hours, tempF, isCold) {
+    const effTemp = isCold ? 54 : tempF;
+    const tempFactor = Math.pow(2, (72 - effTemp) / 17);
+    let pct = (24 / hours) * 0.1 * tempFactor;
+    return Math.max(0.03, Math.min(2, pct));
+  }
+
+  // ============ DDT FORMULA ============
+  function waterTemp(roomF, flourF) {
+    const DDT = 78;
+    const friction = 5;
+    return (DDT * 3) - roomF - flourF - friction;
+  }
+  const FtoC = f => (f - 32) * 5 / 9;
+  const CtoF = c => c * 9 / 5 + 32;
+
+  // ============ MAIN UPDATE ============
   function update() {
     const ballCount = Math.max(1, parseInt($("ballCount").value) || 1);
     const ballWeight = Math.max(50, parseInt($("ballWeight").value) || 50);
-    const hydration = parseFloat($("hydration").value);
-    const salt = parseFloat($("salt").value);
-    const oil = parseFloat($("oil").value);
-    const yeast = parseFloat($("yeast").value);
+    const hydration = parseFloat($("hydration").value) || 0;
+    const salt = parseFloat($("salt").value) || 0;
+    const oil = parseFloat($("oil").value) || 0;
+    const yeast = parseFloat($("yeast").value) || 0;
 
-    $("hydrationVal").textContent = hydration.toFixed(0);
-    $("saltVal").textContent = salt.toFixed(1);
-    $("oilVal").textContent = oil.toFixed(1);
-    $("yeastVal").textContent = yeast.toFixed(2);
+    // If on custom preset, keep customValues in sync
+    if (activePreset === "custom") {
+      customValues = { h: hydration, s: salt, o: oil, y: yeast };
+    }
 
     const total = ballCount * ballWeight;
     const totalPct = 100 + hydration + salt + oil + yeast;
@@ -342,7 +1315,7 @@
       oil:   flour * oil / 100,
       yeast: flour * yeast / 100,
     };
-    const pcts = { flour: 100, water: hydration, salt: salt, oil: oil, yeast: yeast };
+    const pcts = { flour: 100, water: hydration, salt, oil, yeast };
 
     $("totalVal").textContent = Math.round(total);
 
@@ -350,29 +1323,157 @@
     wrap.innerHTML = "";
     ingredients.forEach(ing => {
       const row = document.createElement("div");
-      row.className = "ing-row";
+      row.className = "ing-row" + (checkedIngredients.has(ing.key) ? " checked" : "");
       const p = pcts[ing.key];
       row.innerHTML = `
-        <div class="dot" style="background:${ing.color}"></div>
+        <div class="dot" style="color:${ing.color}; border-color:${ing.color}"></div>
         <div class="ing-name">${ing.label}</div>
         <div class="mono ing-pct">${p < 1 ? p.toFixed(2) : p}%</div>
         <div class="mono ing-val">${fmt(values[ing.key])} g</div>
       `;
+      row.addEventListener("click", () => {
+        if (checkedIngredients.has(ing.key)) checkedIngredients.delete(ing.key);
+        else checkedIngredients.add(ing.key);
+        save();
+        update();
+      });
       wrap.appendChild(row);
     });
 
+    updateYeastHint();
+    updateWaterTemp();
+    updateSchedule();
     save();
   }
 
+  function updateYeastHint() {
+    const hours = parseFloat($("fermentHours").value) || 24;
+    const isCold = fermentMethod === "cold";
+    const roomVal = parseFloat($("roomTemp").value) || 72;
+    const roomF = tempUnit === "F" ? roomVal : CtoF(roomVal);
+    const suggested = suggestYeast(hours, roomF, isCold);
+    const current = parseFloat($("yeast").value) || 0;
+    const method = isCold ? "cold ferment" : `room temp (${Math.round(roomVal)}°${tempUnit})`;
+    const isCustom = activePreset === "custom";
+
+    let msg = `For ${hours}h ${method}, try `;
+    if (isCustom) {
+      msg += `<span class="pct" id="applyYeast">${suggested.toFixed(2)}%</span> yeast`;
+    } else {
+      msg += `<span class="pct" style="cursor:default; text-decoration:none">${suggested.toFixed(2)}%</span> yeast`;
+    }
+    if (Math.abs(suggested - current) > 0.05) {
+      msg += ` <span style="color:#8a7560">(this recipe uses ${current.toFixed(2)}%)</span>`;
+    }
+    if (!isCustom) {
+      msg += `<br><span style="color:#8a7560; font-size:11px">Switch to Custom to apply suggestions</span>`;
+    }
+    $("yeastHint").innerHTML = msg;
+
+    const applyBtn = $("applyYeast");
+    if (applyBtn) {
+      applyBtn.addEventListener("click", () => {
+        const snapped = Math.round(suggested * 100) / 100;
+        $("yeast").value = Math.max(0.01, Math.min(2, snapped));
+        update();
+      });
+    }
+  }
+
+  function updateWaterTemp() {
+    let roomVal = parseFloat($("roomTemp").value);
+    let flourVal = parseFloat($("flourTemp").value);
+    if (isNaN(roomVal) || isNaN(flourVal)) return;
+
+    const roomF = tempUnit === "F" ? roomVal : CtoF(roomVal);
+    const flourF = tempUnit === "F" ? flourVal : CtoF(flourVal);
+    let waterF = waterTemp(roomF, flourF);
+    waterF = Math.max(32, Math.min(110, waterF));
+
+    const displayVal = tempUnit === "F" ? waterF : FtoC(waterF);
+    $("waterTempVal").textContent = Math.round(displayVal);
+    $("waterTempUnit").textContent = "°" + tempUnit;
+    $("fdtTarget").textContent = tempUnit === "F" ? "78°F" : "26°C";
+  }
+
+  function updateSchedule() {
+    const bakeStr = $("bakeTime").value;
+    const hours = parseFloat($("fermentHours").value) || 24;
+    const isCold = fermentMethod === "cold";
+
+    if (!bakeStr) return;
+    const [bh, bm] = bakeStr.split(":").map(Number);
+
+    const bake = new Date();
+    bake.setHours(bh, bm, 0, 0);
+
+    const events = [];
+    const mix = new Date(bake.getTime() - hours * 3600000);
+    events.push({ label: "Mix dough", time: mix, sub: "Combine ingredients, knead until smooth" });
+
+    if (isCold) {
+      const bulkEnd = new Date(mix.getTime() + 60 * 60000);
+      events.push({ label: "Ball dough", time: bulkEnd, sub: "Divide & shape, then into fridge" });
+      const pull = new Date(bake.getTime() - 2 * 3600000);
+      events.push({ label: "Pull from fridge", time: pull, sub: "Let dough warm up 2h" });
+    } else {
+      const ball = new Date(mix.getTime() + (hours / 3) * 3600000);
+      events.push({ label: "Ball dough", time: ball, sub: "Divide & shape balls" });
+    }
+    const shape = new Date(bake.getTime() - 30 * 60000);
+    events.push({ label: "Shape & top", time: shape, sub: "Stretch dough, add toppings" });
+    events.push({ label: "Bake", time: bake, sub: "Oven hot, peel ready" });
+
+    events.sort((a, b) => a.time - b.time);
+
+    const wrap = $("schedule");
+    wrap.innerHTML = "";
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+
+    events.forEach((e, i) => {
+      const row = document.createElement("div");
+      row.className = "schedule-row";
+      const eventDay = new Date(e.time.getFullYear(), e.time.getMonth(), e.time.getDate()).getTime();
+      const dayDiff = Math.round((eventDay - today) / 86400000);
+      let dayLabel;
+      if (dayDiff === 0) dayLabel = "today";
+      else if (dayDiff === 1) dayLabel = "tomorrow";
+      else if (dayDiff === -1) dayLabel = "yesterday";
+      else if (dayDiff < 0) dayLabel = `${Math.abs(dayDiff)}d ago`;
+      else dayLabel = `+${dayDiff} days`;
+
+      const timeStr = e.time.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+      row.innerHTML = `
+        <div class="schedule-num">${i + 1}</div>
+        <div>
+          <div class="schedule-label">${e.label}</div>
+          <div class="schedule-sub">${e.sub}</div>
+        </div>
+        <div>
+          <div class="schedule-time">${timeStr}</div>
+          <div class="schedule-day">${dayLabel}</div>
+        </div>
+      `;
+      wrap.appendChild(row);
+    });
+  }
+
+  // ============ PERSISTENCE ============
   function save() {
     try {
       localStorage.setItem("doughCalc", JSON.stringify({
         ballCount: $("ballCount").value,
         ballWeight: $("ballWeight").value,
-        hydration: $("hydration").value,
-        salt: $("salt").value,
-        oil: $("oil").value,
-        yeast: $("yeast").value,
+        activePreset,
+        customValues,
+        roomTemp: $("roomTemp").value,
+        flourTemp: $("flourTemp").value,
+        tempUnit,
+        bakeTime: $("bakeTime").value,
+        fermentHours: $("fermentHours").value,
+        fermentMethod,
+        checked: Array.from(checkedIngredients),
       }));
     } catch(e) {}
   }
@@ -381,21 +1482,72 @@
     try {
       const s = JSON.parse(localStorage.getItem("doughCalc"));
       if (!s) return;
-      $("ballCount").value = s.ballCount;
-      $("ballWeight").value = s.ballWeight;
-      $("hydration").value = s.hydration;
-      $("salt").value = s.salt;
-      $("oil").value = s.oil;
-      $("yeast").value = s.yeast;
+      if (s.ballCount) $("ballCount").value = s.ballCount;
+      if (s.ballWeight) $("ballWeight").value = s.ballWeight;
+      if (s.customValues) customValues = s.customValues;
+      if (s.activePreset) activePreset = s.activePreset;
+      if (s.roomTemp) $("roomTemp").value = s.roomTemp;
+      if (s.flourTemp) $("flourTemp").value = s.flourTemp;
+      if (s.tempUnit) {
+        tempUnit = s.tempUnit;
+        document.querySelectorAll("#tempUnitToggle button").forEach(b => {
+          b.classList.toggle("active", b.dataset.unit === tempUnit);
+        });
+      }
+      if (s.bakeTime) $("bakeTime").value = s.bakeTime;
+      if (s.fermentHours) $("fermentHours").value = s.fermentHours;
+      if (s.fermentMethod) {
+        fermentMethod = s.fermentMethod;
+        document.querySelectorAll("#methodToggle button").forEach(b => {
+          b.classList.toggle("active", b.dataset.method === fermentMethod);
+        });
+      }
+      if (s.checked) checkedIngredients = new Set(s.checked);
     } catch(e) {}
   }
 
-  ["ballCount", "ballWeight", "hydration", "salt", "oil", "yeast"].forEach(id => {
+  // ============ EVENT WIRING ============
+  document.querySelectorAll("#tempUnitToggle button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const newUnit = btn.dataset.unit;
+      if (newUnit === tempUnit) return;
+      const room = parseFloat($("roomTemp").value);
+      const flour = parseFloat($("flourTemp").value);
+      if (!isNaN(room)) $("roomTemp").value = Math.round(newUnit === "C" ? FtoC(room) : CtoF(room));
+      if (!isNaN(flour)) $("flourTemp").value = Math.round(newUnit === "C" ? FtoC(flour) : CtoF(flour));
+      tempUnit = newUnit;
+      document.querySelectorAll("#tempUnitToggle button").forEach(b => {
+        b.classList.toggle("active", b.dataset.unit === tempUnit);
+      });
+      update();
+    });
+  });
+
+  document.querySelectorAll("#methodToggle button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      fermentMethod = btn.dataset.method;
+      document.querySelectorAll("#methodToggle button").forEach(b => {
+        b.classList.toggle("active", b.dataset.method === fermentMethod);
+      });
+      update();
+    });
+  });
+
+  $("resetChecks").addEventListener("click", () => {
+    checkedIngredients.clear();
+    save();
+    update();
+  });
+
+  ["ballCount","ballWeight","hydration","salt","oil","yeast",
+   "roomTemp","flourTemp","bakeTime","fermentHours"].forEach(id => {
     $(id).addEventListener("input", update);
   });
 
+  // ============ INIT ============
   load();
-  update();
+  applyStyle(activePreset);
 </script>
+
 </body>
 </html>
