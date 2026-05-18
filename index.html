@@ -7,13 +7,15 @@
 <meta name="theme-color" content="#1a1410">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Dough">
-<title>Pizza Dough · Calculator & Guide</title>
+<meta name="apple-mobile-web-app-title" content="Pizza Guide">
+<title>The Pizza Enthusiast's Guidebook</title>
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a1410'/%3E%3Ccircle cx='50' cy='50' r='28' fill='%23e8a04a'/%3E%3Ccircle cx='42' cy='44' r='3' fill='%23a83232'/%3E%3Ccircle cx='58' cy='48' r='3' fill='%23a83232'/%3E%3Ccircle cx='48' cy='58' r='3' fill='%23a83232'/%3E%3Ccircle cx='56' cy='38' r='2' fill='%234a7c2a'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231a1410'/%3E%3Ccircle cx='90' cy='90' r='52' fill='%23e8a04a'/%3E%3Ccircle cx='76' cy='80' r='6' fill='%23a83232'/%3E%3Ccircle cx='104' cy='86' r='6' fill='%23a83232'/%3E%3Ccircle cx='86' cy='104' r='6' fill='%23a83232'/%3E%3Ccircle cx='100' cy='70' r='4' fill='%234a7c2a'/%3E%3Ccircle cx='72' cy='100' r='4' fill='%234a7c2a'/%3E%3C/svg%3E">
+<!-- Custom pizza-themed logo SVG inlined for offline use -->
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='40%25'%3E%3Cstop offset='0%25' stop-color='%23f4c267'/%3E%3Cstop offset='100%25' stop-color='%23c97a30'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%231a1410'/%3E%3Cpath d='M 50 18 L 78 78 L 22 78 Z' fill='url(%23g)' stroke='%238a4a1a' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M 30 70 L 70 70' stroke='%23c44a3a' stroke-width='3' stroke-linecap='round' opacity='0.9'/%3E%3Ccircle cx='42' cy='55' r='3.5' fill='%23d44a3a'/%3E%3Ccircle cx='58' cy='58' r='3.5' fill='%23d44a3a'/%3E%3Ccircle cx='50' cy='42' r='2.5' fill='%23d44a3a'/%3E%3Ccircle cx='48' cy='65' r='2' fill='%234a7c2a'/%3E%3Ccircle cx='62' cy='48' r='1.8' fill='%234a7c2a'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='40%25'%3E%3Cstop offset='0%25' stop-color='%23f4c267'/%3E%3Cstop offset='100%25' stop-color='%23c97a30'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='180' height='180' rx='40' fill='%231a1410'/%3E%3Cpath d='M 90 32 L 140 140 L 40 140 Z' fill='url(%23g)' stroke='%238a4a1a' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M 54 125 L 126 125' stroke='%23c44a3a' stroke-width='5' stroke-linecap='round' opacity='0.9'/%3E%3Ccircle cx='75' cy='98' r='6' fill='%23d44a3a'/%3E%3Ccircle cx='104' cy='104' r='6' fill='%23d44a3a'/%3E%3Ccircle cx='90' cy='75' r='4.5' fill='%23d44a3a'/%3E%3Ccircle cx='86' cy='116' r='3.5' fill='%234a7c2a'/%3E%3Ccircle cx='112' cy='85' r='3' fill='%234a7c2a'/%3E%3Ccircle cx='68' cy='115' r='2.5' fill='%234a7c2a'/%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -26,74 +28,102 @@
     overscroll-behavior: none;
   }
   body {
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 100vh; min-height: 100dvh;
     background: linear-gradient(135deg, #1a1410 0%, #2d1f15 100%);
-    padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+    padding: max(20px, env(safe-area-inset-top)) 14px max(24px, env(safe-area-inset-bottom));
   }
-  .wrap { max-width: 560px; margin: 0 auto; }
+  .wrap { max-width: 580px; margin: 0 auto; }
   .mono { font-family: 'JetBrains Mono', monospace; }
 
-  /* Header */
-  .header { text-align: center; margin-bottom: 20px; }
+  /* ====== HEADER & LOGO ====== */
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 4px;
+  }
+  .header-logo {
+    width: 64px; height: 64px;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 4px 12px rgba(232,160,74,0.25));
+  }
   .eyebrow {
-    font-size: 11px; letter-spacing: 0.3em;
-    color: #c9a86b; text-transform: uppercase;
-    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: #c9a86b;
+    text-transform: uppercase;
+    margin-bottom: 4px;
   }
   h1 {
-    font-size: 38px; font-weight: 600; margin: 0;
-    letter-spacing: -0.02em; font-style: italic;
+    font-size: 34px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    color: #f5e6d3;
+    line-height: 1.1;
   }
-  .divider { width: 60px; height: 1px; background: #c9a86b; margin: 12px auto 0; }
+  .header-tagline {
+    font-size: 13px;
+    color: #8a7560;
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .divider { width: 60px; height: 1px; background: #c9a86b; margin: 14px auto 0; }
 
-  /* Tabs */
+  /* ====== MAIN TABS ====== */
   .tabs {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     background: rgba(0,0,0,0.4);
     border: 1px solid #3d2a1c;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 4px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    gap: 2px;
+    position: sticky;
+    top: max(8px, env(safe-area-inset-top));
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   .tab {
     background: transparent;
     border: none;
     color: #8a7560;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13px;
     font-style: italic;
-    padding: 10px 8px;
+    padding: 10px 4px;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.2s;
   }
   .tab.active {
-    background: rgba(232,160,74,0.18);
+    background: rgba(232,160,74,0.2);
     color: #f5e6d3;
   }
-  .tab-content { display: none; }
+  .tab-content { display: none; animation: fade 0.3s ease; }
   .tab-content.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* Cards */
+  /* ====== CARDS ====== */
   .card {
     background: rgba(0,0,0,0.3);
     border: 1px solid #3d2a1c;
     border-radius: 8px;
-    padding: 20px;
+    padding: 18px;
     margin-bottom: 16px;
   }
   .results {
     background: linear-gradient(180deg, rgba(232,160,74,0.08) 0%, rgba(232,160,74,0.02) 100%);
     border: 1px solid #6b4a2d;
     border-radius: 8px;
-    padding: 24px;
+    padding: 22px;
   }
 
-  /* Inputs */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  /* ====== FORM INPUTS ====== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
   label {
     font-size: 11px; letter-spacing: 0.15em;
     color: #c9a86b; text-transform: uppercase;
@@ -105,7 +135,7 @@
     border: none;
     border-bottom: 1px solid #4a3525;
     color: #f5e6d3;
-    font-size: 32px;
+    font-size: 30px;
     padding: 4px 0;
     margin-top: 4px;
     outline: none;
@@ -113,19 +143,19 @@
     -moz-appearance: textfield;
     color-scheme: dark;
   }
-  input[type="time"] { font-size: 22px; }
+  input[type="time"] { font-size: 20px; }
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none; margin: 0;
   }
   input[type="number"]:focus { border-bottom-color: #e8a04a; }
-  input[type="number"].small { font-size: 22px; }
+  input[type="number"].small { font-size: 20px; }
   input[type="number"]:disabled {
     color: #8a7560;
     border-bottom-style: dotted;
   }
 
-  /* Preset buttons (now 5 incl. Custom) */
+  /* Preset buttons */
   .preset-label {
     font-size: 11px; letter-spacing: 0.15em;
     color: #c9a86b; text-transform: uppercase;
@@ -134,7 +164,7 @@
   .presets {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 7px;
     margin-bottom: 8px;
   }
   .preset-custom { grid-column: 1 / -1; }
@@ -142,10 +172,10 @@
     background: rgba(201,168,107,0.08);
     border: 1px solid #4a3525;
     border-radius: 4px;
-    padding: 10px 12px;
+    padding: 9px 12px;
     color: #f5e6d3;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13.5px;
     font-style: italic;
     cursor: pointer;
     transition: all 0.2s;
@@ -158,27 +188,26 @@
     border-color: #e8a04a;
   }
 
-  /* Style description card */
   .style-desc {
     background: rgba(232,160,74,0.05);
     border-left: 2px solid #e8a04a;
-    padding: 12px 14px;
-    margin-bottom: 16px;
+    padding: 11px 13px;
+    margin-bottom: 14px;
     border-radius: 0 4px 4px 0;
-    font-size: 14px;
+    font-size: 13.5px;
     line-height: 1.5;
     color: #d4c0a3;
   }
   .style-desc strong { color: #e8a04a; font-weight: 600; }
   .style-desc .meta {
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: 11px;
     color: #8a7560;
     font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
-  /* Percentage input rows */
+  /* Percentage rows */
   .pct-row {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -190,17 +219,15 @@
   .pct-row:last-child { border-bottom: none; }
   .pct-row label { margin-bottom: 0; cursor: default; }
   .pct-input-wrap {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
+    display: flex; align-items: baseline; gap: 4px;
   }
   .pct-input {
-    width: 70px;
+    width: 64px;
     background: transparent;
     border: 1px solid #4a3525;
     border-radius: 4px;
     color: #f5e6d3;
-    font-size: 18px;
+    font-size: 17px;
     padding: 6px 8px;
     text-align: right;
     outline: none;
@@ -217,11 +244,8 @@
     border-style: dotted;
     background: rgba(0,0,0,0.2);
   }
-  .pct-unit { color: #8a7560; font-size: 14px; }
-  .pct-name {
-    font-size: 15px;
-    color: #f5e6d3;
-  }
+  .pct-unit { color: #8a7560; font-size: 13px; }
+  .pct-name { font-size: 14.5px; color: #f5e6d3; }
   .pct-info {
     font-size: 11px;
     color: #8a7560;
@@ -229,13 +253,10 @@
     margin-top: 2px;
   }
 
-  /* Recipe output rows */
+  /* Recipe rows */
   .total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 14px;
-    padding-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 14px; padding-bottom: 12px;
     border-bottom: 1px solid #4a3525;
   }
   .total-label {
@@ -246,12 +267,10 @@
   .ing-row {
     display: grid;
     grid-template-columns: 16px 1fr auto auto;
-    gap: 12px;
-    align-items: center;
+    gap: 12px; align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid rgba(74,53,37,0.4);
-    cursor: pointer;
-    user-select: none;
+    cursor: pointer; user-select: none;
   }
   .ing-row:last-child { border-bottom: none; }
   .dot {
@@ -271,20 +290,14 @@
   .ing-row.checked .ing-name,
   .ing-row.checked .ing-val { text-decoration: line-through; color: #6b5240; }
   .ing-row.checked .ing-pct { color: #4a3525; }
-  .ing-name { font-size: 17px; font-style: italic; }
-  .ing-pct {
-    font-size: 11px; color: #8a7560;
-    min-width: 50px; text-align: right;
-  }
-  .ing-val {
-    font-size: 18px; color: #f5e6d3;
-    min-width: 80px; text-align: right; font-weight: 600;
-  }
+  .ing-name { font-size: 16px; font-style: italic; }
+  .ing-pct { font-size: 11px; color: #8a7560; min-width: 50px; text-align: right; }
+  .ing-val { font-size: 17px; color: #f5e6d3; min-width: 75px; text-align: right; font-weight: 600; }
 
   /* Section heading */
   .section-head {
     display: flex; align-items: center;
-    gap: 12px; margin: 28px 0 12px;
+    gap: 12px; margin: 26px 0 12px;
   }
   .section-head .line { flex: 1; height: 1px; background: #3d2a1c; }
   .section-head .title {
@@ -295,7 +308,7 @@
   /* Water temp readout */
   .water-readout { text-align: center; padding: 8px 0; }
   .water-readout .value {
-    font-size: 48px; color: #7eb8d9;
+    font-size: 44px; color: #7eb8d9;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600; line-height: 1;
   }
@@ -309,8 +322,7 @@
   .schedule-row {
     display: grid;
     grid-template-columns: 28px 1fr auto;
-    gap: 12px;
-    align-items: center;
+    gap: 12px; align-items: center;
     padding: 12px 0;
     border-bottom: 1px solid rgba(74,53,37,0.4);
   }
@@ -324,16 +336,16 @@
     font-size: 12px; color: #e8a04a;
     font-family: 'JetBrains Mono', monospace;
   }
-  .schedule-label { font-size: 16px; font-style: italic; }
+  .schedule-label { font-size: 15px; font-style: italic; }
   .schedule-sub { font-size: 11px; color: #8a7560; margin-top: 2px; line-height: 1.3; }
   .schedule-time {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 15px; color: #f5e6d3;
+    font-size: 14px; color: #f5e6d3;
     font-weight: 600; text-align: right;
   }
   .schedule-day { font-size: 10px; color: #c9a86b; text-align: right; }
 
-  /* Method segmented toggle (replaces slider) */
+  /* Method toggle */
   .method-toggle {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -360,8 +372,7 @@
     color: #f5e6d3;
   }
   .method-toggle .icon {
-    font-size: 11px;
-    margin-right: 4px;
+    font-size: 11px; margin-right: 4px;
     color: #c9a86b;
   }
 
@@ -384,7 +395,7 @@
     background: rgba(232,160,74,0.2); color: #e8a04a;
   }
 
-  /* Yeast suggestion banner */
+  /* Yeast suggestion */
   .yeast-hint {
     background: rgba(126,184,217,0.06);
     border-left: 2px solid #7eb8d9;
@@ -406,7 +417,6 @@
     text-underline-offset: 3px;
   }
 
-  /* Reset button */
   .reset-btn {
     background: transparent;
     border: 1px solid #4a3525;
@@ -417,11 +427,11 @@
     border-radius: 4px;
     cursor: pointer;
     display: block;
-    margin: 16px auto 0;
+    margin: 14px auto 0;
   }
   .reset-btn:active { background: rgba(232,160,74,0.1); }
 
-  /* ===== GUIDES & REFERENCE TYPOGRAPHY ===== */
+  /* ====== ARTICLE TYPOGRAPHY ====== */
   .article h2 {
     font-size: 26px;
     font-weight: 600;
@@ -432,26 +442,46 @@
   }
   .article h2:first-child { margin-top: 0; }
   .article .sub {
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #c9a86b;
     margin-bottom: 14px;
   }
   .article h3 {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     color: #e8a04a;
     margin: 22px 0 6px;
     font-style: italic;
   }
+  .article h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #d4c0a3;
+    margin: 18px 0 4px;
+    font-style: italic;
+  }
   .article p {
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 15.5px;
+    line-height: 1.6;
     color: #d4c0a3;
     margin: 8px 0;
   }
-  .article p strong { color: #f5e6d3; }
+  .article p strong { color: #f5e6d3; font-weight: 600; }
+  .article p em { color: #e8a04a; font-style: italic; }
+
+  .article ul {
+    margin: 8px 0 14px;
+    padding-left: 18px;
+    color: #d4c0a3;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .article ul li { margin-bottom: 4px; }
+  .article ul li strong { color: #f5e6d3; }
+
+  /* Meta grid (for style specs) */
   .article .meta-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -463,8 +493,7 @@
     border: 1px solid #3d2a1c;
   }
   .article .meta-grid div {
-    font-size: 13px;
-    color: #d4c0a3;
+    font-size: 13px; color: #d4c0a3;
   }
   .article .meta-grid strong {
     display: block;
@@ -476,20 +505,87 @@
     font-weight: 500;
   }
 
-  /* Accordion (used for troubleshooting & glossary) */
-  .accordion {
-    border-top: 1px solid #3d2a1c;
+  /* Pull quote */
+  .pull-quote {
+    border-left: 3px solid #e8a04a;
+    padding: 10px 0 10px 18px;
+    margin: 18px 0;
+    font-style: italic;
+    font-size: 16px;
+    color: #e8d5a2;
+    line-height: 1.5;
   }
-  .accordion-item {
-    border-bottom: 1px solid #3d2a1c;
+  .pull-quote .attribution {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #8a7560;
+    font-style: normal;
+    letter-spacing: 0.08em;
   }
+  .pull-quote .attribution::before { content: "— "; }
+
+  /* Callout box */
+  .callout {
+    background: rgba(126,184,217,0.06);
+    border: 1px solid rgba(126,184,217,0.25);
+    border-left: 3px solid #7eb8d9;
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #b8d4e3;
+  }
+  .callout strong { color: #7eb8d9; font-weight: 600; }
+  .callout.warn {
+    background: rgba(212,90,58,0.05);
+    border-color: rgba(212,90,58,0.25);
+    border-left-color: #d45a3a;
+    color: #e8b89a;
+  }
+  .callout.warn strong { color: #d45a3a; }
+
+  /* Style hero badge (pizza visual representation) */
+  .style-hero {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 16px;
+    background: linear-gradient(135deg, rgba(232,160,74,0.1) 0%, rgba(126,184,217,0.05) 100%);
+    border: 1px solid #4a3525;
+    border-radius: 8px;
+    margin: 16px 0;
+  }
+  .style-hero .pizza-icon {
+    width: 56px; height: 56px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  }
+  .style-hero .name {
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 600;
+    color: #f5e6d3;
+    margin: 0 0 2px;
+  }
+  .style-hero .origin {
+    font-size: 12px;
+    color: #c9a86b;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Accordion */
+  .accordion { border-top: 1px solid #3d2a1c; }
+  .accordion-item { border-bottom: 1px solid #3d2a1c; }
   .accordion-head {
     width: 100%;
     background: transparent;
     border: none;
     color: #f5e6d3;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 15.5px;
     font-style: italic;
     text-align: left;
     padding: 14px 0;
@@ -526,25 +622,27 @@
     margin-right: 6px;
   }
 
-  /* Subnav inside Guides/Reference */
+  /* Subnav */
   .subnav {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     background: rgba(0,0,0,0.25);
     border: 1px solid #3d2a1c;
     border-radius: 6px;
     padding: 3px;
     gap: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
+  .subnav.cols-2 { grid-template-columns: 1fr 1fr; }
+  .subnav.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .subnav.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
   .subnav button {
     background: transparent;
     border: none;
     color: #8a7560;
     font-family: inherit;
-    font-size: 13px;
+    font-size: 12.5px;
     font-style: italic;
-    padding: 9px 8px;
+    padding: 9px 6px;
     border-radius: 4px;
     cursor: pointer;
   }
@@ -553,42 +651,34 @@
     color: #f5e6d3;
   }
   .sub-section { display: none; }
-  .sub-section.active { display: block; }
+  .sub-section.active { display: block; animation: fade 0.25s ease; }
 
-  .footer {
-    margin-top: 24px;
-    font-size: 12px;
-    color: #8a7560;
-    text-align: center;
-    font-style: italic;
-    line-height: 1.6;
-  }
-
-  /* Step list (technique tutorials) */
+  /* Step list */
   .steps { counter-reset: step; }
   .step {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 14px;
-    padding: 12px 0;
+    position: relative;
+    padding: 14px 0 14px 38px;
     border-bottom: 1px solid rgba(74,53,37,0.4);
+    min-width: 0;
   }
   .step:last-child { border-bottom: none; }
   .step::before {
     counter-increment: step;
     content: counter(step);
+    position: absolute;
+    left: 0; top: 16px;
     width: 24px; height: 24px;
     border-radius: 50%;
     background: rgba(232,160,74,0.15);
     border: 1px solid #6b4a2d;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center; justify-content: center;
     font-size: 12px; color: #e8a04a;
     font-family: 'JetBrains Mono', monospace;
-    margin-top: 2px;
   }
   .step h4 {
     margin: 0 0 4px;
-    font-size: 16px;
+    font-size: 15.5px;
     font-style: italic;
     color: #f5e6d3;
     font-weight: 600;
@@ -596,8 +686,158 @@
   .step p {
     margin: 0;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: #d4c0a3;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13px;
+  }
+  .compare-table th, .compare-table td {
+    text-align: left;
+    padding: 9px 8px;
+    border-bottom: 1px solid rgba(74,53,37,0.4);
+  }
+  .compare-table th {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #c9a86b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: inherit;
+  }
+  .compare-table td { color: #d4c0a3; }
+  .compare-table td strong { color: #f5e6d3; }
+  .compare-table .mono-col {
+    font-family: 'JetBrains Mono', monospace;
+    color: #e8a04a;
+    font-size: 12px;
+  }
+
+  /* Quick fact box (history etc) */
+  .fact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .fact {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid #3d2a1c;
+    border-radius: 6px;
+    padding: 12px;
+  }
+  .fact .fact-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    color: #e8a04a;
+    font-weight: 600;
+  }
+  .fact .fact-label {
+    font-size: 11px;
+    color: #c9a86b;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* Timeline */
+  .timeline { margin: 16px 0; }
+  .timeline-item {
+    position: relative;
+    padding: 0 0 18px 28px;
+    border-left: 1.5px solid #4a3525;
+    margin-left: 8px;
+  }
+  .timeline-item:last-child { border-left-color: transparent; padding-bottom: 4px; }
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #e8a04a;
+    box-shadow: 0 0 0 3px #1a1410;
+  }
+  .timeline-year {
+    font-family: 'JetBrains Mono', monospace;
+    color: #e8a04a;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .timeline-event {
+    font-size: 14px;
+    color: #d4c0a3;
+    line-height: 1.5;
+  }
+  .timeline-event strong { color: #f5e6d3; }
+
+  /* Style nav grid (Styles tab homepage) */
+  .style-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .style-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #3d2a1c;
+    border-radius: 8px;
+    padding: 14px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .style-card:active {
+    background: rgba(232,160,74,0.1);
+    border-color: #c9a86b;
+    transform: scale(0.98);
+  }
+  .style-card.active {
+    background: rgba(232,160,74,0.15);
+    border-color: #e8a04a;
+  }
+  .style-card .icon {
+    width: 42px; height: 42px;
+    margin: 0 auto 6px;
+    display: block;
+  }
+  .style-card .name {
+    font-size: 14px;
+    font-style: italic;
+    color: #f5e6d3;
+    font-weight: 600;
+  }
+  .style-card .origin {
+    font-size: 10px;
+    color: #c9a86b;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .footer {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid #3d2a1c;
+    font-size: 11px;
+    color: #6b5240;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+  }
+  .footer .signature {
+    color: #c9a86b;
+    font-size: 12px;
+    margin-bottom: 4px;
   }
 </style>
 
@@ -605,21 +845,45 @@
 <body>
 <div class="wrap">
 
+  <!-- ========== HEADER WITH LOGO ========== -->
+
   <div class="header">
-    <div class="eyebrow">The Dough Lab</div>
-    <h1>Pizza Dough</h1>
+    <svg class="header-logo" viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="headerGrad" cx="50%" cy="40%">
+          <stop offset="0%" stop-color="#f4c267"/>
+          <stop offset="100%" stop-color="#c97a30"/>
+        </radialGradient>
+      </defs>
+      <path d="M 50 12 L 84 84 L 16 84 Z" fill="url(#headerGrad)" stroke="#8a4a1a" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M 26 75 L 74 75" stroke="#c44a3a" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+      <circle cx="40" cy="56" r="4" fill="#d44a3a"/>
+      <circle cx="60" cy="60" r="4" fill="#d44a3a"/>
+      <circle cx="50" cy="40" r="3" fill="#d44a3a"/>
+      <circle cx="48" cy="68" r="2.5" fill="#4a7c2a"/>
+      <circle cx="62" cy="48" r="2.2" fill="#4a7c2a"/>
+      <circle cx="38" cy="72" r="1.8" fill="#4a7c2a"/>
+    </svg>
+    <div class="eyebrow">The Pizza Enthusiast's</div>
+    <h1>Guidebook</h1>
+    <div class="header-tagline">From dough to deck · A complete reference</div>
     <div class="divider"></div>
   </div>
 
-  <!-- ============ MAIN TABS ============ -->
+  <!-- ========== MAIN TABS ========== -->
 
   <div class="tabs" id="mainTabs">
     <button class="tab active" data-tab="calc">Calculator</button>
+    <button class="tab" data-tab="styles">Styles</button>
     <button class="tab" data-tab="guides">Guides</button>
     <button class="tab" data-tab="reference">Reference</button>
   </div>
 
-  <!-- ============ CALCULATOR TAB ============ -->
+  <!-- ============================================ -->
+
+  <!-- ============== CALCULATOR TAB ============== -->
+
+  <!-- ============================================ -->
 
   <div class="tab-content active" id="tab-calc">
 
@@ -632,7 +896,7 @@
     </div>
     <div>
       <label>Ball weight (g)</label>
-      <input type="number" id="ballWeight" value="300" min="50" max="1000" step="10" inputmode="numeric">
+      <input type="number" id="ballWeight" value="280" min="50" max="1000" step="10" inputmode="numeric">
     </div>
   </div>
 </div>
@@ -640,10 +904,8 @@
 <div class="preset-label">Style preset</div>
 <div class="presets" id="presets"></div>
 
-<!-- Per-preset description -->
 <div class="style-desc" id="styleDesc"></div>
 
-<!-- Percentage inputs (replaces sliders) -->
 <div class="card">
   <div class="pct-row">
     <div>
@@ -651,7 +913,7 @@
       <div class="pct-info">Water as % of flour weight</div>
     </div>
     <div class="pct-input-wrap">
-      <input type="number" id="hydration" class="pct-input" value="67" min="40" max="90" step="0.5" inputmode="decimal" disabled>
+      <input type="number" id="hydration" class="pct-input" value="62" min="40" max="90" step="0.5" inputmode="decimal" disabled>
       <span class="pct-unit">%</span>
     </div>
   </div>
@@ -661,7 +923,7 @@
       <div class="pct-info">Flavor, gluten strength, fermentation control</div>
     </div>
     <div class="pct-input-wrap">
-      <input type="number" id="salt" class="pct-input" value="2.5" min="0" max="5" step="0.1" inputmode="decimal" disabled>
+      <input type="number" id="salt" class="pct-input" value="3.0" min="0" max="5" step="0.1" inputmode="decimal" disabled>
       <span class="pct-unit">%</span>
     </div>
   </div>
@@ -671,7 +933,7 @@
       <div class="pct-info">Tenderizer; aids browning at low temp</div>
     </div>
     <div class="pct-input-wrap">
-      <input type="number" id="oil" class="pct-input" value="1" min="0" max="10" step="0.5" inputmode="decimal" disabled>
+      <input type="number" id="oil" class="pct-input" value="0" min="0" max="10" step="0.5" inputmode="decimal" disabled>
       <span class="pct-unit">%</span>
     </div>
   </div>
@@ -681,14 +943,13 @@
       <div class="pct-info">Instant dry yeast; controls rise speed</div>
     </div>
     <div class="pct-input-wrap">
-      <input type="number" id="yeast" class="pct-input" value="0.05" min="0.01" max="2" step="0.01" inputmode="decimal" disabled>
+      <input type="number" id="yeast" class="pct-input" value="0.10" min="0.01" max="2" step="0.01" inputmode="decimal" disabled>
       <span class="pct-unit">%</span>
     </div>
   </div>
   <div class="yeast-hint" id="yeastHint"></div>
 </div>
 
-<!-- RECIPE OUTPUT -->
 <div class="section-head">
   <div class="line"></div>
   <div class="title">Recipe · tap to check off</div>
@@ -697,13 +958,12 @@
 <div class="results">
   <div class="total-row">
     <div class="total-label">Total dough</div>
-    <div class="mono total-val"><span id="totalVal">3000</span> g</div>
+    <div class="mono total-val"><span id="totalVal">2800</span> g</div>
   </div>
   <div id="ingredients"></div>
   <button class="reset-btn" id="resetChecks">Reset checkmarks</button>
 </div>
 
-<!-- WATER TEMP -->
 <div class="section-head">
   <div class="line"></div>
   <div class="title">Water Temperature</div>
@@ -737,7 +997,6 @@
   </div>
 </div>
 
-<!-- BAKE SCHEDULE -->
 <div class="section-head">
   <div class="line"></div>
   <div class="title">Bake Schedule</div>
@@ -756,8 +1015,8 @@
   </div>
   <label style="margin-bottom:8px;">Method</label>
   <div class="method-toggle" id="methodToggle">
-    <button data-method="room" class="active"><span class="icon">☀</span>Room temp</button>
-    <button data-method="cold"><span class="icon">❄</span>Cold ferment</button>
+    <button data-method="room"><span class="icon">☀</span>Room temp</button>
+    <button data-method="cold" class="active"><span class="icon">❄</span>Cold ferment</button>
   </div>
   <div id="schedule" style="margin-top:16px;"></div>
 </div>
@@ -765,156 +1024,386 @@
 
   </div>
 
-  <!-- ============ GUIDES TAB ============ -->
+  <!-- ============================================ -->
+
+  <!-- =============== STYLES TAB ================= -->
+
+  <!-- ============================================ -->
+
+  <div class="tab-content" id="tab-styles">
+
+```
+<div class="article">
+  <p style="text-align:center; color:#8a7560; font-style:italic; margin-bottom:20px; font-size:14px;">
+    Tap any style to explore its origin, recipe specs, and what makes it unique.
+  </p>
+</div>
+
+<div class="style-grid" id="styleGrid"></div>
+
+<div id="styleDetail" class="article"></div>
+```
+
+  </div>
+
+  <!-- ============================================ -->
+
+  <!-- =============== GUIDES TAB ================= -->
+
+  <!-- ============================================ -->
 
   <div class="tab-content" id="tab-guides">
 
 ```
-<div class="subnav" id="guidesSubnav">
-  <button data-sub="styles" class="active">Style guides</button>
-  <button data-sub="techniques">Techniques</button>
+<div class="subnav cols-3" id="guidesSubnav">
+  <button data-sub="techniques" class="active">Techniques</button>
+  <button data-sub="preferments">Pre-Ferments</button>
+  <button data-sub="ingredients">Ingredients</button>
 </div>
 
-<!-- Style Guides -->
-<div class="sub-section active" id="sub-styles">
+<!-- ============== TECHNIQUES ============== -->
+<div class="sub-section active" id="sub-techniques">
   <div class="article">
 
-    <h2>Neapolitan</h2>
-    <div class="sub">Naples, Italy · UNESCO heritage</div>
-    <p>The original. A soft, pliable disc with a puffy <strong>cornicione</strong> (raised edge) and a moist, almost wet center. Toppings are minimal — San Marzano tomatoes, fresh mozzarella, basil, a drizzle of olive oil. The dough bakes in 60–90 seconds in an 800–900°F wood-fired oven, which is what creates the signature <strong>leopard spotting</strong> — those black blistered char marks on the crust.</p>
-    <div class="meta-grid">
-      <div><strong>Hydration</strong>62%</div>
-      <div><strong>Salt</strong>3%</div>
-      <div><strong>Oil</strong>None</div>
-      <div><strong>Flour</strong>00, 11–12% protein</div>
-      <div><strong>Bake temp</strong>800–900°F ideal</div>
-      <div><strong>Ferment</strong>8–24h room temp</div>
-    </div>
-    <p><strong>Home oven workaround:</strong> Crank to 550°F with a preheated steel on the top rack for at least an hour, then run the broiler for 5 minutes before launching. Bake 2 minutes under broiler, then 2 minutes on bake. Bumping hydration to 65–68% helps the dough stay extensible through the longer bake.</p>
+    <h2>The Process</h2>
+    <div class="sub">From bag of flour to first bite</div>
+    <p>Pizza-making is a sequence of decisions, not a recipe to memorize. Each phase below has a purpose: hydrate the flour, build the gluten, develop flavor, shape without deflating, and bake fast enough to keep the air trapped inside. Get the philosophy right and the recipe writes itself.</p>
 
-    <h2>New York</h2>
-    <div class="sub">Italian-American · Foldable, by the slice</div>
-    <p>A thin, sturdy, foldable crust with crisp bottom and chewy interior. Built to support a generous load of low-moisture mozzarella and a sweet, slow-cooked tomato sauce. The slice is large enough to fold lengthwise — that's the test.</p>
-    <div class="meta-grid">
-      <div><strong>Hydration</strong>63%</div>
-      <div><strong>Salt</strong>2.2%</div>
-      <div><strong>Oil</strong>2%</div>
-      <div><strong>Flour</strong>High-gluten, 13–14% protein</div>
-      <div><strong>Bake temp</strong>500–600°F, 5–7 min</div>
-      <div><strong>Ferment</strong>24–72h cold</div>
+    <div class="pull-quote">
+      Watch the dough, not the clock. Every kitchen is different — temperature, humidity, flour batch, even altitude. Numbers in recipes are starting points, not destinations.
+      <span class="attribution">A principle every pizzaiolo learns the hard way</span>
     </div>
-    <p><strong>Why oil matters here:</strong> At 500°F the dough has more time on the deck than Neapolitan. The 2% oil tenderizes the crumb so it doesn't go cardboard-stiff, and helps the bottom crisp without burning. Cold ferment for at least 24 hours; 48–72h produces the deep, slightly sweet, almost-sourdough flavor that defines a real NY slice.</p>
 
-    <h2>Detroit</h2>
-    <div class="sub">Square pan · Crispy frico edge</div>
-    <p>Born in Buddy's Restaurant in post-war Detroit, baked in blue-steel automotive drip pans. Thick, focaccia-like crust pressed into a well-oiled rectangular pan. The defining feature is the <strong>frico</strong>: cubed brick cheese pushed all the way to the pan walls, where it caramelizes against the metal into a crispy, lacy edge. Sauce goes on top of the cheese in racing stripes, applied after the bake.</p>
-    <div class="meta-grid">
-      <div><strong>Hydration</strong>70%</div>
-      <div><strong>Salt</strong>2.5%</div>
-      <div><strong>Oil</strong>3%</div>
-      <div><strong>Flour</strong>Bread, 12–13% protein</div>
-      <div><strong>Bake temp</strong>500–550°F, 12–15 min</div>
-      <div><strong>Ferment</strong>24–48h cold</div>
+    <h3>Phase 1 · Mixing & Hydration</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Weigh everything in grams</h4>
+        <p>Volume measurements are unreliable. A cup of flour can vary by 30g depending on how it's scooped. A digital kitchen scale is the single most important tool for consistent pizza. Aim for ±1g precision on flour, water, and salt; ±0.1g on yeast under 5 grams (a small jewelry-style scale handles this).</p>
+      </div>
+      <div class="step">
+        <h4>Combine flour and yeast first</h4>
+        <p>Whisk instant dry yeast directly into the flour. Active dry yeast (ADY) is different: it needs to bloom in warm water (95–105°F) for 5–10 minutes first. Never let salt touch dry yeast directly for more than a couple of minutes — salt draws moisture out of yeast cells and weakens them.</p>
+      </div>
+      <div class="step">
+        <h4>Add water at the right temperature</h4>
+        <p>Use the Water Temperature tool in the Calculator tab. Target a final dough temp of 75–80°F. Cooler water for hot kitchens or stand-mixer kneading (which generates significant friction heat); warmer water for cold kitchens or hand-mixing. Add water gradually — pour about 90%, mix, then add the remainder once the dough comes together. This prevents lumps and ensures even hydration.</p>
+      </div>
+      <div class="step">
+        <h4>Salt goes in last (or near-last)</h4>
+        <p>Add salt after the flour has absorbed most of the water. Salt strengthens the gluten network and slows yeast activity — adding it last gives the yeast a head start and lets the gluten form more freely in the first few minutes.</p>
+      </div>
+      <div class="step">
+        <h4>Mix until just shaggy, then rest</h4>
+        <p>Don't try to fully knead immediately. Mix only until no dry flour remains, then cover and rest for 20–40 minutes. This is the <em>autolyse</em> step — flour fully hydrates, enzymes (amylase, protease) start working, and gluten begins forming on its own. The dough that comes out of an autolyse needs about half the kneading time of an unrested dough, and it stretches better.</p>
+      </div>
     </div>
-    <p><strong>The pan is the recipe:</strong> Use a 10×14" anodized steel Detroit pan, or a quality non-stick equivalent. Oil it generously — the dough should swim a little. Authentic versions use Wisconsin brick cheese; if you can't find it, a 50/50 blend of low-moisture mozzarella and mild white cheddar gets you close.</p>
 
-    <h2>My Recipe</h2>
-    <div class="sub">A reliable home-baker default</div>
-    <p>A balanced middle-ground recipe designed for a home oven and average flour. Hydration is high enough for an open crumb but low enough to handle without sticking to everything. A small amount of oil keeps the crust tender through a longer home-oven bake. Long cold ferment for flavor.</p>
-    <div class="meta-grid">
-      <div><strong>Hydration</strong>67%</div>
-      <div><strong>Salt</strong>2.5%</div>
-      <div><strong>Oil</strong>1%</div>
-      <div><strong>Flour</strong>Bread flour or strong 00</div>
-      <div><strong>Bake temp</strong>500–550°F on steel</div>
-      <div><strong>Ferment</strong>24–48h cold</div>
+    <div class="callout">
+      <strong>The autolyse trick is the single cheapest dough upgrade.</strong> No new equipment, no new ingredient — just a 30-minute pause after mixing. Pros use it; most home recipes skip it.
     </div>
-    <p>This is the preset to clone if you want to start experimenting. Tap <strong>Custom</strong> to unlock the fields and tune to your kitchen, your oven, and your taste.</p>
+
+    <h3>Phase 2 · Kneading & Gluten Development</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Hand-knead 8–10 minutes</h4>
+        <p>The "push, fold, turn" method: heel of your palm pushes the dough away, fold it back toward you, rotate 90°, repeat. The dough goes from rough and sticky to smooth and elastic. Resist adding flour — wet hands or a bench scraper handle stickiness better and preserve your hydration percentage.</p>
+      </div>
+      <div class="step">
+        <h4>Stand mixer: 5–7 minutes on low</h4>
+        <p>Dough hook only. Low speed (KitchenAid speed 2) is plenty — high speed overheats and overworks the gluten. Stand mixers can over-knead in minutes; watch for the dough to clear the bowl walls and feel smooth, then stop. With high-hydration doughs above 70%, a mixer often outperforms hands.</p>
+      </div>
+      <div class="step">
+        <h4>No-knead method</h4>
+        <p>For long cold ferments, you can skip kneading almost entirely. Mix until combined, then perform 3–4 "stretch and folds" at 30-minute intervals: grab one edge of the dough, stretch it up, fold it over the center, rotate the bowl, repeat. The slow fermentation builds gluten passively over 12–24 hours — like sourdough.</p>
+      </div>
+      <div class="step">
+        <h4>The windowpane test</h4>
+        <p>Tear off a small piece. Stretch it gently between your fingers. If it forms a thin, translucent membrane you can almost see light through without tearing, gluten is fully developed. If it rips quickly, knead another 2–3 minutes and re-test. This works for any method, hand or machine.</p>
+      </div>
+    </div>
+
+    <h3>Phase 3 · Bulk Fermentation</h3>
+    <p>This is where flavor lives. Bulk fermentation is the time between the end of kneading and dividing the dough into balls. Long, slow bulk = complex flavor. Short, fast bulk = bland, bready dough.</p>
+    <div class="steps">
+      <div class="step">
+        <h4>Room temperature: 1–4 hours</h4>
+        <p>For same-day dough: bulk on the counter, covered, until visibly puffed and ~50% larger. At 75°F kitchen temp, this takes 2–3 hours for a typical Neapolitan formula. Don't wait for it to double — that's overproofed for pizza.</p>
+      </div>
+      <div class="step">
+        <h4>Cold ferment: 24–72 hours</h4>
+        <p>For maximum flavor: bulk on the counter 1 hour, then refrigerate in a sealed container. The cold doesn't stop fermentation — it slows yeast to a crawl while enzymes and bacteria keep developing flavor compounds. <strong>24 hours is the minimum to notice the difference. 48–72 hours produces the deep, almost-sourdough character of a pro NY slice.</strong></p>
+      </div>
+      <div class="step">
+        <h4>Folding during bulk (optional)</h4>
+        <p>For higher-hydration doughs (above 68%), a "fold" every 30 minutes during the first 1–2 hours of bulk strengthens the gluten without kneading. Wet your hand, grab a quarter of the dough, stretch it up and over the center. Rotate 90°, repeat 3 more times. The dough becomes noticeably tighter.</p>
+      </div>
+    </div>
+
+    <h3>Phase 4 · Dividing & Balling</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Weigh each ball</h4>
+        <p>Use a scale. Neapolitan: 200–280g. New York / general: 250–310g. Detroit: 280–340g (depending on pan size). Sicilian: 600–800g (full pan). Within ±5g of target — unevenness leads to uneven baking.</p>
+      </div>
+      <div class="step">
+        <h4>Shape into tight, seamed balls</h4>
+        <p>The Neapolitan technique called <em>staglio</em> resembles shaping mozzarella: gather the edges, pinch underneath while rotating, creating a smooth taut top and a pinched seam on the bottom. Other methods (Vito Iacopelli style) use oiled hands and a cutting-and-shaping motion against the counter. Whatever method you use, the surface should be smooth and tight — that surface tension is what supports the rise.</p>
+      </div>
+      <div class="step">
+        <h4>Rest in covered containers</h4>
+        <p>Lightly oil a container, place ball seam-down, with at least 2x the ball's volume of headspace. Cover airtight — a dried-out skin is one of the worst things that can happen to dough, and it can't be reversed.</p>
+      </div>
+      <div class="step">
+        <h4>Second proof: 4–8 hours room temp, or finish cold ferment</h4>
+        <p>After balling, balls need a second rest — the <em>secondo apretto</em> in Neapolitan tradition. For same-day pizza: 4–6 hours at room temperature. For cold-fermented dough: ball at the start of cold ferment, or ball partway through, depending on your timing.</p>
+      </div>
+    </div>
+
+    <h3>Phase 5 · Stretching</h3>
+    <p>This is where most home bakers struggle. The dough was perfect — and then they killed it with a rolling pin or kept stretching it after it started fighting back.</p>
+    <div class="steps">
+      <div class="step">
+        <h4>Come to room temperature first</h4>
+        <p>Cold dough tightens up and tears. Pull dough from the fridge at least <strong>1–2 hours before</strong> you plan to stretch. The dough should feel pillowy, jiggle when poked, and stretch when nudged — not snap back like a rubber band.</p>
+      </div>
+      <div class="step">
+        <h4>Flour generously, then more</h4>
+        <p>Coat the dough ball on both sides with flour or semolina. Don't be precious about it — excess flour brushes off before launching. Semolina is the pro's secret: coarser than flour, it acts like ball-bearings under the pizza, preventing sticking without burning at high heat.</p>
+      </div>
+      <div class="step">
+        <h4>Press the center, not the rim</h4>
+        <p>With the dough flat in front of you, place your fingertips just inside the edge and press down firmly, working outward in a spiral. Leave a 1-inch (2.5cm) border untouched — that's your cornicione. You're pushing gas <em>into</em> the edge, not out of it. The center should be thin; the edge should remain plump.</p>
+      </div>
+      <div class="step">
+        <h4>The knuckle stretch (Neapolitan)</h4>
+        <p>Drape the dough over the backs of your loose-fisted knuckles. Let it hang. Gravity does most of the work. Rotate slowly, letting it stretch evenly. A 250g ball should stretch to a 10–12 inch disc. The dough almost stretches itself once gluten is properly developed.</p>
+      </div>
+      <div class="step">
+        <h4>Never use a rolling pin</h4>
+        <p>A rolling pin compresses and deflates every air bubble you spent 24+ hours building. The result is a flat, dense, cracker-like crust. The only exception is intentionally cracker-thin styles like Roman <em>tonda</em>, where this is the goal.</p>
+      </div>
+    </div>
+
+    <h3>Phase 6 · Saucing & Topping</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Sauce first, sparingly</h4>
+        <p>Use the back of a ladle in a spiral motion from center outward, leaving the cornicione naked. About 3–4 tablespoons for a 12-inch pizza. Too much sauce = soggy center.</p>
+      </div>
+      <div class="step">
+        <h4>Less is more with cheese</h4>
+        <p>Especially for Neapolitan. Tear fresh mozzarella into thumb-sized pieces and scatter — don't cover. The dough needs to breathe between cheese spots. For NY-style with low-moisture mozzarella, a thin even layer covering the sauce is correct.</p>
+      </div>
+      <div class="step">
+        <h4>Wet toppings last</h4>
+        <p>Tomatoes, fresh mozzarella, and anything releasing water should go on right before the oven, or even after baking (basil, prosciutto, arugula). Heavy wet toppings stewed on the dough for 5 minutes will glue it to the peel.</p>
+      </div>
+    </div>
+
+    <h3>Phase 7 · Launching</h3>
+    <div class="steps">
+      <div class="step">
+        <h4>Top on the peel, not the counter</h4>
+        <p>Move the stretched dough to a floured (or semolina-dusted) peel <em>before</em> saucing. Topped pizza left on a counter develops moisture underneath and sticks like glue.</p>
+      </div>
+      <div class="step">
+        <h4>Shake-test before launching</h4>
+        <p>Give the peel a small fore-and-aft shake. The pizza should slide freely. If it's stuck, lift the edge with a bench scraper and shoot more semolina underneath. A stuck launch is the #1 home-pizza disaster.</p>
+      </div>
+      <div class="step">
+        <h4>Launch with confidence</h4>
+        <p>Tip the peel to about 20°, position the front edge where you want the pizza to land, push the peel slightly forward, then in one smooth motion pull the peel out from under. Hesitation is the enemy. The pizza should land flat where the front edge of the peel was.</p>
+      </div>
+    </div>
+
+    <h3>Phase 8 · Baking</h3>
+    <p>Heat is everything. Pizza is fundamentally a hot-floor problem: the bottom needs to crisp before the top burns. This is why pro ovens have a 700°F+ deck and why home ovens with a baking steel are the closest you can get.</p>
+    <div class="callout">
+      <strong>The single biggest home upgrade:</strong> a 1/4-inch baking steel preheated for 60+ minutes at maximum oven temperature, top rack, then broiler on for 5 minutes before launch. Steel conducts heat about 18–20× faster than ceramic stone. This is what makes a 500°F home oven approximate a 900°F wood-fired floor.
+    </div>
+
+    <h3>Phase 9 · Eating</h3>
+    <p>The Neapolitan is served immediately, soft enough to be eaten with a fork and knife or folded a portafoglio (wallet-style). The NY slice rests 60 seconds, then is held flat with the cheese-end folded lengthwise. Detroit gets cut into rectangles and served in the pan. The pizza you make is meant to be eaten while it's still steaming. Pictures are fine, but don't take too many.</p>
 
   </div>
 </div>
 
-<!-- Techniques -->
-<div class="sub-section" id="sub-techniques">
+<!-- ============== PRE-FERMENTS ============== -->
+<div class="sub-section" id="sub-preferments">
   <div class="article">
-    <h2>The Process</h2>
-    <div class="sub">From mix to launch · The essentials</div>
 
-    <h3>Mixing & Kneading</h3>
-    <div class="steps">
-      <div class="step">
-        <h4>Combine dry, then add water</h4>
-        <p>Whisk flour, salt, and instant yeast in a large bowl. Make a well, pour in your water at the target temp (see the Water Temperature tool). Mix with a spoon or hand until shaggy.</p>
-      </div>
-      <div class="step">
-        <h4>Autolyse (optional, recommended)</h4>
-        <p>Cover and rest 20–30 minutes before kneading. The flour fully hydrates, enzymes start working, and you'll need to knead noticeably less. This is the cheapest dough upgrade there is.</p>
-      </div>
-      <div class="step">
-        <h4>Knead until smooth</h4>
-        <p>Hand: 8–10 minutes. Stand mixer with dough hook: 5–7 minutes on low. The dough should be smooth, elastic, and tacky — not sticky. Stop when it passes the windowpane test: a small piece stretched between your fingers should form a thin translucent membrane without tearing.</p>
-      </div>
-      <div class="step">
-        <h4>Bulk ferment</h4>
-        <p>30 min to 1 hour at room temp, covered. The dough should soften and start to puff. This step is when most of the structure forms.</p>
-      </div>
+    <h2>The Pre-Ferment</h2>
+    <div class="sub">Where pizza becomes great instead of good</div>
+
+    <p>A pre-ferment is a small portion of the final dough mixed 8–24 hours in advance. It ferments separately, then gets added back into the main mix. This single technique is the difference between supermarket pizza and the pizza you remember.</p>
+
+    <p>Why it works: the long pre-ferment lets enzymes break starch into sugar, bacteria produce organic acids that add flavor and digestibility, and the yeast develops a deep, almost wine-like complexity. None of this happens in a one-hour rise.</p>
+
+    <p>There are three main pre-ferment types — they're not interchangeable, but they all aim at the same goal.</p>
+
+    <h3>Poolish</h3>
+    <p><strong>Origin:</strong> Polish (hence the name), refined by French bakers in the 19th century. Today the most popular pre-ferment in modern Neapolitan pizza.</p>
+    <p><strong>Hydration:</strong> 100% — equal weights of flour and water, plus a pinch of yeast.</p>
+    <p><strong>Famous champion:</strong> Vito Iacopelli, the third-generation Neapolitan pizzaiolo whose YouTube poolish tutorial has been viewed millions of times, made this technique synonymous with elite home pizza. His formula adds a small amount of honey to feed the yeast and produce a more active ferment.</p>
+
+    <div class="callout">
+      <strong>Vito's classic poolish formula</strong> (for 6 dough balls):<br>
+      • 300g flour · 300ml water · 3–5g instant dry yeast · 5g honey<br>
+      Mix until smooth, rest 1 hour at room temp, then refrigerate 16–24 hours.<br>
+      The next day, combine with 700g flour, 400ml water, 30g salt, and 10g olive oil for the final dough. Bulk 1 hour, ball, then cold ferment another 24 hours before use.
     </div>
 
-    <h3>Balling</h3>
-    <div class="steps">
-      <div class="step">
-        <h4>Divide</h4>
-        <p>Use a bench scraper and weigh each piece on a scale. Aim within ±5g — uneven balls cook unevenly.</p>
-      </div>
-      <div class="step">
-        <h4>Shape into taut balls</h4>
-        <p>Pinch the underside while rotating, pulling skin down and tucking it under. Surface should be smooth and tight; seam should be on the bottom. Practice — your first ones will look wrong, and that's fine.</p>
-      </div>
-      <div class="step">
-        <h4>Rest seam-down</h4>
-        <p>Place in a lightly oiled container, seam side down, with at least 2x the ball's volume in space for expansion. Cover airtight. Into the fridge for cold ferment, or onto the counter for room temp.</p>
-      </div>
+    <p><strong>What it looks like ready:</strong> Triple in volume, visibly bubbly across the surface, smells sweet and yeasty with a faint alcohol note. Should fall back into itself when you tap the container.</p>
+    <p><strong>Best for:</strong> Neapolitan, Roman al taglio, almost any pizza style. Especially good for home ovens — the poolish improves crust texture and oven spring.</p>
+
+    <h3>Biga</h3>
+    <p><strong>Origin:</strong> Italian, especially northern Italy. Older, stiffer cousin of poolish.</p>
+    <p><strong>Hydration:</strong> 50–60% — much stiffer than poolish, more like a regular bread dough.</p>
+    <p><strong>What it tastes like:</strong> Cleaner and sharper than poolish. Biga produces a more open crumb structure and a slightly tangy, almost-sour flavor — closer to traditional Italian bread.</p>
+    <p><strong>Typical formula:</strong> 500g flour · 250ml water · 2g IDY. Mix into a shaggy mass — don't knead — and refrigerate 16–24 hours.</p>
+    <p><strong>Best for:</strong> Roman al taglio, Pinsa, hearty pan styles. Detroit and Sicilian benefit from biga's structural strength.</p>
+
+    <h3>Levain (Natural Starter / Sourdough)</h3>
+    <p><strong>Origin:</strong> The ancient method. Predates commercial yeast by thousands of years. Pizza in Naples was originally leavened this way.</p>
+    <p><strong>What it is:</strong> A self-sustaining culture of wild yeast and lactic bacteria, kept alive by daily flour and water feedings. No commercial yeast needed.</p>
+    <p><strong>What it tastes like:</strong> Deepest, most complex flavor of any pre-ferment. Subtle sourness, profound aroma, exceptional digestibility — many people who struggle with commercial-yeast pizza find sourdough pizza much easier on the stomach.</p>
+    <p><strong>The trade-off:</strong> Requires daily commitment to keep the starter alive. Fermentation timing is less predictable than commercial yeast. Once mastered, produces pizza that doesn't have a peer.</p>
+
+    <h3>Direct Dough (No Pre-Ferment)</h3>
+    <p>The straight dough method: all ingredients mixed at once, fermented in one stage. It's faster, simpler, and absolutely capable of making excellent pizza — especially if you cold-ferment for 24+ hours, which is itself a kind of slow pre-ferment.</p>
+    <p>Modern home techniques like Ken Forkish's "24 to 48-Hour Pizza Dough" demonstrate that long cold fermentation of a direct dough can rival pre-fermented results. The key word is <em>long</em> — anything under 24 hours of cold ferment will taste flat.</p>
+
+    <h3>Choosing Your Method</h3>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Method</th><th>Time</th><th>Difficulty</th><th>Flavor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Direct (same-day)</strong></td><td>4–8h</td><td>Easy</td><td>Mild</td></tr>
+        <tr><td><strong>Direct (cold ferment)</strong></td><td>24–72h</td><td>Easy</td><td>Good</td></tr>
+        <tr><td><strong>Poolish</strong></td><td>2 days</td><td>Medium</td><td>Excellent</td></tr>
+        <tr><td><strong>Biga</strong></td><td>2 days</td><td>Medium</td><td>Excellent, different</td></tr>
+        <tr><td><strong>Levain</strong></td><td>3+ days</td><td>Hard</td><td>Best in class</td></tr>
+      </tbody>
+    </table>
+
+    <p>If you're just starting: do a 24-hour cold-fermented direct dough until you can do it in your sleep. Then graduate to poolish. Then experiment with biga. Then consider whether you want to commit to a sourdough starter.</p>
+
+  </div>
+</div>
+
+<!-- ============== INGREDIENTS ============== -->
+<div class="sub-section" id="sub-ingredients">
+  <div class="article">
+
+    <h2>The Five Ingredients</h2>
+    <div class="sub">Flour, water, salt, yeast — and what they're for</div>
+
+    <p>An authentic Neapolitan pizza by AVPN rules contains exactly four ingredients in the dough: flour, water, salt, yeast. Most American styles add a fifth, olive oil. That's it. Everything below is detail on each one.</p>
+
+    <h3>Flour</h3>
+
+    <p>The most important ingredient. Pizza flour quality determines everything: extensibility, oven spring, crust color, mouthfeel, even digestibility.</p>
+
+    <h4>Italian "00" Flour</h4>
+    <p>The Italian flour grading system (00, 0, 1, 2, integrale) describes <strong>grind fineness</strong>, not protein content. "00" (doppio zero) is the most finely milled — almost talcum-powder smooth. <strong>00 alone tells you nothing about whether the flour is right for pizza.</strong> You must also know the protein content and the W rating.</p>
+
+    <p>The <strong>W rating</strong> (force/strength) is unique to Italian flours and measures how much air a dough bubble can hold before bursting in an alvéograph test. It ranges from ~120 (weak) to 400+ (very strong). Higher W = longer fermentation tolerance.</p>
+
+    <h4>Caputo flours — the reference standard</h4>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Flour</th><th>Protein</th><th class="mono-col">W</th><th>Best for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Pizzeria (Blue)</strong></td><td>12.5%</td><td class="mono-col">260–270</td><td>8–24h Neapolitan, wood-fired</td></tr>
+        <tr><td><strong>Chef's (Red)</strong></td><td>13.5%</td><td class="mono-col">300–320</td><td>Long ferment, home oven</td></tr>
+        <tr><td><strong>Manitoba</strong></td><td>14.5%</td><td class="mono-col">350+</td><td>72h+ ferment, biga, poolish</td></tr>
+        <tr><td><strong>Americana</strong></td><td>14.25%</td><td class="mono-col">340</td><td>NY, Detroit, Chicago</td></tr>
+        <tr><td><strong>Pizza a Metro</strong></td><td>~13%</td><td class="mono-col">300</td><td>Roman al taglio</td></tr>
+      </tbody>
+    </table>
+
+    <h4>American flours</h4>
+    <p>American flour packaging usually shows only protein content. There is no W rating because American mills don't measure it. As a rough rule:</p>
+    <ul>
+      <li><strong>All-purpose</strong> (10–11.5% protein): too weak for serious pizza, struggles past 12-hour ferment</li>
+      <li><strong>Bread flour</strong> (12–13% protein): great workhorse, equivalent to a medium-W 00</li>
+      <li><strong>High-gluten / "pizza" flour</strong> (13.5–14.5%): the NY-style standard, like King Arthur Sir Lancelot</li>
+      <li><strong>Tipo 00 imported</strong>: works in home ovens but at 500°F you may want stronger flour for proper oven spring</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Common myth:</strong> 00 flour is always best for pizza. Reality: 00 is only ideal at extreme temperatures (700°F+). At 500°F home-oven temps, you may get better oven spring from a stronger bread flour. Many top home pizzaiolos use a 50/50 blend of Caputo 00 and high-gluten bread flour.
     </div>
 
-    <h3>Stretching</h3>
-    <div class="steps">
-      <div class="step">
-        <h4>Come to room temperature</h4>
-        <p>Pull cold dough from the fridge at least 1–2 hours before stretching. Cold dough tightens up and tears. Warm dough — around 70–75°F — is supple and forgiving.</p>
-      </div>
-      <div class="step">
-        <h4>Flour the work surface generously</h4>
-        <p>Don't be precious about flour at this stage. You can brush excess off the bottom before launching.</p>
-      </div>
-      <div class="step">
-        <h4>Press out from the center</h4>
-        <p>Use fingertips, not palms. Press from the center toward the edge, leaving an inch of untouched rim — that's your cornicione. Push gas outward into the edge, don't deflate it.</p>
-      </div>
-      <div class="step">
-        <h4>Stretch over knuckles</h4>
-        <p>Drape the disc over your knuckles (loose fists) and let gravity do most of the work, rotating slowly. For Neapolitan-style, never use a rolling pin — it kills the bubbles you spent days building.</p>
-      </div>
+    <h3>Water</h3>
+    <p>Water is 60–80% of a dough's weight. Its quality matters more than most people realize.</p>
+    <p><strong>Hardness:</strong> Moderately hard water (60–120 mg/L calcium) is ideal. AVPN regulations specify 60–80 mg/L. Hard water strengthens gluten and yields predictable doughs. Very soft water (under 50 mg/L) makes slack, weak dough. Very hard water (above 200 mg/L) makes dough tough and slows fermentation.</p>
+    <p><strong>Chlorine:</strong> Heavy chlorination kills yeast activity. If your tap water smells like a pool, let it sit uncovered for several hours so chlorine off-gases — or use filtered water. Chloramine, used by some municipalities, doesn't off-gas; filter it through activated carbon.</p>
+    <p><strong>pH:</strong> Aim for 6–7 (slightly acidic to neutral). Most municipal water falls in this range. Strongly alkaline water (above 8) interferes with fermentation.</p>
+
+    <h3>Salt</h3>
+    <p>Salt has three jobs: flavor, gluten strengthening, and fermentation control. Below 1.5% (baker's percent), the dough tastes flat and gluten is weak. Above 3.5%, the dough tastes salty and yeast activity is suppressed.</p>
+    <p><strong>Pizza-style salt ranges:</strong> Neapolitan 2.8–3.0% · NY 2.0–2.5% · Detroit 2.0–2.5% · Roman al taglio 2.5%.</p>
+    <p><strong>Type:</strong> Sea salt (preferred by AVPN), kosher salt, fine non-iodized table salt — all fine. Iodized salt can impart a slight metallic taste at high concentration; avoid for pizza if possible. Coarse salt should be dissolved in the water first, or used in lower volume since it weighs more per teaspoon than fine.</p>
+
+    <h3>Yeast</h3>
+    <p>Pizza yeast (<em>Saccharomyces cerevisiae</em>) comes in three forms. All three eat sugar, produce CO₂ and ethanol, and contribute flavor. They differ in concentration and how you use them.</p>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Type</th><th>Use ratio</th><th>How to use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Instant (IDY)</strong></td><td>1× (baseline)</td><td>Mix directly into flour</td></tr>
+        <tr><td><strong>Active dry (ADY)</strong></td><td>1.25×</td><td>Bloom in warm water 5–10 min first</td></tr>
+        <tr><td><strong>Fresh / Cake</strong></td><td>3×</td><td>Crumble into water or flour</td></tr>
+      </tbody>
+    </table>
+    <p>If a recipe calls for 1g IDY, use 1.25g ADY or 3g fresh. Fresh yeast (highly perishable, refrigerated, popular in Italy and AVPN-preferred) gives slightly more aromatic flavor but is rare in American grocery stores.</p>
+    <p><strong>How much yeast to use:</strong> Less than you think. Long ferments need very little yeast — 0.1% or less of flour weight for a 24-hour cold ferment. The Calculator's yeast hint suggests an amount based on your ferment time and temperature.</p>
+
+    <h3>Olive Oil</h3>
+    <p>Olive oil is excluded from traditional AVPN Neapolitan dough — it's added only at the end, drizzled on the finished pizza. American and Roman styles, however, incorporate oil at 1–3% for tenderness and browning aid.</p>
+    <p><strong>What oil does in dough:</strong> Coats gluten strands, slightly weakening structure and producing a softer, more tender crumb. Helps the crust crisp at lower bake temperatures (essential for home ovens). Carries fat-soluble flavor compounds.</p>
+    <p><strong>What to buy:</strong> Real extra-virgin olive oil from a single origin, harvest date on the label, in a dark glass bottle. The peppery throat-burn from a good Italian or Spanish EVOO comes from oleocanthal, an antioxidant — that bite is the marker of freshness.</p>
+    <p><strong>What to avoid:</strong> Vague "imported from Italy" labels, plastic bottles, anything more than 18 months past harvest. Most American supermarket "extra virgin" is rancid by the time you buy it.</p>
+
+    <h3>Tomatoes</h3>
+    <p>For Neapolitan-style pizza, the gold standard is <strong>San Marzano DOP</strong> — a specific variety of plum tomato grown in volcanic soil south of Naples. Look for the yellow-and-red DOP seal and the phrase "Pomodoro S. Marzano dell'Agro Sarnese-Nocerino DOP." Brands like Gustarosso, Rega, and Strianese are reliable.</p>
+    <p><strong>"San Marzano-style"</strong> on the label means nothing — it's a marketing term, not a designation. Most cans labeled San Marzano in American supermarkets aren't the real thing.</p>
+    <p><strong>The best non-San-Marzano:</strong> Bianco DiNapoli (California, organic, processed quickly after harvest). Cento Certified San Marzano with the dual seal. For Detroit-style, Stanislaus 7/11 or "Tomato Magic" are pizzeria favorites.</p>
+    <p><strong>Sauce technique:</strong> Pizza sauce is usually <em>not cooked</em>. Crush whole peeled tomatoes by hand or pulse briefly in a food processor — don't liquefy. Add a pinch of salt and a drizzle of olive oil. That's it. Cooking happens on the pizza.</p>
+
+    <div class="pull-quote">
+      The tomato sauce on the pizza is the key element and it must strictly be from a can. This is to guarantee consistency, quality, and great flavor.
+      <span class="attribution">Raffaele Lotto, Executive Chef, Pizzeria Cucina, Venice</span>
     </div>
 
-    <h3>Launching</h3>
-    <div class="steps">
-      <div class="step">
-        <h4>Build on the peel, not the counter</h4>
-        <p>A stretched dough left on the counter while you top it will stick. Move the stretched dough to a well-floured (or semolina-dusted) peel first, then top quickly.</p>
-      </div>
-      <div class="step">
-        <h4>Top sparingly</h4>
-        <p>A thin layer of sauce, modest cheese, a few toppings. Too much weight = soggy, stuck dough that won't launch cleanly.</p>
-      </div>
-      <div class="step">
-        <h4>Shake test before launch</h4>
-        <p>Give the peel a small back-and-forth shake. If the pizza moves freely, you're good. If it's stuck, lift the edge and toss flour underneath.</p>
-      </div>
-      <div class="step">
-        <h4>Launch with confidence</h4>
-        <p>Tip the peel to about 20°, anchor the front edge on the stone or steel, and pull the peel out from under in one smooth motion. Hesitation is the enemy.</p>
-      </div>
-    </div>
+    <h3>Cheese</h3>
+    <p>Two main families: fresh (high moisture) and aged (low moisture). Each behaves completely differently on pizza.</p>
+    <h4>Mozzarella di Bufala Campana DOP</h4>
+    <p>Buffalo milk mozzarella from Campania. Tangier, richer, wetter than cow's milk. The AVPN-approved cheese for true Neapolitan. Tear by hand into pieces and drain on paper towels before topping — buffalo mozzarella is roughly 60% water and will flood your pizza if you don't.</p>
+    <h4>Fior di Latte</h4>
+    <p>"Flower of milk" — cow's milk fresh mozzarella. Milder, drier, more forgiving than buffalo. The most common cheese on Neapolitan pizza in Naples itself. Look for the Fior di Latte Appennino Meridionale DOP if you want the AVPN-spec cheese.</p>
+    <h4>Low-Moisture Mozzarella</h4>
+    <p>The American pizzeria standard. Aged longer than fresh mozzarella, then shredded or sliced. Melts evenly, browns nicely, won't soak the crust. The cheese for New York and Detroit pizza. Whole-milk versions taste richer than part-skim.</p>
+    <h4>Brick Cheese</h4>
+    <p>The defining cheese of Detroit-style. Originally a Wisconsin invention (Buddy's used it because it was locally cheap). Buttery, slightly sharper than mozzarella, exceptional browning behavior. If unavailable, a 50/50 blend of low-moisture mozzarella and mild white cheddar gets you close.</p>
+    <h4>Provolone</h4>
+    <p>Common on New York pizza (often blended with mozzarella). Sharper, more aromatic. Aged provolone (provolone piccante) is too strong for pizza; use young (dolce).</p>
+    <h4>Parmigiano-Reggiano & Pecorino Romano</h4>
+    <p>Used as finishing cheeses, grated on after baking. Not melted. Adds umami depth. The real ones (DOP, aged 24+ months) are worlds away from green-can imitations.</p>
+
+    <h3>The Cornicione's Best Friends</h3>
+    <p>Beyond the basics, these are the small upgrades that mark a serious pizzaiolo:</p>
+    <ul>
+      <li><strong>Sea salt finishing flake</strong> (Maldon, fleur de sel) — scattered on the cornicione post-bake</li>
+      <li><strong>Fresh basil</strong> — added <em>after</em> baking, never before (it burns black in seconds at high temp)</li>
+      <li><strong>Hot honey</strong> — drizzled on spicy pies (jalapeño, soppressata) for sweet/heat balance</li>
+      <li><strong>Garlic confit</strong> — slow-cooked garlic in olive oil; brushed on cornicione before launching</li>
+      <li><strong>Calabrian chiles</strong> — for spicy pies, vastly better than red pepper flakes</li>
+    </ul>
 
   </div>
 </div>
@@ -922,115 +1411,195 @@
 
   </div>
 
-  <!-- ============ REFERENCE TAB ============ -->
+  <!-- ============================================ -->
+
+  <!-- ============= REFERENCE TAB ================ -->
+
+  <!-- ============================================ -->
 
   <div class="tab-content" id="tab-reference">
 
 ```
-<div class="subnav" id="referenceSubnav">
-  <button data-sub="troubleshooting" class="active">Troubleshooting</button>
+<div class="subnav cols-4" id="referenceSubnav">
+  <button data-sub="troubleshooting" class="active">Troubleshoot</button>
   <button data-sub="glossary">Glossary</button>
+  <button data-sub="history">History</button>
+  <button data-sub="equipment">Gear</button>
 </div>
 
-<!-- Troubleshooting -->
+<!-- ============== TROUBLESHOOTING ============== -->
 <div class="sub-section active" id="sub-troubleshooting">
   <div class="article">
     <h2>Troubleshooting</h2>
-    <div class="sub">When something goes wrong · Tap to expand</div>
+    <div class="sub">Tap any problem to diagnose · 14 common issues</div>
 
     <div class="accordion" id="troubleAccordion">
+
       <div class="accordion-item">
         <button class="accordion-head"><span>Dough is too sticky and unworkable</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Most likely</span> Hydration too high for your flour. Strong flour (13%+ protein) handles 70%+ hydration; weaker flour starts struggling around 65%.</p>
-          <p><span class="label">Also possible</span> Under-kneaded — the gluten hasn't pulled the water in yet. Knead 3–5 more minutes and re-check.</p>
-          <p><span class="label">Quick fix</span> Generous flour on the work surface and your hands. Use a bench scraper instead of fingers to move it. Resist dumping flour into the dough itself — you'll change the whole recipe.</p>
-          <p><span class="label">Next time</span> Drop hydration 2–3% or switch to a stronger flour.</p>
+          <p><span class="label">Most likely</span> Hydration too high for your flour. Strong flour (13%+ protein) handles 70%+ hydration; weaker flour struggles past 65%.</p>
+          <p><span class="label">Also possible</span> Under-kneaded — the gluten hasn't fully absorbed the water yet. Knead 3–5 more minutes and re-check.</p>
+          <p><span class="label">Could be</span> Diastatic malt in your flour. This converts starch to sugar and makes the dough surface tacky regardless of hydration.</p>
+          <p><span class="label">Quick fix</span> Wet your hands and use a bench scraper. Generous flour or semolina on the work surface. Resist dumping flour <em>into</em> the dough — it changes the formula.</p>
+          <p><span class="label">Next time</span> Drop hydration 2–3% or switch to a stronger flour (more protein, higher W rating).</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <button class="accordion-head"><span>Dough tears when I try to stretch it</span><span class="chev">›</span></button>
+        <button class="accordion-head"><span>Dough tears when stretching</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">First check</span> Tight and springy (snapping back) or soft and slack (spreading and tearing)? Tight = under-kneaded or too cold. Slack = overproofed.</p>
-          <p><span class="label">Tight & tearing</span> Cover it and rest 15–30 more minutes. Cold dough needs at least 1–2 hours at room temp before stretching.</p>
-          <p><span class="label">Slack & tearing</span> Overproofed — fermentation went too long. The gluten network has broken down. Reball gently if you can; bake sooner next time or use less yeast.</p>
-          <p><span class="label">Always tearing</span> Insufficient gluten development. Knead longer, use stronger flour, or try a 20-minute autolyse before kneading.</p>
+          <p><span class="label">First diagnose</span> Tight and springy (snapping back) or soft and slack (spreading and tearing)? Tight = under-kneaded, under-rested, or too cold. Slack = overproofed or over-hydrated.</p>
+          <p><span class="label">Tight & tearing</span> Cover and rest 15–30 more minutes. Cold dough straight from the fridge always tears — wait 1–2 hours at room temperature minimum.</p>
+          <p><span class="label">Slack & tearing</span> Overproofed — the gluten network has broken down. There's no full recovery; reball gently if you can. Less yeast or shorter ferment next time.</p>
+          <p><span class="label">Always tearing</span> Insufficient gluten development. Try a 20–30 minute autolyse before kneading. Knead longer or use stronger flour.</p>
+          <p><span class="label">Tears at the same spot</span> A thin spot you created while stretching. Push gas back into that area gently with your fingertips, then continue stretching.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Dough won't rise</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Most likely</span> Yeast is dead or expired. Test it: 1/4 tsp yeast + 1/4 cup warm water (100°F) + a pinch of sugar. Should foam visibly in 5–10 minutes.</p>
-          <p><span class="label">Also possible</span> Water was too hot when mixing — anything over 130°F kills yeast. Or the room is too cold; below 60°F yeast activity drops significantly.</p>
-          <p><span class="label">Less obvious</span> Salt dumped directly on yeast can stall it. Always mix salt into flour first.</p>
-          <p><span class="label">Patience play</span> Cold-fermented dough barely rises in the fridge by design. The rise happens after you pull it out. Give it 2 hours at room temp.</p>
+          <p><span class="label">Most likely</span> Yeast is dead or expired. Test: 1/4 tsp yeast + 1/4 cup 100°F water + pinch sugar. Should foam in 5–10 minutes. If nothing, throw the yeast out.</p>
+          <p><span class="label">Water too hot</span> Above 130°F kills yeast outright. Above 110°F slows it dramatically. Cool tap water (60–80°F) is safest if unsure.</p>
+          <p><span class="label">Room too cold</span> Below 65°F, yeast activity drops significantly. Try the oven-with-light-on trick: closed oven with the interior light makes a warm proof box (~80°F).</p>
+          <p><span class="label">Salt killed it</span> Salt poured directly onto dry yeast and left for 5+ minutes draws moisture from yeast cells and damages them. Always mix salt into flour first.</p>
+          <p><span class="label">Cold-fermented expectation</span> Cold-fermented dough barely rises in the fridge by design. The rise happens after you pull it out and bring it to room temp.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <button class="accordion-head"><span>Dough sticks to the peel before launching</span><span class="chev">›</span></button>
+        <button class="accordion-head"><span>Dough sticks to the peel before launch</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Why it happens</span> Too much time between stretching and launching. The dough's moisture seeps into the flour bed and pastes itself to the peel.</p>
-          <p><span class="label">Prevention</span> Build the pizza on the peel and launch within 60–90 seconds. Have all your toppings prepped before you stretch.</p>
-          <p><span class="label">Better dust</span> Semolina or rice flour rolls under the dough like ball bearings; regular flour absorbs moisture and glues things together.</p>
-          <p><span class="label">Stuck right now</span> Gently lift the stuck edge with a bench scraper and shoot more flour underneath. Shake the peel — if it moves freely, launch.</p>
+          <p><span class="label">Why it happens</span> Topped pizza sat on the peel too long. Moisture from sauce and dough seeped into the flour bed and turned it into paste.</p>
+          <p><span class="label">Prevention</span> Build the pizza on the peel and launch within 60–90 seconds. Have toppings prepped and ready before you stretch.</p>
+          <p><span class="label">Better dust</span> Semolina flour or rice flour rolls under the dough like ball-bearings. Regular flour absorbs water and glues.</p>
+          <p><span class="label">Stuck right now</span> Lift the stuck edge with a bench scraper or knife and shoot semolina under it. Shake the peel — if it slides, launch immediately.</p>
+          <p><span class="label">Try a screen or parchment</span> A perforated pizza screen or parchment paper underneath the pizza eliminates the sticking risk entirely (parchment chars but holds; screens stay in for the bake).</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Crust is pale and undercooked-looking</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Most likely</span> Oven not hot enough, or stone/steel not preheated long enough. Steels need a full 45–60 minutes to fully saturate.</p>
-          <p><span class="label">Overproofed</span> Long fermentation eats sugars — fewer sugars left = less Maillard browning. The crust stays pale even when fully baked through.</p>
-          <p><span class="label">Quick fix</span> Hit it with the broiler for 30–60 seconds at the end. Watch closely; pale to charred takes about 45 seconds.</p>
-          <p><span class="label">Next time</span> Preheat longer, bake higher, or shorten the ferment.</p>
+          <p><span class="label">Most likely</span> Oven not hot enough, or stone/steel not preheated long enough. Steels need a full 45–60 minutes at max temp.</p>
+          <p><span class="label">Overproofed dough</span> Long fermentation eats sugars. Fewer sugars = less Maillard browning. Crust stays pale even when fully baked through.</p>
+          <p><span class="label">Quick fix</span> Hit it with the broiler for 30–60 seconds at the end. Watch closely — pale to charred is about 45 seconds.</p>
+          <p><span class="label">For NY/Detroit</span> Adding 1–2% sugar (or honey, or malt) to the dough increases Maillard browning at lower bake temperatures. Authentic NY pies often include this.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <button class="accordion-head"><span>Crust is dense, doughy, and gummy</span><span class="chev">›</span></button>
+        <button class="accordion-head"><span>Crust is dense, doughy, gummy</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Most likely</span> Underbaked. The bottom can look done while the middle is still wet. Stick a thermometer in the crust — done is 195–210°F internal.</p>
-          <p><span class="label">Too many toppings</span> A wet sauce or pile of cheese steams the dough from above. Less is more.</p>
-          <p><span class="label">Cold dough launched too soon</span> Cold dough from the fridge resists internal cooking. Always come to room temp first.</p>
-          <p><span class="label">Underproofed</span> Dough that didn't ferment long enough never develops the open structure needed to bake through.</p>
+          <p><span class="label">Most likely</span> Underbaked. Bottom can look done while center is still wet. Probe the cornicione: done is 195–210°F internal.</p>
+          <p><span class="label">Too many toppings</span> Wet sauce or piles of cheese steam the dough from above. Less is more — Neapolitan pizza in Naples is shockingly bare by American standards.</p>
+          <p><span class="label">Cold dough launched too soon</span> Cold dough resists internal cooking. Room temp at least 1–2 hours before stretching.</p>
+          <p><span class="label">Underproofed</span> Dough that didn't ferment long enough never developed the open structure needed to bake through cleanly. The texture stays dense and bread-like.</p>
+          <p><span class="label">Gum line under sauce</span> The classic underbake symptom. Thinner sauce, less moisture, more bake time, or hotter deck. Sometimes both — use a baking steel.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Dough snaps back and won't hold its shape</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Most likely</span> Underproofed — gluten is still tight and tense.</p>
-          <p><span class="label">Fix it now</span> Cover and rest 30 minutes to an hour. The gluten will relax and stretching becomes easy.</p>
-          <p><span class="label">Also possible</span> You're trying to stretch cold dough straight from the fridge. Pull it 1–2 hours before you plan to bake.</p>
+          <p><span class="label">Most likely</span> Underproofed — gluten is still tight and tense, hasn't relaxed.</p>
+          <p><span class="label">Fix now</span> Cover and rest 30 minutes to an hour. The gluten will relax and stretching becomes easy.</p>
+          <p><span class="label">Cold from fridge</span> Pull dough 1–2 hours before stretching. Cold gluten is rubber-band stiff; warm gluten flows.</p>
+          <p><span class="label">Over-kneaded</span> Especially with stand mixers. Over-kneaded dough fights stretching for hours.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <button class="accordion-head"><span>Top is burnt before the bottom is done</span><span class="chev">›</span></button>
+        <button class="accordion-head"><span>Top is burnt before bottom is done</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><span class="label">Move the rack down</span> Top rack gets direct radiant heat; middle rack lets the steel do more work.</p>
-          <p><span class="label">Skip the broiler</span> If you're using broiler-finish technique, you may be running it too long. 30–60 seconds is plenty.</p>
-          <p><span class="label">Heat from below</span> A baking steel (vs. a stone) conducts heat 18x faster from below — that's how you get bottom-crust char without top burn.</p>
+          <p><span class="label">Rack too high</span> Top rack with broiler effect overcooks the top. Move steel to middle rack for more even bake.</p>
+          <p><span class="label">Broiler too long</span> If finishing with broiler, 30–60 seconds is plenty.</p>
+          <p><span class="label">Need heat from below</span> Baking steel (vs. stone) conducts heat 18× faster from below. The bottom gets char before the top burns.</p>
+          <p><span class="label">Oven thermostat lying</span> Many home ovens read 50°F low. Verify with an oven thermometer.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Bottom is burnt before top is done</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Oven too cool</span> Common in Ooni-style outdoor ovens. The deck stays hot while the dome cools without flame. Re-fire the burner or shift the pizza partway through.</p>
+          <p><span class="label">Steel too hot</span> If using broiler-finish technique, the steel may be saturating at very high temperatures. Move to lower rack or skip pre-broil.</p>
+          <p><span class="label">Pizza in one spot too long</span> In Ooni and Roccbox ovens, rotate the pizza 90° every 20 seconds. The side closest to the flame cooks fastest.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>No leopard spots / oven spring</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Heat not high enough</span> Leopard spotting requires 700°F+ deck temperature. Home ovens at 500°F with steel + broiler can produce light spotting, but not the dramatic char of a wood-fired oven.</p>
+          <p><span class="label">Dough overproofed</span> Gas already escaped before baking. The pizza lays flat and won't puff.</p>
+          <p><span class="label">Dough underproofed</span> Not enough trapped gas to puff in the first place. Longer ferment.</p>
+          <p><span class="label">Rolling pin used</span> Crushes every bubble built during fermentation. Hand-stretch only for serious oven spring.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Cheese pools of grease everywhere</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Cheese too fatty</span> Whole-milk low-moisture mozzarella has higher fat than part-skim. Some greasing is normal; pools mean too much cheese, too much fat, or both.</p>
+          <p><span class="label">Cheese too wet</span> Fresh mozzarella is 50%+ water. Drain it thoroughly on paper towels (15–30 minutes) before topping.</p>
+          <p><span class="label">Use less</span> 4–5 oz of cheese on a 12-inch pizza is plenty for most styles. Less is more.</p>
+          <p><span class="label">Pre-shredded cheese</span> Bagged shredded mozzarella is coated with anti-caking agents (starch, cellulose) that interfere with proper melt and can release as gritty residue. Always shred your own.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Sauce is watery and bleeds into crust</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Tomatoes weren't drained</span> Whole peeled tomatoes have a lot of juice. Strain through a sieve before crushing for thicker sauce.</p>
+          <p><span class="label">Don't blend smooth</span> Smoothie-texture sauce sits on the dough as liquid. Pulse or crush by hand so there's still pulp texture.</p>
+          <p><span class="label">Too much sauce</span> 3–4 tablespoons for a 12" Neapolitan. Less for thin styles.</p>
+          <p><span class="label">Wet brand</span> Some brands of canned tomatoes are extremely juicy. Try Bianco DiNapoli, Mutti, or genuine San Marzano DOP for better consistency.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Detroit pizza won't release from pan</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Not enough oil</span> Detroit pans need a generous 2–3 tablespoons of oil — the bottom should look like the dough is swimming. Pan-frying the bottom is the goal.</p>
+          <p><span class="label">Wrong pan</span> Anodized blue steel Detroit pans (LloydPans, Detroit Style Pizza Co.) release like nonstick. Cheap pans require more oil and patience.</p>
+          <p><span class="label">Cheese stuck to pan</span> The frico edge needs cheese pressed all the way to the corners — but cheese alone (without oil under it) glues to the pan. Always oil first.</p>
+          <p><span class="label">Stuck right now</span> Run a thin knife or offset spatula around the perimeter, then under one corner. Lift gently. If it really won't come, pop it back in the oven for 2 minutes to re-melt the cheese-pan bond.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Dough has a sour or vinegar smell</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p><span class="label">Over-fermented</span> Too long at too warm a temperature. Lactic and acetic acids have built up. The dough may still be salvageable but flavor will be off.</p>
+          <p><span class="label">Too warm too long</span> Bulk fermentation above 80°F for many hours produces excessive acid. Keep bulk ferments in 70–75°F range.</p>
+          <p><span class="label">Slight tang is good</span> A faint, pleasant tang from a long cold ferment is desirable — it's the sign of healthy lactic activity. A sharp, vinegary smell is not.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Glossary -->
+<!-- ============== GLOSSARY ============== -->
 <div class="sub-section" id="sub-glossary">
   <div class="article">
     <h2>Glossary</h2>
-    <div class="sub">The jargon, demystified · Tap to expand</div>
+    <div class="sub">30 essential terms · Tap to expand</div>
 
     <div class="accordion" id="glossaryAccordion">
+
       <div class="accordion-item">
         <button class="accordion-head"><span>Autolyse</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>A 20–60 minute rest after mixing flour and water, before adding salt and yeast (or before kneading). During this pause, flour fully hydrates, enzymes begin converting starch to sugar, and gluten starts forming on its own. Result: less kneading needed, more extensible dough, often better flavor.</p>
+          <p>A 20–60 minute rest after mixing flour and water, before adding salt and yeast (or before kneading). The flour fully hydrates, enzymes begin converting starch to sugar, and gluten starts forming without any work from you. Result: less kneading needed, more extensible dough, often better flavor. Invented by French baker Raymond Calvel in 1974.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>AVPN</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>Associazione Verace Pizza Napoletana. Founded in Naples in 1984 by Antonio Pace and Lello Surace to codify and protect the rules of true Neapolitan pizza-making. Issues certifications to pizzerias worldwide that follow strict regulations on ingredients, dough, oven, and technique. The art of Neapolitan pizza-making was added to UNESCO's intangible cultural heritage list in 2017.</p>
         </div>
       </div>
 
@@ -1044,35 +1613,49 @@
       <div class="accordion-item">
         <button class="accordion-head"><span>Biga</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>An Italian-style pre-ferment: a stiff dough of flour, water (around 50% hydration), and a tiny amount of yeast, mixed 12–24 hours before the main dough. Adds complex flavor and improved structure. Compare to <strong>poolish</strong>, the wetter French version.</p>
+          <p>An Italian stiff pre-ferment: flour, water (around 50–60% hydration), and a tiny amount of yeast, mixed 16–24 hours before the main dough. Adds complex flavor and structural strength. Particularly suited to long-fermented Roman pizza al taglio and pinsa. Compare to <strong>poolish</strong>, the wetter French version.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Bulk fermentation</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>The first rise — when the dough ferments as one big mass, before being divided into balls. Most flavor and structure development happens here.</p>
+          <p>The first rise — when dough ferments as one big mass before being divided into balls. Most flavor and structure development happens here. Length varies: 30 minutes to 24+ hours depending on temperature and yeast amount.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Cold ferment</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>Letting dough rise slowly in the refrigerator, typically 24–72 hours. Cold slows yeast activity dramatically but doesn't stop enzymatic and bacterial activity that develops flavor. Cold-fermented dough is more flavorful, more extensible, and more digestible than same-day dough.</p>
+          <p>Letting dough rise slowly in the refrigerator, typically 24–72 hours. Cold slows yeast activity dramatically but doesn't stop enzymatic and bacterial action that develops flavor. Cold-fermented dough is more flavorful, more extensible, and more digestible than same-day dough.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Cornicione</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>(Cor-ni-CHO-nay.) The raised, puffy edge of a Neapolitan pizza. The untouched border of dough that wasn't pressed flat during stretching, which puffs dramatically in a hot oven into an airy, blistered ring.</p>
+          <p>(Cor-ni-CHO-nay.) The raised, puffy edge of a Neapolitan pizza. AVPN regulations specify a height of 1–2 cm, swollen and free from burns. The cornicione forms because the pizzaiolo pushes air outward from the center while stretching, never compressing the rim.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>DDT — Desired Dough Temperature</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>The temperature you want your dough to be at the end of mixing — typically 75–80°F for pizza. Hit it by adjusting your water temp using: <strong>water = (DDT × 3) − room temp − flour temp − friction</strong>. Friction is heat added by kneading: ~5°F for hand mixing, 15–25°F for a stand mixer.</p>
+          <p>The temperature you want your dough to be at the end of mixing — typically 75–80°F for pizza. Hit it by adjusting your water temperature using: <strong>water = (DDT × 3) − room temp − flour temp − friction</strong>. Friction is heat added by mixing: ~5°F for hand kneading, 15–25°F for a stand mixer.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>DOP / IGP / STG</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>EU geographic protection designations. <strong>DOP</strong> (Protected Designation of Origin): ingredient must come from a specific region (San Marzano tomatoes, Mozzarella di Bufala Campana). <strong>IGP</strong> (Protected Geographic Indication): looser regional link. <strong>STG</strong> (Traditional Specialty Guaranteed): protects a method rather than an origin (pizza Napoletana itself is STG-protected).</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Fior di Latte</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>"Flower of milk." Cow's milk fresh mozzarella, common on Neapolitan pizza in Naples itself. Drier and milder than buffalo mozzarella. The DOP version is Fior di Latte Appennino Meridionale.</p>
         </div>
       </div>
 
@@ -1086,7 +1669,14 @@
       <div class="accordion-item">
         <button class="accordion-head"><span>Gluten</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>The protein network formed when wheat flour meets water and gets agitated (kneading, mixing, folding). Made of two proteins — glutenin (strength) and gliadin (extensibility) — that bond into a stretchy web. Gluten traps the gas yeast produces, which is how dough rises and bread holds shape.</p>
+          <p>The protein network formed when wheat flour meets water and gets agitated (kneading, mixing, folding). Made of two proteins — glutenin (strength) and gliadin (extensibility) — that bond into a stretchy web. Gluten traps the gas yeast produces; that's how dough rises and bread holds shape.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Gum line</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The doughy, undercooked stripe just below the sauce in an underbaked pizza. Caused by overly wet sauce, too many toppings, dough too cold at launch, or insufficient bottom heat. The pizza is overcooked on the bottom and uncooked in this layer.</p>
         </div>
       </div>
 
@@ -1098,98 +1688,1127 @@
       </div>
 
       <div class="accordion-item">
-        <button class="accordion-head"><span>IDY · ADY · Fresh yeast</span><span class="chev">›</span></button>
+        <button class="accordion-head"><span>IDY / ADY / Fresh yeast</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><strong>IDY</strong> (Instant Dry Yeast) goes straight into the flour; no proofing needed. <strong>ADY</strong> (Active Dry) needs to bloom in warm water first; use about 25% more than IDY. <strong>Fresh</strong> (cake) yeast is highly perishable; use about 3x the IDY weight. All do the same job — eat sugar, make CO₂ and flavor compounds.</p>
+          <p><strong>IDY</strong> (Instant Dry Yeast) goes straight into the flour; no proofing needed. <strong>ADY</strong> (Active Dry) needs to bloom in warm water first; use ~25% more than IDY. <strong>Fresh</strong> (compressed cake yeast) is highly perishable; use about 3× the IDY weight. All do the same job: eat sugar, produce CO₂ and ethanol, contribute flavor compounds.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Leopard spotting</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>The dark, almost-black blistered char marks on a properly baked Neapolitan crust. Caused by extremely high heat (800–900°F) puffing the dough's surface into bubbles that briefly touch the dome of a wood-fired oven. Marks of authenticity, not burning.</p>
+          <p>The dark, almost-black blistered char marks on a properly baked Neapolitan crust. Caused by extreme heat (800–900°F) puffing the dough's surface into bubbles that briefly touch the dome of a wood-fired oven. Marks of authenticity, not burning.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Levain / Sourdough starter</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>A self-sustaining culture of wild yeast and lactic bacteria, kept alive by daily flour and water feedings. Replaces commercial yeast. Produces the deepest, most complex pizza flavor and the most digestible dough — but requires ongoing care.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Maillard reaction</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>The browning chemistry between amino acids and reducing sugars that creates the golden color and toasty flavor in baked crust (and seared meat). Different from caramelization, which is sugar browning alone. Needs heat above ~285°F and isn't blocked by water, but moist surfaces brown more slowly.</p>
+          <p>The browning chemistry between amino acids and reducing sugars that creates golden color and toasty flavor in baked crust (and seared meat). Different from caramelization (sugar browning alone). Needs heat above ~285°F (140°C). Discovered by Louis-Camille Maillard in 1912.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Mozzatura</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The Neapolitan technique of shaping dough balls. The motion mimics how fresh mozzarella is shaped (mozzare = to cut/pinch). A portion of dough is pinched off, then sealed with the thumb against the palm in a rotating motion to create a smooth-topped, tightly seamed ball.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Overproofing / Underproofing</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p><strong>Overproofed:</strong> dough has fermented too long. Gluten has broken down, structure is collapsing, dough is slack and tears easily. Result is pale, dense, deflated pizza.</p>
-          <p><strong>Underproofed:</strong> dough hasn't fermented enough. Gluten is tight and tense, snaps back when stretched. Result is dense, gummy, bread-like crust without an open crumb.</p>
+          <p><strong>Overproofed:</strong> dough has fermented too long. Gluten has broken down, structure is collapsing, dough is slack, gas has escaped, surface looks deflated. Bakes pale and dense.</p>
+          <p><strong>Underproofed:</strong> dough hasn't fermented enough. Gluten is tight, snaps back when stretched. Bakes into a dense, gummy, bread-like crust without open crumb.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Pinsa</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>An oval-shaped Roman pizza made with a flour blend (wheat, soy, and/or rice flour), very long cold fermentation (48–72h), and high hydration (80%+). Lighter and crisper than traditional pizza, marketed as more digestible. Trademarked by Pinsa Romana SRL.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Poolish</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>A wet (100% hydration) pre-ferment originating in Polish baking. Equal weights of flour and water, a tiny amount of yeast, mixed 12–16 hours before the main dough. Adds flavor complexity and improved extensibility. Wetter and looser than a <strong>biga</strong>.</p>
+          <p>A wet (100% hydration) pre-ferment originating in Polish baking. Equal weights of flour and water, a tiny amount of yeast, sometimes a touch of honey. Mixed 12–18 hours before the main dough. The hallmark technique of modern Neapolitan pizza-making, popularized by Vito Iacopelli.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Punto di pasta</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>"Dough point" — the moment in mixing when a Neapolitan pizzaiolo declares the dough complete. Signaled by elasticity, smooth surface, and the dough cleanly leaving the mixer bowl walls. AVPN regulations specify ~20 minutes total mixing time at low speed.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Scrocchiarella</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>(Skro-kee-a-RELL-a.) The wonderful Roman word for the crispness of pizza tonda romana — onomatopoeic, mimicking the crunchy sound the cracker-thin crust makes when bitten.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Staglio</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The Neapolitan act of dividing bulk-fermented dough into individual portions and shaping them into balls. Performed by hand only, in continuous motion, traditionally using only a spatula.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Tipo 00 / 0 / 1 / 2</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The Italian flour grading system — describes <strong>fineness of grind and ash content</strong>, not protein. 00 is finest (talcum-fine), 2 is coarsest (whole-wheat-like). Says nothing about protein percentage; must be paired with a W rating to know if a flour is suitable for pizza.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>W rating</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The Italian measurement of flour strength, determined by an alvéograph test (blow air into a dough bubble until it bursts). Range: ~120 (very weak) to 400+ (very strong). Higher W = longer fermentation tolerance. American flour packaging does not show W ratings.</p>
+          <ul>
+            <li>W 120–180: weak (cookies, pastries)</li>
+            <li>W 180–260: medium (focaccia, short ferment pizza)</li>
+            <li>W 260–320: strong (Neapolitan, 12–24h ferment)</li>
+            <li>W 320+: very strong (48h+ ferment, biga, poolish)</li>
+          </ul>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-head"><span>Windowpane test</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>How to check gluten development. Pinch off a small piece of dough and gently stretch it between thumbs and forefingers. If it stretches into a thin, almost translucent membrane without tearing, gluten is fully developed. If it tears immediately, keep kneading.</p>
+          <p>The standard check for gluten development. Pinch off a small piece of dough and gently stretch it between thumbs and forefingers. If it stretches into a thin, almost translucent membrane without tearing, gluten is fully developed. If it tears immediately, keep kneading 2–3 minutes and re-test.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <button class="accordion-head"><span>00 flour</span><span class="chev">›</span></button>
+        <button class="accordion-head"><span>Pizzaiolo</span><span class="chev">›</span></button>
         <div class="accordion-body">
-          <p>The Italian flour grading scale (00, 0, 1, 2) refers to fineness of grind — 00 is the most finely milled, like silk. It's not a measure of protein. Protein in 00 flours varies: Caputo Pizzeria is ~12.5% (medium-strong), Caputo Saccorosso is 13%+ (strong). For 90-second wood-fired bakes, medium-strength 00 is ideal. For longer home-oven bakes, you may want stronger flour.</p>
+          <p>(Plural: pizzaioli.) A pizza maker — specifically one who has mastered the craft, not just someone who reheats frozen pies. The art of the pizzaiolo napoletano is on UNESCO's intangible cultural heritage list.</p>
         </div>
       </div>
+
+      <div class="accordion-item">
+        <button class="accordion-head"><span>Pala / Peel</span><span class="chev">›</span></button>
+        <div class="accordion-body">
+          <p>The paddle used to launch pizza into and out of the oven. Wood for launching (less sticky), aluminum or stainless for retrieving (heat-tolerant). Pala also refers to a Roman pizza style baked on a long wooden peel, similar to al taglio but oval-shaped.</p>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
+
+<!-- ============== HISTORY ============== -->
+<div class="sub-section" id="sub-history">
+  <div class="article">
+    <h2>A Brief History of Pizza</h2>
+    <div class="sub">From ancient flatbread to global obsession</div>
+
+    <p>Pizza is older than you think. Flatbreads topped with herbs and oil have been eaten in the Mediterranean for nearly 3,000 years — Etruscans, Greeks, and Romans all had versions. But the pizza we recognize today was born in Naples in the 18th century, when one specific ingredient changed everything: the tomato.</p>
+
+    <div class="fact-grid">
+      <div class="fact">
+        <div class="fact-num">3,000</div>
+        <div class="fact-label">years of flatbread history</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">1492</div>
+        <div class="fact-label">tomatoes arrive in Europe</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">1738</div>
+        <div class="fact-label">first known pizzeria opens</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">2017</div>
+        <div class="fact-label">UNESCO heritage status</div>
+      </div>
+    </div>
+
+    <h3>Timeline</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">~600 BC</div>
+        <div class="timeline-event">Ancient Etruscans and Greeks bake flatbreads topped with herbs, oil, and cheese on hot stones.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">~1500s</div>
+        <div class="timeline-event">Round flatbreads called "pizza" — topped with herbs, oil, lard, or cheese — are popular Neapolitan street food. Tomatoes have just arrived from the Americas but are believed to be poisonous.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">~1700s</div>
+        <div class="timeline-event">Neapolitan poor begin topping flatbreads with tomatoes. This is the first true pizza in the modern sense — the marriage of wheat flatbread and tomato sauce.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1738</div>
+        <div class="timeline-event"><strong>Antica Pizzeria Port'Alba</strong> opens in Naples — widely considered the world's first true pizzeria, originally selling pizza to street vendors and later to seated customers from 1830.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1866</div>
+        <div class="timeline-event">Francesco DeBouchard's book "Customs and Traditions of Naples" describes pizza with cheese, basil, and tomato — the toppings that would later be called Margherita — already widely sold by street pizzaioli.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1889</div>
+        <div class="timeline-event"><strong>The Margherita legend.</strong> Pizzaiolo Raffaele Esposito reportedly serves Queen Margherita of Savoy three pizzas at Naples' Capodimonte Palace. The pie with tomato, mozzarella, and basil — green, white, red of the Italian flag — wins her favor and bears her name forever. (Modern historians dispute the letter's authenticity, but the story endures.)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1905</div>
+        <div class="timeline-event">Gennaro Lombardi opens <strong>Lombardi's</strong> in New York City, the first licensed pizzeria in America. Italian immigration brings pizza to the New World; it becomes a working-class staple in immigrant neighborhoods.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1933</div>
+        <div class="timeline-event">First commercial pizza ovens manufactured in the US. Tavern-style thin crust takes hold in Chicago bars and Midwest taverns.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1943</div>
+        <div class="timeline-event"><strong>Chicago deep-dish</strong> reportedly invented at Pizzeria Uno by Ike Sewell and Ric Riccardo. The thick, casserole-like pie becomes Chicago's tourist trademark.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1946</div>
+        <div class="timeline-event"><strong>Detroit-style</strong> born at Buddy's Rendezvous on Six Mile Road. Gus Guerra and his wife Concetta develop a square pan pizza using surplus blue-steel automotive drip pans — birth of the frico edge.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1950s</div>
+        <div class="timeline-event">Post-WWII Rome: bakers begin selling rectangular pan pizza by weight to fuel a fast-growing workforce. <strong>Pizza al taglio</strong> becomes street food.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1958</div>
+        <div class="timeline-event">Pizza Hut founded in Wichita, Kansas. The chain era begins. Pizza spreads from immigrant enclaves to suburban America.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1984</div>
+        <div class="timeline-event"><strong>AVPN founded</strong> in Naples by Antonio Pace and Lello Surace. The "Associazione Verace Pizza Napoletana" codifies rules for true Neapolitan pizza, defending it from global dilution.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2003</div>
+        <div class="timeline-event">Gabriele Bonci opens <strong>Pizzarium</strong> in Rome. His high-hydration, long-fermented pizza al taglio creates the modern "Roman" style that pizza nerds worldwide now chase.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2010</div>
+        <div class="timeline-event">European Union grants pizza Napoletana <strong>STG status</strong> (Traditional Specialty Guaranteed), protecting the method as cultural heritage.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2012</div>
+        <div class="timeline-event">Andris Lagsdin launches the <strong>Baking Steel</strong> Kickstarter, inspired by Nathan Myhrvold's Modernist Cuisine. Home pizza-making is forever changed.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-event">UNESCO adds the <strong>art of the Neapolitan pizzaiolo</strong> to its Representative List of Intangible Cultural Heritage of Humanity.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-event">Ooni launches affordable home wood/gas pizza ovens. The 900°F crust at home becomes attainable for under $400.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Today</div>
+        <div class="timeline-event">A golden age. Top pizzerias like Una Pizza Napoletana (NYC), Pepe in Grani (Caiazzo), I Masanielli (Caserta), Lucali (Brooklyn), and Bæst (Copenhagen) push the craft forward. Home pizza tools are better and cheaper than ever.</div>
+      </div>
+    </div>
+
+    <h3>The Margherita Question</h3>
+    <p>Every pizza book repeats the same story: in 1889, pizzaiolo Raffaele Esposito created the Margherita for Queen Margherita of Savoy, using mozzarella, basil, and tomato to mirror the Italian flag. It's a beautiful tale of food, monarchy, and nationalism.</p>
+    <p>The problem is that the story almost certainly isn't true. Historian Zachary Nowak has demonstrated that the famous "thank-you letter" from the royal palace has forged signatures, misplaced seals, and inconsistent handwriting. Pizzas with the same three ingredients were documented in Naples as early as 1866 — 23 years before the supposed royal visit.</p>
+    <p>What's likely true: pizza Margherita existed before 1889, was popular among Neapolitans, and was eventually associated with the queen's visit (possibly fabricated by the Brandi family decades later to boost their pizzeria's prestige). The myth has become as enduring as the pizza itself.</p>
+
+    <h3>UNESCO and the Soul of Pizza</h3>
+    <p>In 2017, UNESCO inscribed "the art of Neapolitan pizzaiuoli" on its list of intangible cultural heritage — putting it alongside flamenco, yoga, and Japanese sake-making. The recognition is not for pizza the food, but for the craft, the apprenticeship system, the gestures, and the community of pizzaioli who pass the knowledge generation to generation.</p>
+    <p>The submission noted that the pizzaiolo's craft includes "the kneading, the pirouetting motion of the dough, the management of the oven, and the sharing of the practice." The pizza you make in your kitchen is part of a 250-year-old tradition that traveled from a Neapolitan slum to every corner of the world.</p>
+
+  </div>
+</div>
+
+<!-- ============== EQUIPMENT ============== -->
+<div class="sub-section" id="sub-equipment">
+  <div class="article">
+    <h2>Equipment</h2>
+    <div class="sub">What you need · What to skip</div>
+
+    <p>Pizza tools have become an industry. Most of it is unnecessary. Here's an honest assessment of what makes a difference and what's marketing.</p>
+
+    <h3>The Essentials</h3>
+    <h4>Digital kitchen scale</h4>
+    <p>Non-negotiable. Volume measurements are too inconsistent. Look for ±1g precision, capacity to 5kg, and a tare button. The OXO Good Grips is a solid baseline at ~$50. For yeast under 5g, a separate jewelry-style scale with ±0.01g precision is worth $15.</p>
+
+    <h4>Baking steel</h4>
+    <p>The single biggest upgrade for home oven pizza. A 1/4" thick slab of steel preheated for 60 minutes at maximum temp conducts heat about 18× faster than a ceramic stone, mimicking what a 900°F deck does at 500°F. The original Baking Steel runs $119–149. Cheaper "pizza steels" on Amazon work too, but check thickness — anything under 1/4" doesn't hold enough heat.</p>
+
+    <h4>Pizza peel</h4>
+    <p>Wood for launching (less likely to stick), thin metal for retrieving (slides under the pizza easily). A 14" wooden peel and a 9" or 10" metal turning peel is the pro setup. Combined cost: $30–80.</p>
+
+    <h4>Bench scraper</h4>
+    <p>$8 of stainless steel. Used constantly: dividing dough, cleaning the bench, lifting stuck dough, scraping oil. You'll use this more than any other tool.</p>
+
+    <h3>The Big Upgrades</h3>
+    <h4>Outdoor pizza oven (Ooni, Gozney, Solo Stove)</h4>
+    <p>The category-killer for serious home pizza. These propane or wood-fired ovens hit 900°F+ — actual Neapolitan temperature. Pizza cooks in 60–90 seconds with real leopard char.</p>
+    <table class="compare-table">
+      <thead><tr><th>Oven</th><th class="mono-col">Max temp</th><th>Fuel</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Ooni Koda 12</td><td class="mono-col">950°F</td><td>Gas</td><td>Best entry-level</td></tr>
+        <tr><td>Ooni Koda 16</td><td class="mono-col">950°F</td><td>Gas</td><td>Larger pies, dual flame</td></tr>
+        <tr><td>Gozney Roccbox</td><td class="mono-col">950°F</td><td>Gas/wood</td><td>Best build quality</td></tr>
+        <tr><td>Ooni Karu 16</td><td class="mono-col">950°F</td><td>Multi-fuel</td><td>Real wood-fire option</td></tr>
+        <tr><td>Solo Stove Pi</td><td class="mono-col">850°F</td><td>Gas/wood</td><td>Dual-fuel, popular</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Pizza stone vs. baking steel</h4>
+    <p>Different tools for different ovens. <strong>Stone</strong> belongs in a wood-fired oven, where ambient heat is already overwhelming and you want a more forgiving deck. <strong>Steel</strong> belongs in a home oven, where you need to compensate for lower air temperature with faster heat transfer. Using a steel in an outdoor pizza oven can actually burn the bottom — manufacturers warn against it.</p>
+
+    <h3>Style-Specific</h3>
+    <h4>Detroit pan</h4>
+    <p>Anodized blue steel. LloydPans (~$30) is the home reference. Detroit Style Pizza Co. makes a true reproduction of the original Buddy's pans. Cheap aluminum pans don't develop the same frico — anodized steel is non-negotiable.</p>
+    <h4>Roman al taglio pan</h4>
+    <p>Heavy aluminum rectangular pan (typically 12×16" or 16×24"). Generously oiled before the high-hydration dough goes in.</p>
+    <h4>Cast-iron skillet</h4>
+    <p>The poor pizzaiolo's deep-dish weapon. A 10" or 12" cast iron yields a Chicago-style or pan pizza with no special pan required. Preheat the skillet itself for crispier bottom.</p>
+
+    <h3>Nice-to-Have</h3>
+    <ul>
+      <li><strong>Dough containers</strong> ($30 for a stack) — Cambro or similar. Stack-friendly, see-through, made for cold ferment.</li>
+      <li><strong>Infrared thermometer</strong> ($25–50) — Verify steel/stone deck temperature. Essential for outdoor pizza ovens, useful for home steel.</li>
+      <li><strong>Pizza wheel</strong> — A sharp wheel cuts better than scissors. A rocking pizza knife (mezzaluna-style) handles thick crusts.</li>
+      <li><strong>Squeeze bottles</strong> for olive oil — pro pizzerias use them for precision drizzling on the cornicione post-bake.</li>
+      <li><strong>Dough whisk / Danish whisk</strong> — Easier than a wooden spoon for initial mixing of wet doughs.</li>
+      <li><strong>Bench knife / dough scraper</strong> — In addition to the bench scraper. Slightly different tool for cleaner cuts.</li>
+    </ul>
+
+    <h3>Skip These</h3>
+    <ul>
+      <li><strong>"Pizza stone with handles"</strong> — Handles defeat the purpose; the stone should be permanently in the oven preheating.</li>
+      <li><strong>Rolling pins for pizza</strong> — Kills the crumb. Only acceptable for cracker-thin styles by design.</li>
+      <li><strong>Branded "00 pizza flour" from non-Italian mills</strong> — Often re-bagged American flour with a marketing label. Stick to actual Italian mills (Caputo, Molino Grassi, Polselli) or use proper American bread/high-gluten flour.</li>
+      <li><strong>Conveyor pizza ovens for home</strong> — Designed for chain pizzerias. Worse than a baking steel + home oven for most styles.</li>
+      <li><strong>Pre-shredded mozzarella</strong> — Anti-caking starches interfere with melt and texture. Shred your own block.</li>
+    </ul>
+
+    <h3>Recommended Reading</h3>
+    <ul>
+      <li><strong>Flour Water Salt Yeast</strong> — Ken Forkish. The home baker's bible. Beautiful, methodical, exactly what a beginner needs to advance.</li>
+      <li><strong>The Pizza Bible</strong> — Tony Gemignani. Comprehensive: every style covered with multiple recipes.</li>
+      <li><strong>Mastering Pizza</strong> — Marc Vetri. Modernist approach with deep technique.</li>
+      <li><strong>Modernist Pizza</strong> — Nathan Myhrvold (3-volume set). The definitive scientific encyclopedia. $425 and worth it if pizza is your obsession.</li>
+      <li><strong>Vito Iacopelli on YouTube</strong> — Free. Generations of Neapolitan technique demonstrated weekly.</li>
+      <li><strong>Scott's Pizza Tours blog</strong> — Scott Wiener's column at Pizza Today. The historian of American pizza.</li>
+    </ul>
+
   </div>
 </div>
 ```
 
   </div>
 
+  <!-- ============================================ -->
+
+  <!-- ================ FOOTER ==================== -->
+
+  <!-- ============================================ -->
+
   <div class="footer">
-    Built with care for the kitchen iPad.<br>
-    Watch the dough, not the clock.
+    <div class="signature">The Pizza Enthusiast's Guidebook</div>
+    Built for the kitchen iPad · Watch the dough, not the clock<br>
+    Sources: AVPN regulations, Vito Iacopelli, Ken Forkish,<br>
+    Modernist Cuisine, and decades of pizzaiolo tradition
   </div>
 </div>
 
 <script>
-  // ============ CONFIG ============
+  // =================================================================
+  // ============= DATA: STYLES (used in both tabs) ==================
+  // =================================================================
+
+  // SVG icons for each style - distinctive visual identities
+  const pizzaIcons = {
+    neapolitan: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="np" cx="50%" cy="45%"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#b86a28"/></radialGradient></defs><circle cx="50" cy="50" r="38" fill="url(#np)" stroke="#7a3a14" stroke-width="2"/><circle cx="50" cy="50" r="30" fill="#c44a3a" opacity="0.4"/><circle cx="42" cy="44" r="5" fill="#f5e6d3"/><circle cx="58" cy="52" r="5" fill="#f5e6d3"/><circle cx="48" cy="60" r="4" fill="#f5e6d3"/><circle cx="50" cy="42" r="2" fill="#4a7c2a"/><circle cx="55" cy="58" r="1.8" fill="#4a7c2a"/><circle cx="35" cy="52" r="1.5" fill="#1a1410"/><circle cx="62" cy="42" r="1.5" fill="#1a1410"/></svg>`,
+    newyork: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="ny" cx="50%" cy="45%"><stop offset="0%" stop-color="#e8a04a"/><stop offset="100%" stop-color="#a8581a"/></radialGradient></defs><path d="M 50 14 L 76 76 L 24 76 Z" fill="url(#ny)" stroke="#7a3a14" stroke-width="2" stroke-linejoin="round"/><path d="M 36 60 L 64 60 L 56 76 L 44 76 Z" fill="#c44a3a" opacity="0.6"/><circle cx="45" cy="50" r="3" fill="#f5e6d3"/><circle cx="55" cy="55" r="3" fill="#f5e6d3"/><circle cx="50" cy="40" r="2.5" fill="#f5e6d3"/></svg>`,
+    detroit: `<svg class="icon" viewBox="0 0 100 100"><defs><linearGradient id="dt" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#a8581a"/></linearGradient></defs><rect x="18" y="22" width="64" height="56" rx="3" fill="url(#dt)" stroke="#5a2a0a" stroke-width="2.5"/><rect x="22" y="26" width="56" height="48" fill="#e8d5a2"/><path d="M 30 40 L 70 38 M 30 50 L 70 52 M 30 60 L 70 58" stroke="#c44a3a" stroke-width="3" stroke-linecap="round" opacity="0.8"/><rect x="22" y="26" width="56" height="4" fill="#c97a30"/><rect x="22" y="70" width="56" height="4" fill="#c97a30"/></svg>`,
+    sicilian: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="sc" cx="50%" cy="45%"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#b86a28"/></radialGradient></defs><rect x="14" y="20" width="72" height="60" rx="2" fill="url(#sc)" stroke="#7a3a14" stroke-width="2"/><rect x="20" y="26" width="60" height="48" fill="#c44a3a" opacity="0.55"/><circle cx="35" cy="42" r="3" fill="#3a2418"/><circle cx="50" cy="50" r="3" fill="#3a2418"/><circle cx="65" cy="42" r="3" fill="#3a2418"/><circle cx="40" cy="60" r="3" fill="#3a2418"/><circle cx="60" cy="60" r="3" fill="#3a2418"/></svg>`,
+    altaglio: `<svg class="icon" viewBox="0 0 100 100"><defs><linearGradient id="at" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#a8581a"/></linearGradient></defs><rect x="10" y="32" width="80" height="36" rx="2" fill="url(#at)" stroke="#7a3a14" stroke-width="2"/><circle cx="22" cy="46" r="2" fill="#f5e6d3"/><circle cx="35" cy="52" r="2" fill="#f5e6d3"/><circle cx="50" cy="44" r="2" fill="#f5e6d3"/><circle cx="65" cy="50" r="2" fill="#f5e6d3"/><circle cx="78" cy="46" r="2" fill="#f5e6d3"/><path d="M 18 60 L 30 56 M 42 58 L 56 54 M 68 62 L 80 58" stroke="#c44a3a" stroke-width="2" opacity="0.8"/></svg>`,
+    chicago: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="ch" cx="50%" cy="40%"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#a8581a"/></radialGradient></defs><circle cx="50" cy="50" r="36" fill="url(#ch)" stroke="#5a2a0a" stroke-width="3"/><circle cx="50" cy="50" r="28" fill="#c44a3a" opacity="0.75"/><circle cx="50" cy="50" r="20" fill="#e8d5a2" opacity="0.85"/><circle cx="44" cy="46" r="3" fill="#f5e6d3"/><circle cx="56" cy="52" r="3" fill="#f5e6d3"/><circle cx="50" cy="58" r="2.5" fill="#f5e6d3"/></svg>`,
+    tavern: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="tv" cx="50%" cy="45%"><stop offset="0%" stop-color="#e8a04a"/><stop offset="100%" stop-color="#8a4a18"/></radialGradient></defs><circle cx="50" cy="50" r="36" fill="url(#tv)" stroke="#5a2a0a" stroke-width="2"/><path d="M 50 14 L 50 86 M 14 50 L 86 50 M 24 24 L 76 76 M 76 24 L 24 76" stroke="#5a2a0a" stroke-width="1" opacity="0.5"/><circle cx="40" cy="40" r="2.5" fill="#c44a3a"/><circle cx="60" cy="40" r="2.5" fill="#c44a3a"/><circle cx="40" cy="60" r="2.5" fill="#c44a3a"/><circle cx="60" cy="60" r="2.5" fill="#c44a3a"/><circle cx="50" cy="50" r="2.5" fill="#c44a3a"/></svg>`,
+    tonda: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="td" cx="50%" cy="45%"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#c97a30"/></radialGradient></defs><circle cx="50" cy="50" r="38" fill="url(#td)" stroke="#5a2a0a" stroke-width="2"/><circle cx="50" cy="50" r="32" fill="#c44a3a" opacity="0.5"/><circle cx="45" cy="45" r="3" fill="#f5e6d3"/><circle cx="58" cy="50" r="3" fill="#f5e6d3"/><circle cx="48" cy="58" r="2.5" fill="#f5e6d3"/></svg>`,
+    grandma: `<svg class="icon" viewBox="0 0 100 100"><defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8a04a"/><stop offset="100%" stop-color="#a8581a"/></linearGradient></defs><rect x="16" y="22" width="68" height="56" rx="2" fill="url(#gr)" stroke="#5a2a0a" stroke-width="2"/><rect x="22" y="28" width="56" height="44" fill="#e8d5a2"/><path d="M 28 40 L 72 36 M 28 52 L 72 56 M 28 64 L 72 60" stroke="#c44a3a" stroke-width="2.5" opacity="0.7"/><circle cx="35" cy="42" r="1.5" fill="#4a7c2a"/><circle cx="55" cy="48" r="1.5" fill="#4a7c2a"/><circle cx="65" cy="58" r="1.5" fill="#4a7c2a"/></svg>`,
+    pinsa: `<svg class="icon" viewBox="0 0 100 100"><defs><radialGradient id="pn" cx="50%" cy="45%"><stop offset="0%" stop-color="#f4c267"/><stop offset="100%" stop-color="#a8581a"/></radialGradient></defs><ellipse cx="50" cy="50" rx="42" ry="28" fill="url(#pn)" stroke="#5a2a0a" stroke-width="2"/><circle cx="40" cy="48" r="3" fill="#f5e6d3"/><circle cx="55" cy="52" r="3" fill="#f5e6d3"/><circle cx="65" cy="46" r="2.5" fill="#f5e6d3"/><circle cx="35" cy="55" r="2" fill="#4a7c2a"/><circle cx="60" cy="44" r="1.8" fill="#4a7c2a"/></svg>`
+  };
+
+  // ----- CALCULATOR PRESETS (must match keys in styleData below) -----
   const styles = [
-    { key: "neapolitan", name: "Neapolitan", h: 62, s: 3.0, o: 0,   y: 0.05, locked: true,
-      desc: '<strong>Naples classic.</strong> Soft, pliable, leopard-spotted edge. No oil — pure flour, water, salt, yeast. Hydration kept low because 900°F ovens cook in 90 seconds.<div class="meta">62% hydration · 3% salt · No oil · 8–24h ferment</div>' },
-    { key: "newyork",    name: "New York",   h: 63, s: 2.2, o: 2,   y: 0.2,  locked: true,
-      desc: '<strong>Foldable slice.</strong> Sturdy, chewy, slightly sweet. The 2% oil tenderizes the crust through a longer 500°F bake. Long cold ferment for that NY-deli flavor.<div class="meta">63% hydration · 2.2% salt · 2% oil · 24–72h cold</div>' },
-    { key: "myrecipe",   name: "My Recipe",  h: 67, s: 2.5, o: 1,   y: 0.05, locked: true,
+    { key: "neapolitan", name: "Neapolitan", h: 62, s: 3.0, o: 0, y: 0.10, locked: true,
+      desc: '<strong>Naples, the original.</strong> Soft, pliable, leopard-spotted edge in 90 seconds at 900°F. Four ingredients only — no oil. AVPN regulations specify a 200–280g ball, 22–35cm diameter.<div class="meta">62% hydration · 3% salt · No oil · 8–24h ferment</div>' },
+    { key: "newyork", name: "New York", h: 63, s: 2.2, o: 2, y: 0.2, locked: true,
+      desc: '<strong>Foldable slice.</strong> Sturdy chew, slight sweetness. The 2% oil tenderizes through a longer 500°F bake. 48–72h cold ferment for the deep deli-style flavor.<div class="meta">63% hydration · 2.2% salt · 2% oil · 24–72h cold</div>' },
+    { key: "myrecipe", name: "My Recipe", h: 67, s: 2.5, o: 1, y: 0.10, locked: true,
       desc: '<strong>Home-baker default.</strong> Middle hydration for an open crumb without sticky hands. Light oil for tenderness in a home oven. Salt at the sweet spot.<div class="meta">67% hydration · 2.5% salt · 1% oil · 24–48h cold</div>' },
-    { key: "detroit",    name: "Detroit",    h: 70, s: 2.5, o: 3,   y: 0.4,  locked: true,
-      desc: '<strong>Square pan, crispy frico edge.</strong> High hydration for a focaccia-like crumb, heavy oil to grease the pan and tenderize. Cubed brick cheese, sauce on top.<div class="meta">70% hydration · 2.5% salt · 3% oil · 24–48h cold</div>' },
-    { key: "custom",     name: "Custom",     h: 65, s: 2.5, o: 1,   y: 0.1,  locked: false,
-      desc: '<strong>Build your own.</strong> All percentages unlocked. Tap each value to edit. Use the guides and glossary to understand what each lever does. Recipe persists across sessions.<div class="meta">All fields editable</div>' },
+    { key: "detroit", name: "Detroit", h: 70, s: 2.5, o: 3, y: 0.4, locked: true,
+      desc: '<strong>Square pan, crispy frico edge.</strong> High hydration for a focaccia-like crumb, heavy oil to grease the pan. Brick cheese to the corners; sauce on top in racing stripes.<div class="meta">70% hydration · 2.5% salt · 3% oil · 24–48h cold</div>' },
+    { key: "custom", name: "✦ Custom", h: 65, s: 2.5, o: 1, y: 0.10, locked: false,
+      desc: '<strong>Build your own recipe.</strong> All percentages unlocked. Tap any value to edit. Tap the suggested yeast % to apply it. Your custom recipe persists across sessions.<div class="meta">All fields editable · Suggestions active</div>' },
   ];
 
-  const ingredients = [
-    { key: "flour", label: "Flour",     color: "#e8d5a2" },
-    { key: "water", label: "Water",     color: "#7eb8d9" },
-    { key: "salt",  label: "Sea salt",  color: "#f0f0f0" },
-    { key: "oil",   label: "Olive oil", color: "#c9a86b" },
-    { key: "yeast", label: "Yeast",     color: "#d4a574" },
-  ];
+  // ----- DEEP STYLE DATA (for Styles tab detail) -----
+  const styleData = {
+    neapolitan: {
+      name: "Neapolitan",
+      origin: "Naples, Italy · UNESCO Heritage",
+      icon: pizzaIcons.neapolitan,
+      content: `
+        <p>The original pizza. Born in the working-class neighborhoods of 18th-century Naples, codified by AVPN in 1984, and granted UNESCO Intangible Cultural Heritage status in 2017. The Neapolitan is a soft, pliable disc with a high, airy <em>cornicione</em> and a thin, almost wet center. Toppings are deliberately minimal — the dough is the star.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Cornicione:</strong> 1–2 cm tall, soft and airy, free of burns. The signature puffy edge.</li>
+          <li><strong>Leopard spotting:</strong> Dark blistered char marks on the bottom and rim, caused by the dough's surface briefly touching the 900°F dome of a wood-fired oven.</li>
+          <li><strong>Center thickness:</strong> No more than 3mm. Often slightly damp — this is intentional.</li>
+          <li><strong>Total bake time:</strong> 60–90 seconds. Any longer and you're not making Neapolitan.</li>
+          <li><strong>Diameter:</strong> 22–35 cm (about 9–14 inches).</li>
+        </ul>
+
+        <h3>AVPN Specifications</h3>
+        <p>The Associazione Verace Pizza Napoletana publishes strict rules for certifying a pizzeria as authentically Neapolitan. The official regulations specify:</p>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>Tipo 00 (W 220–380, 11–13.5% protein)</div>
+          <div><strong>Water</strong>Moderately hard, 60–80 mg/L Ca, pH 6–7</div>
+          <div><strong>Salt</strong>50–55g per liter of water (≈3%)</div>
+          <div><strong>Yeast</strong>Compressed/fresh, or natural starter</div>
+          <div><strong>Hydration</strong>50–55% water absorption</div>
+          <div><strong>Ball weight</strong>200–280g</div>
+          <div><strong>Mix time</strong>~10 min + 20 min low speed</div>
+          <div><strong>Bulk ferment</strong>2 hours covered, damp cloth</div>
+          <div><strong>Second proof</strong>4–6 hours in boxes</div>
+          <div><strong>Stretching</strong>By hand only, never rolling pin</div>
+          <div><strong>Oven temp</strong>430–480°C (800–900°F)</div>
+          <div><strong>Bake time</strong>60–90 seconds</div>
+        </div>
+
+        <h3>The Two Original Pizzas</h3>
+        <p><strong>Marinara:</strong> The older of the two. Tomato, garlic, oregano, olive oil. No cheese. Named for sailors' wives (<em>marinare</em>) who prepared it for husbands returning from fishing trips.</p>
+        <p><strong>Margherita:</strong> Tomato, fresh mozzarella (fior di latte or bufala), basil, olive oil. The famous (and likely apocryphal) story credits its invention to Raffaele Esposito for Queen Margherita's 1889 visit. Whether or not the queen story is true, this combination existed in Naples decades earlier — see the History tab.</p>
+
+        <h3>Home-Oven Adaptation</h3>
+        <p>You don't have a 900°F oven. Here's how to make a respectable Neapolitan in a 500°F home oven:</p>
+        <div class="steps">
+          <div class="step">
+            <h4>Use a baking steel</h4>
+            <p>Preheated on the top rack for 60 minutes at max temperature. Steel conducts heat 18× faster than stone — the closest you can get to a real deck.</p>
+          </div>
+          <div class="step">
+            <h4>Run the broiler before launch</h4>
+            <p>5 minutes of broiler before sliding the pizza in. The broiler saturates the steel and superheats the oven air. Leave it on while baking.</p>
+          </div>
+          <div class="step">
+            <h4>Bump hydration to 65–68%</h4>
+            <p>The longer bake time at 500°F dries out 62% hydration dough. A wetter dough holds the moisture you need for a tender center.</p>
+          </div>
+          <div class="step">
+            <h4>Consider Caputo Chef's (Red) instead of Pizzeria (Blue)</h4>
+            <p>The slightly stronger flour holds up better to the longer bake. Pizzeria is optimized for 60–90 second bakes; you're baking for 3–5 minutes.</p>
+          </div>
+          <div class="step">
+            <h4>Drain your mozzarella aggressively</h4>
+            <p>Buffalo mozzarella is 60%+ water. At lower oven temperatures, that water can't evaporate fast enough — you get a swimming pool of whey on top. Tear into pieces and rest on paper towels for 30 minutes before topping.</p>
+          </div>
+        </div>
+
+        <div class="pull-quote">
+          The Neapolitan pizza presents a raised edge — the famous cornicione — swollen and free from burns, 1 to 2 cm. The Neapolitan pizza must be soft and fragrant.
+          <span class="attribution">AVPN International Regulations, 2024</span>
+        </div>
+
+        <h3>The Vito Iacopelli Approach</h3>
+        <p>The third-generation Neapolitan pizzaiolo whose YouTube channel made the poolish method a worldwide phenomenon. His signature method:</p>
+        <ul>
+          <li><strong>Day 1 — Poolish:</strong> 300g flour + 300ml water + 3–5g yeast + 5g honey. Mix, rest 1 hour at room temp, then refrigerate 16–24 hours.</li>
+          <li><strong>Day 2 — Final dough:</strong> Combine poolish with 700g flour, 400ml water, 30g salt, 10g olive oil. Knead 8–10 minutes by mixer or 10+ by hand.</li>
+          <li><strong>Bulk ferment:</strong> 1 hour at room temp in oiled bowl.</li>
+          <li><strong>Ball:</strong> 250–310g per ball, using oiled hands and the cut-and-shape technique against the counter.</li>
+          <li><strong>Final proof:</strong> 2 hours at room temp, covered. Can store up to 5 days refrigerated.</li>
+        </ul>
+        <p>The honey isn't traditional AVPN, but Vito argues it gives the poolish a more vigorous fermentation and slightly sweeter end flavor — and it's become standard in modern Neapolitan home-baking culture.</p>
+
+        <h3>Drinks & Toppings That Match</h3>
+        <p>Neapolitan tradition keeps it simple. The pizza pairs with a sparkling water, a glass of Falanghina or Greco di Tufo (the local Campanian whites), or a young Aglianico. Beer purists go for a Peroni or Nastro Azzurro. Beyond Margherita and Marinara, classic Naples additions include anchovy, salami Napoli, friarielli (broccoli rabe with sausage), and salsiccia.</p>
+      `
+    },
+
+    newyork: {
+      name: "New York",
+      origin: "New York City, est. 1905",
+      icon: pizzaIcons.newyork,
+      content: `
+        <p>The American pizza. Born when Italian immigrants from Naples adapted their hometown pizza to the realities of the New World — different flour, different ovens, different schedules, hungrier customers. The result is a foldable slice with a sturdier crust, more substantial cheese, and a sweeter, slow-cooked sauce. Designed to be sold by the slice at street pizzerias for over a century.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Hand-tossed thin crust:</strong> Thinner than Neapolitan in the center, with a chewier rim. Sturdier overall.</li>
+          <li><strong>Foldable:</strong> The test. A real NY slice can be folded lengthwise without cracking.</li>
+          <li><strong>Low-moisture mozzarella:</strong> Aged and shredded, melts evenly, browns into a slightly oil-pooled surface.</li>
+          <li><strong>Sweet tomato sauce:</strong> Often lightly cooked or seasoned with sugar, oregano, and a touch of olive oil. Spread thinly.</li>
+          <li><strong>14–18 inch pies:</strong> Sold whole or by the slice.</li>
+        </ul>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>High-gluten (13–14% protein) bread or pizza flour</div>
+          <div><strong>Hydration</strong>62–65%</div>
+          <div><strong>Salt</strong>2.0–2.5%</div>
+          <div><strong>Oil</strong>2–3% (olive or vegetable)</div>
+          <div><strong>Sugar</strong>1–2% (often) for Maillard browning</div>
+          <div><strong>Yeast</strong>0.15–0.25% IDY</div>
+          <div><strong>Ferment</strong>24–72h cold</div>
+          <div><strong>Bake</strong>500–600°F, 6–10 min on deck or steel</div>
+        </div>
+
+        <h3>Why High-Gluten Flour</h3>
+        <p>NY pizza is made on a hotter, longer-baking deck than Neapolitan — typically 500–600°F vs 900°F. The bake takes 6–10 minutes, not 60–90 seconds. A weak flour gets brittle and cardboardy at that bake length. High-gluten flour (King Arthur Sir Lancelot, All Trumps, Caputo Americana) at 14%+ protein develops a strong, elastic, chewy crumb that holds up to the longer cook and the heavier topping load.</p>
+
+        <h3>The Sauce Difference</h3>
+        <p>Where Neapolitan sauce is bright, raw, and minimal (just crushed San Marzanos with salt), NY sauce is sweeter, slightly cooked, and seasoned. A typical NY pizzeria sauce:</p>
+        <ul>
+          <li>Crushed tomatoes (Stanislaus 7/11 or Cento)</li>
+          <li>Pinch of sugar (or honey)</li>
+          <li>Dried oregano</li>
+          <li>Salt and a touch of black pepper</li>
+          <li>Sometimes garlic powder, sometimes a splash of olive oil</li>
+          <li>Sometimes briefly simmered, sometimes used raw</li>
+        </ul>
+        <p>The sweetness balances the saltier low-moisture mozzarella and provides the cooked-tomato depth Americans grew up on. Neapolitan purists call it ketchup; NY pizzeria owners call it correct.</p>
+
+        <h3>The Pizzeria Cold Ferment</h3>
+        <p>The legendary NY slice flavor comes from one place: long cold fermentation. Most serious NY pizzerias ball their dough and hold it at 38°F for 48–72 hours before use. During that time, enzymes break starches into simpler sugars, lactic bacteria produce flavor compounds, and the gluten relaxes into perfect extensibility. <strong>Same-day NY dough is not the real thing.</strong></p>
+
+        <h3>The Slice Technique</h3>
+        <p>How a New Yorker eats a slice:</p>
+        <div class="steps">
+          <div class="step">
+            <h4>Wait 60 seconds</h4>
+            <p>Fresh-out-of-the-oven slice is too hot — burns the roof of your mouth and the cheese slides off. Let it rest while the cheese sets.</p>
+          </div>
+          <div class="step">
+            <h4>Pick it up by the crust</h4>
+            <p>Thumb and forefinger on the cornicione. The bottom should be sturdy enough to support its own weight without flopping if held correctly.</p>
+          </div>
+          <div class="step">
+            <h4>Fold lengthwise</h4>
+            <p>Bring the long edges together to form a half-pipe. This stabilizes the slice and concentrates the toppings. A slice that won't hold the fold has too much cheese, too much sauce, or insufficient gluten.</p>
+          </div>
+          <div class="step">
+            <h4>Eat from the tip</h4>
+            <p>Tip first, crust last. The crust (the "bone" in NY slang) is often the best part — eaten plain or dipped in extra sauce.</p>
+          </div>
+        </div>
+
+        <h3>Iconic NY Slices</h3>
+        <ul>
+          <li><strong>Cheese slice</strong> — The default. Tomato sauce, low-moisture mozzarella, possibly a sprinkle of pecorino. $3–4 in most NY pizzerias.</li>
+          <li><strong>Pepperoni</strong> — Cup-and-char pepperoni that curls up and crisps into little oil-filled cups. Vito & Nick's in Chicago made it famous; NY pizzerias adopted it.</li>
+          <li><strong>White slice</strong> — Ricotta and mozzarella, no tomato. Often with garlic and parsley.</li>
+          <li><strong>Sicilian</strong> — Thick square slice, also common in NY pizzerias. Distinct from but related to American Sicilian.</li>
+          <li><strong>Grandma slice</strong> — Long Island invention, thin square cooked in olive oil in a sheet pan. Crispy bottom.</li>
+        </ul>
+
+        <h3>Legendary New York Pizzerias</h3>
+        <ul>
+          <li><strong>Lombardi's</strong> (Little Italy) — Opened 1905. America's first licensed pizzeria.</li>
+          <li><strong>Joe's Pizza</strong> (Greenwich Village) — Open since 1975. The platonic ideal of a NY slice.</li>
+          <li><strong>Di Fara</strong> (Midwood, Brooklyn) — Dom DeMarco's legendary pies, made one at a time, with fresh basil snipped on top.</li>
+          <li><strong>Lucali</strong> (Carroll Gardens) — Modern legend. Whole pies only, cash only.</li>
+          <li><strong>Una Pizza Napoletana</strong> (LES) — Anthony Mangieri's elite Neapolitan in NYC. Ranked #1 in the world by 50 Top Pizza in 2022.</li>
+          <li><strong>L&B Spumoni Gardens</strong> (Bensonhurst) — Sicilian slice royalty since 1939.</li>
+        </ul>
+      `
+    },
+
+    detroit: {
+      name: "Detroit",
+      origin: "Detroit, Michigan, 1946",
+      icon: pizzaIcons.detroit,
+      content: `
+        <p>The square pizza that conquered America in the 2010s. Born in post-war Detroit at Buddy's Rendezvous on Six Mile Road, where founder Gus Guerra and his wife Concetta took surplus blue-steel automotive drip pans from local factories and used them as pizza pans. The result is one of pizza's most distinct styles: thick, focaccia-like crumb, lacy caramelized cheese edges, and sauce that goes <em>on top</em> of the cheese in racing stripes.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>The frico crown:</strong> The signature crispy, caramelized cheese edge created by pushing brick cheese all the way to the pan walls, where it melts against the hot metal and crisps into a lacy golden ring.</li>
+          <li><strong>Wisconsin brick cheese:</strong> Buttery, slightly sharper than mozzarella, with exceptional browning behavior. Cut into cubes, not shredded.</li>
+          <li><strong>Sauce on top:</strong> Applied <em>after</em> the bake (or just before pulling) in two or three parallel "racing stripes" across the top.</li>
+          <li><strong>Tall, airy crumb:</strong> The dough is pressed, not stretched, into a heavily-oiled pan and proofed in place. The result is closer to focaccia than pizza inside.</li>
+          <li><strong>Rectangular pan:</strong> Traditionally 10×14" anodized blue steel.</li>
+        </ul>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>Bread flour (12–13% protein)</div>
+          <div><strong>Hydration</strong>70–75%</div>
+          <div><strong>Salt</strong>2.0–2.5%</div>
+          <div><strong>Oil in dough</strong>2–3%</div>
+          <div><strong>Oil in pan</strong>2–3 tbsp (generous)</div>
+          <div><strong>Yeast</strong>0.3–0.5% IDY</div>
+          <div><strong>Ferment</strong>24–48h cold</div>
+          <div><strong>Cheese</strong>Wisconsin brick, cubed</div>
+          <div><strong>Bake</strong>500–550°F, 12–15 min</div>
+          <div><strong>Ball weight</strong>~280–340g per 10×14" pan</div>
+        </div>
+
+        <h3>The Pan Is the Recipe</h3>
+        <p>You can't make true Detroit-style without a proper pan. The original Buddy's pans were anodized blue steel automotive drip pans — heavy, dark, and unusually heat-conductive. Today there are reproductions:</p>
+        <ul>
+          <li><strong>LloydPans Detroit Pan</strong> — ~$30, anodized aluminum with non-stick coating. The home reference.</li>
+          <li><strong>Detroit Style Pizza Co. Pan</strong> — ~$50, true reproduction of the original Buddy's steel pan. Heavier, requires more seasoning, browns slightly better.</li>
+          <li><strong>Generic aluminum sheet pans</strong> — Will work in a pinch, but won't develop the same browning. Use more oil to compensate.</li>
+        </ul>
+
+        <h3>The Building Order</h3>
+        <p>This is what makes Detroit different from every other pizza:</p>
+        <div class="steps">
+          <div class="step">
+            <h4>Generously oil the cold pan</h4>
+            <p>2–3 tablespoons of oil. The dough should look like it's swimming. This is what pan-fries the bottom and creates the dark golden underside.</p>
+          </div>
+          <div class="step">
+            <h4>Press the dough into the pan</h4>
+            <p>Pressed, not stretched. Dimple it gently with oiled fingers, working the dough to all four corners. If it springs back, cover and wait 20 minutes, then try again.</p>
+          </div>
+          <div class="step">
+            <h4>Second rise in the pan</h4>
+            <p>Cover and proof 1–2 hours at room temp until the dough is visibly puffed and reaches the top of the pan walls.</p>
+          </div>
+          <div class="step">
+            <h4>Add brick cheese — all the way to the edges</h4>
+            <p>Cube the cheese into 1/2" pieces. Distribute evenly, pressing cubes against the pan walls — the cheese-pan contact is what creates the frico edge. This is the most important step.</p>
+          </div>
+          <div class="step">
+            <h4>Bake</h4>
+            <p>500°F for 12–15 minutes. The cheese will melt, ooze against the pan walls, and crisp into the signature frico. The top should be deep golden brown with darker edges.</p>
+          </div>
+          <div class="step">
+            <h4>Sauce stripes go on AFTER (or just before pulling)</h4>
+            <p>Two or three parallel stripes of tomato sauce across the top of the baked cheese. Some pizzerias apply just before pulling out so the sauce warms; others sauce after. Never under the cheese.</p>
+          </div>
+          <div class="step">
+            <h4>Release immediately</h4>
+            <p>Run an offset spatula or thin knife around the perimeter as soon as it's out of the oven. Cheese cools fast and glues to the pan. Lift onto a cutting board, slice into rectangles, serve.</p>
+          </div>
+        </div>
+
+        <h3>The Brick Cheese Question</h3>
+        <p>Real Wisconsin brick cheese is the spec. It melts differently than mozzarella — softer, oilier, more browning — and tastes sharper. If you can't find it (most non-Midwest grocers won't have it), the standard substitute is a 50/50 blend of:</p>
+        <ul>
+          <li>Whole-milk low-moisture mozzarella</li>
+          <li>Mild white cheddar (Wisconsin white if available)</li>
+        </ul>
+        <p>You can also use Monterey Jack as part of the blend. Some Detroit pizzerias use cheese blends with mild Muenster.</p>
+
+        <h3>Why It Took 70 Years to Go National</h3>
+        <p>Buddy's opened in 1946. For 60+ years, Detroit-style pizza was a regional secret known only in Michigan. The breakout happened around 2012–2015, when pizza enthusiasts and chefs in NYC, LA, and Chicago discovered it. <em>Bon Appétit</em> declared it the "pizza of the moment" in 2018, Little Caesars launched a national rollout, and now you can find Detroit pizza in nearly every American city.</p>
+
+        <h3>Detroit Legends</h3>
+        <ul>
+          <li><strong>Buddy's Pizza</strong> — The original, six locations in the Detroit area.</li>
+          <li><strong>Cloverleaf Bar & Restaurant</strong> — Gus Guerra left Buddy's in 1953 to open Cloverleaf, where he continued making the same pizza. Both restaurants claim the original.</li>
+          <li><strong>Loui's Pizza</strong> — Hazel Park, MI. Cult-favorite for connoisseurs.</li>
+          <li><strong>Emmy Squared</strong> — Brooklyn pizzaiolo who brought Detroit-style to NYC; helped spark the national craze.</li>
+          <li><strong>Pizza Squared</strong> — Online-famous home-style purveyors who teach Detroit technique to home bakers.</li>
+        </ul>
+      `
+    },
+
+    sicilian: {
+      name: "Sicilian (Sfincione)",
+      origin: "Palermo, Sicily · 17th century",
+      icon: pizzaIcons.sicilian,
+      content: `
+        <p>The other Italian pizza. While Naples gave the world the round Margherita, Sicily contributed the rectangular, thick-crust, focaccia-like pizza known in its homeland as <em>sfincione</em>. The name comes from Latin <em>spongia</em> ("sponge"), describing the airy, absorbent crumb. Traditional Sicilian sfincione is topped with tomato, caramelized onion, anchovy, breadcrumbs, and grated caciocavallo — quite different from the Americanized Sicilian slice now ubiquitous in New York pizzerias.</p>
+
+        <h3>Sfincione vs. American Sicilian</h3>
+        <p>These two pizzas share a shape and an origin but are otherwise different:</p>
+        <table class="compare-table">
+          <thead><tr><th></th><th>Sfincione (Palermo)</th><th>Sicilian (NYC)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Crust</strong></td><td>1–1.5" thick, very airy</td><td>0.75–1" thick, sturdy</td></tr>
+            <tr><td><strong>Toppings</strong></td><td>Onion, anchovy, caciocavallo, breadcrumbs</td><td>Tomato, mozzarella, basil</td></tr>
+            <tr><td><strong>Order</strong></td><td>Sauce → cheese sometimes → onions on top → breadcrumbs</td><td>Cheese → sauce on top (classic NY-Sicilian)</td></tr>
+            <tr><td><strong>Pan</strong></td><td>Heavy rectangular metal pan</td><td>Standard sheet pan or Sicilian pan</td></tr>
+            <tr><td><strong>Cheese</strong></td><td>Caciocavallo, pecorino (sometimes none)</td><td>Low-moisture mozzarella</td></tr>
+          </tbody>
+        </table>
+
+        <h3>The Formula (American Sicilian)</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>Bread or all-purpose</div>
+          <div><strong>Hydration</strong>65–70%</div>
+          <div><strong>Salt</strong>2.0%</div>
+          <div><strong>Oil</strong>3–5%</div>
+          <div><strong>Yeast</strong>0.3–0.5% IDY</div>
+          <div><strong>Ferment</strong>12–24h cold</div>
+          <div><strong>Bake</strong>475–500°F, 18–22 min</div>
+          <div><strong>Pan</strong>16×11" or 18×13" sheet pan</div>
+        </div>
+
+        <h3>The Method</h3>
+        <p>Like Detroit, Sicilian is pressed into an oiled pan and proofed in place. Unlike Detroit, the order is more traditional: dough → tomato sauce → mozzarella → bake. The thicker crust means a longer, lower-temperature bake.</p>
+        <div class="steps">
+          <div class="step">
+            <h4>Press dough into oiled sheet pan</h4>
+            <p>Generous olive oil — 2–3 tablespoons coating the pan. Press the dough out gently with oiled fingertips, working to corners.</p>
+          </div>
+          <div class="step">
+            <h4>Cold-proof in pan (8–24h) or room-temp proof (1–2h)</h4>
+            <p>For maximum flavor, cold-proof in the pan overnight. The dough will rise during baking even more dramatically.</p>
+          </div>
+          <div class="step">
+            <h4>Dimple, then top</h4>
+            <p>Press fingertips into the dough to create dimples. This prevents giant bubbles in the bake. Sauce, cheese, toppings.</p>
+          </div>
+          <div class="step">
+            <h4>Bake low and slow</h4>
+            <p>475°F for 18–22 minutes. The thick crumb needs time to bake through without the top burning. Place on the bottom rack for more bottom-crisp.</p>
+          </div>
+        </div>
+
+        <h3>The Traditional Sfincione Recipe</h3>
+        <p>In Palermo, sfincione is street food sold by weight, often eaten standing up. The traditional version omits mozzarella entirely. Toppings:</p>
+        <ul>
+          <li><strong>Tomato sauce</strong> — Cooked with onion and oregano</li>
+          <li><strong>Caramelized onions</strong> — Slowly cooked until deeply sweet</li>
+          <li><strong>Anchovies</strong> — Distributed across the surface</li>
+          <li><strong>Caciocavallo</strong> — Aged Sicilian cheese, grated coarsely</li>
+          <li><strong>Pecorino</strong> — Grated finely as a finisher</li>
+          <li><strong>Breadcrumbs</strong> — Toasted, scattered on top before baking, providing crunch</li>
+          <li><strong>Oregano and olive oil</strong> — Finished with a drizzle</li>
+        </ul>
+
+        <h3>Why It Matters</h3>
+        <p>Sfincione is the ancestral pizza of an entire family of styles. Detroit, NYC Grandma, NYC Sicilian, even arguably Chicago thin and tavern-style — all trace back through Sicilian immigration to the original sfincione. The next time you eat a square slice anywhere in America, you're eating Palermo's contribution.</p>
+      `
+    },
+
+    altaglio: {
+      name: "Roman al Taglio",
+      origin: "Rome, Italy · Post-WWII",
+      icon: pizzaIcons.altaglio,
+      content: `
+        <p>Rome's iconic street pizza. Literally "pizza by the cut" — long rectangular pans baked, displayed behind glass at neighborhood bakeries, and sold by weight. Customers point, the slice is cut with scissors, wrapped in paper, and eaten standing up. The modern al taglio renaissance was sparked by Gabriele Bonci's <strong>Pizzarium</strong>, which opened in Rome in 2003 and redefined what high-hydration, long-fermented pan pizza could be.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Ultra-high hydration:</strong> 75–85%. The crumb is full of irregular, glossy holes — like sourdough bread.</li>
+          <li><strong>Crispy bottom, airy interior:</strong> The contrast is the signature. Bottom pan-fried in olive oil; inside light as cloud.</li>
+          <li><strong>Sold by weight:</strong> Pizzerias display dozens of varieties; customers point to indicate the size they want.</li>
+          <li><strong>Topping variety:</strong> Far broader than any other pizza style. Potato and rosemary, prosciutto and fig, mortadella and pistachio — Italian high-end ingredients on humble bread.</li>
+          <li><strong>Eaten folded:</strong> The slice is folded in half lengthwise for portability.</li>
+        </ul>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>Strong Italian (W 280–350)</div>
+          <div><strong>Hydration</strong>75–85%</div>
+          <div><strong>Salt</strong>2.5%</div>
+          <div><strong>Oil</strong>3–5%</div>
+          <div><strong>Yeast</strong>0.1–0.2% IDY</div>
+          <div><strong>Pre-ferment</strong>Almost always biga or poolish</div>
+          <div><strong>Ferment</strong>48–72h cold, total</div>
+          <div><strong>Bake</strong>475–525°F, 15–25 min total</div>
+        </div>
+
+        <h3>Why It's Hard</h3>
+        <p>Al taglio rewards patience and punishes shortcuts. The challenges:</p>
+        <ul>
+          <li><strong>The dough is a wet, slack mess</strong> until you've worked with high hydration enough to develop technique.</li>
+          <li><strong>Strong flour is required</strong> — American all-purpose can't hold 80% hydration. You need W 300+ Italian flour or US high-gluten.</li>
+          <li><strong>Long fermentation is non-negotiable.</strong> The signature texture comes from 48–72 hours of cold ferment. Same-day al taglio is just thick focaccia.</li>
+          <li><strong>Two-stage baking</strong> is often used: par-bake the base, top it, then return for a final bake. Allows toppings to be added that wouldn't survive a full bake.</li>
+        </ul>
+
+        <h3>The Bonci Method (Pizzarium)</h3>
+        <p>Gabriele Bonci's approach revolutionized al taglio. Key principles:</p>
+        <div class="steps">
+          <div class="step">
+            <h4>No-knead, fold-only</h4>
+            <p>Bonci doesn't knead. He mixes the dough until just combined, then performs stretch-and-folds every 30 minutes during the first 2 hours, then refrigerates 24+ hours.</p>
+          </div>
+          <div class="step">
+            <h4>Strong flour only</h4>
+            <p>Tipo 0 or strong tipo 00 with W 300+. Often a blend with whole-wheat or specialty grains.</p>
+          </div>
+          <div class="step">
+            <h4>Hydration 80%+</h4>
+            <p>The dough should feel impossibly wet — like batter, almost. This is correct.</p>
+          </div>
+          <div class="step">
+            <h4>Hand-stretched into the pan, never rolled</h4>
+            <p>The dough is gently lifted by stretched-out fingers from underneath, laid into a well-oiled pan, and coaxed (not pressed) to the corners.</p>
+          </div>
+          <div class="step">
+            <h4>Two-stage baking when needed</h4>
+            <p>Par-bake the base with just olive oil and salt for 5–7 minutes. Cool slightly. Add delicate toppings. Return to the oven for 8–12 minutes more. Add the most delicate toppings (prosciutto, arugula, soft cheeses) post-bake.</p>
+          </div>
+        </div>
+
+        <h3>Topping Philosophy</h3>
+        <p>Al taglio is the most creative pizza category. Bonci's Pizzarium and others have served combinations like:</p>
+        <ul>
+          <li>Potato, rosemary, sea salt, olive oil (the classic "patate")</li>
+          <li>Prosciutto and fig with arugula (post-bake)</li>
+          <li>Mortadella, pistachio cream, lemon zest</li>
+          <li>Eggplant parmigiana</li>
+          <li>Cacio e pepe (pecorino and black pepper, like the pasta)</li>
+          <li>Pumpkin with sage and goat cheese</li>
+          <li>Raw tuna with capers and red onion (post-bake)</li>
+          <li>Apple, gorgonzola, and walnut</li>
+        </ul>
+
+        <h3>Sister Roman Styles</h3>
+        <p>Al taglio is part of a Roman pizza family:</p>
+        <ul>
+          <li><strong>Pizza in teglia</strong> — Same thing as al taglio but referring to the pan ("teglia"). Usually used interchangeably.</li>
+          <li><strong>Pizza in pala</strong> — Similar high-hydration dough baked on a long wooden paddle (pala), oval-shaped, slightly thinner. Often topped after baking.</li>
+          <li><strong>Pizza al metro</strong> — "Pizza by the meter." Long, thin, served on elongated wooden boards.</li>
+          <li><strong>Tonda Romana</strong> — Round Roman pizza, completely different style. Ultra-thin, cracker-crisp. See its own entry.</li>
+          <li><strong>Pinsa</strong> — Multi-flour, very long ferment, oval. See its own entry.</li>
+        </ul>
+      `
+    },
+
+    tonda: {
+      name: "Tonda Romana",
+      origin: "Rome, Italy",
+      icon: pizzaIcons.tonda,
+      content: `
+        <p>The antithesis of Neapolitan. Where Naples gives you soft, pillowy, foldable — Rome gives you thin, crisp, and crunchy. The Tonda Romana ("round Roman") is a sit-down dinner pizza in Rome, served at trattorias rather than street pizzerias. Its defining characteristic is the sound it makes: <em>scrocchiarella</em>, the Roman word for that cracker-crunch when you bite in.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Cracker-thin:</strong> The center is rolled or pressed to near-paper thinness.</li>
+          <li><strong>No cornicione:</strong> The rim is flat and crisp, not raised. Often slightly charred to the point of bitterness — intentional.</li>
+          <li><strong>Crispy throughout:</strong> Snaps when bent. Unfoldable. Holds toppings like a flatbread.</li>
+          <li><strong>Whole-pie service:</strong> Always served as an individual whole pizza, never by the slice.</li>
+        </ul>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>Tipo 00 or all-purpose</div>
+          <div><strong>Hydration</strong>52–58% (low)</div>
+          <div><strong>Salt</strong>2.0%</div>
+          <div><strong>Oil</strong>3–5% (yes, in the dough)</div>
+          <div><strong>Yeast</strong>0.5–1% IDY</div>
+          <div><strong>Ferment</strong>4–8h room temp</div>
+          <div><strong>Bake</strong>500°F, 5–7 min</div>
+        </div>
+
+        <h3>Why It Works the Opposite of Neapolitan</h3>
+        <p>Everything about this pizza is the opposite of what you'd do for Neapolitan:</p>
+        <ul>
+          <li><strong>Low hydration</strong> = denser, crispier crumb (vs Neapolitan's open crumb)</li>
+          <li><strong>Oil in the dough</strong> = tender-crispness, like a cracker (vs Neapolitan's pure flour-water-salt-yeast)</li>
+          <li><strong>Short ferment</strong> = bland is fine, the textural experience is the point</li>
+          <li><strong>Rolled with a rolling pin</strong> — the one pizza where this is correct, since you <em>want</em> to crush every bubble</li>
+        </ul>
+
+        <h3>Typical Toppings</h3>
+        <p>Roman trattorias serve Tonda Romana with classic combinations. Some standouts:</p>
+        <ul>
+          <li><strong>Margherita</strong> — Tomato, mozzarella fior di latte, basil</li>
+          <li><strong>Capricciosa</strong> — Ham, mushrooms, artichoke hearts, olives</li>
+          <li><strong>Quattro Formaggi</strong> — Mozzarella, gorgonzola, parmigiano, fontina</li>
+          <li><strong>Diavola</strong> — Tomato, mozzarella, spicy salami</li>
+          <li><strong>Boscaiola</strong> — Mushrooms, sausage, mozzarella</li>
+          <li><strong>Funghi e Salsiccia</strong> — Mushrooms and Italian sausage</li>
+        </ul>
+        <p>The thin, crisp base supports more toppings than Neapolitan, but Roman tradition keeps it within reason — 3–4 ingredients maximum.</p>
+
+        <h3>Where to Find It</h3>
+        <p>Tonda Romana is everywhere in Rome and unfortunately rare in America. If you're traveling: Pizzeria Ai Marmi (Trastevere), Pizzeria La Montecarlo, and Da Remo (Testaccio) are pilgrimage-worthy. The pizza is part of the Friday-night Roman ritual: pizza and beer with friends, eaten loudly and unceremoniously.</p>
+      `
+    },
+
+    chicago: {
+      name: "Chicago Deep-Dish",
+      origin: "Chicago, IL · 1943",
+      icon: pizzaIcons.chicago,
+      content: `
+        <p>The most controversial pizza. Italians dismiss it as not pizza at all (it's structurally a pie), and even most Chicagoans don't eat it regularly. But Pizzeria Uno's 1943 invention has become the city's tourist trademark — and the most distinctive pizza interpretation in America.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>The buttery, biscuit-like crust:</strong> Made with cornmeal and significant fat (butter, oil, or both), pressed up the sides of a deep, round, oiled steel pan.</li>
+          <li><strong>The inverted construction:</strong> Cheese goes on FIRST, directly on the dough. Then toppings, then a thick layer of crushed tomato on top.</li>
+          <li><strong>2 inches thick</strong> at the rim. Often deeper at the center.</li>
+          <li><strong>40+ minute bake:</strong> No other pizza takes this long.</li>
+          <li><strong>Knife-and-fork pizza:</strong> Cannot be picked up; cannot be folded. Eaten in deep slices.</li>
+        </ul>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>All-purpose + cornmeal blend</div>
+          <div><strong>Hydration</strong>55–60% (low)</div>
+          <div><strong>Salt</strong>1.5–2%</div>
+          <div><strong>Oil/butter</strong>15–20% (yes, that much)</div>
+          <div><strong>Yeast</strong>0.5–1% IDY</div>
+          <div><strong>Ferment</strong>4–12h cold</div>
+          <div><strong>Bake</strong>425°F, 35–45 min</div>
+          <div><strong>Pan</strong>9" deep-dish pan, 2"+ tall</div>
+        </div>
+
+        <h3>The Stacking Order Matters</h3>
+        <p>Why cheese first? Because the bake takes 40+ minutes at 425°F. Cheese exposed to that heat for that long would brown into leather. Putting it on the dough, under the toppings and sauce, protects it — the cheese stays creamy. The tomato on top, however, develops a slightly thickened, almost roasted-tomato flavor over the long bake.</p>
+        <div class="steps">
+          <div class="step">
+            <h4>Press dough up the pan sides</h4>
+            <p>The dough is pressed (never stretched) into a 2"+ deep round pan, fingers walking it up the sides to create the "bowl."</p>
+          </div>
+          <div class="step">
+            <h4>Sliced mozzarella covers the bottom</h4>
+            <p>Slices, not shreds. Cover the dough completely — including the sides.</p>
+          </div>
+          <div class="step">
+            <h4>Toppings on the cheese</h4>
+            <p>Italian sausage (sometimes raw, sometimes pre-cooked), pepperoni, peppers, mushrooms, onions. Whatever you want.</p>
+          </div>
+          <div class="step">
+            <h4>Crushed tomato on top</h4>
+            <p>Hand-crushed San Marzano-style tomatoes, lightly seasoned with oregano, basil, garlic. About 1 cup for a 9" pie.</p>
+          </div>
+          <div class="step">
+            <h4>Optional: grated Parmesan and a drizzle of oil</h4>
+            <p>Finishing touch before baking.</p>
+          </div>
+          <div class="step">
+            <h4>Bake 35–45 minutes at 425°F</h4>
+            <p>The crust browns golden, the cheese melts under the protective layers, the sauce thickens and develops a roasted depth.</p>
+          </div>
+        </div>
+
+        <h3>Stuffed Pizza (Cousin to Deep-Dish)</h3>
+        <p>The other Chicago deep style: stuffed pizza. Invented in 1974 at Nancy's and Giordano's. The difference is a second layer of dough between the toppings and the sauce — making it a true sealed pie. Even thicker, even richer, even more divisive. Giordano's and Lou Malnati's are the iconic addresses.</p>
+
+        <h3>Chicago Legends</h3>
+        <ul>
+          <li><strong>Pizzeria Uno</strong> — Originally Pizzeria Riccardo, opened by Ike Sewell in 1943. The birthplace.</li>
+          <li><strong>Lou Malnati's</strong> — Many Chicagoans' personal favorite. Sausage patty version is legendary.</li>
+          <li><strong>Pequod's</strong> — Caramelized cheese crust (Detroit-style frico applied to a Chicago pan).</li>
+          <li><strong>Giordano's</strong> — Stuffed pizza royalty since 1974.</li>
+          <li><strong>Burt's Place</strong> — Burt Katz's caramelized crust, family-run, religious experience.</li>
+        </ul>
+
+        <h3>The Cultural Disclaimer</h3>
+        <p>It's worth saying: most Chicagoans eat tavern-style pizza far more often than deep-dish. Deep-dish is celebrated as the city's tourist export, not its daily food. If you want to eat like a Chicagoan, learn the tavern style instead.</p>
+      `
+    },
+
+    tavern: {
+      name: "Chicago Tavern",
+      origin: "Chicago bars · 1930s",
+      icon: pizzaIcons.tavern,
+      content: `
+        <p>The real Chicago pizza. While deep-dish gets all the tourist attention, tavern-style is what Chicagoans actually eat on a weeknight. It originated in Chicago bars in the 1930s as cheap, filling food to keep drinkers thirsty. The defining features make it utterly distinct from any other American pizza style.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Cracker-thin crust:</strong> Unleavened or barely leavened. No yeast rise, just structure. Snaps when you bite it.</li>
+          <li><strong>Party cut / square cut:</strong> Cut into small squares (sometimes called "party squares"), not pie slices. Designed for sharing while drinking.</li>
+          <li><strong>Toppings edge-to-edge:</strong> No empty rim. Cheese and sauce all the way to the perimeter — sometimes hanging over slightly.</li>
+          <li><strong>Sausage all the way across:</strong> Italian sausage spread in a continuous layer, not crumbled pieces.</li>
+          <li><strong>Crispy bottom, slight char:</strong> Baked on a stone or steel until shatteringly crisp.</li>
+        </ul>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>All-purpose</div>
+          <div><strong>Hydration</strong>45–52% (very low)</div>
+          <div><strong>Salt</strong>1.5–2%</div>
+          <div><strong>Oil</strong>3–5%</div>
+          <div><strong>Yeast</strong>Optional or very minimal</div>
+          <div><strong>Sugar</strong>1–2% sometimes</div>
+          <div><strong>Ferment</strong>0–24h (very flexible)</div>
+          <div><strong>Bake</strong>475–500°F, 8–12 min</div>
+        </div>
+
+        <h3>Why It's a Different Animal</h3>
+        <p>Tavern-style breaks pizza rules:</p>
+        <ul>
+          <li><strong>The dough is rolled, not stretched.</strong> The thin, cracker-crisp result requires a rolling pin.</li>
+          <li><strong>Yeast is optional.</strong> Some recipes have zero yeast — it's just a flour-water-fat-salt dough, like crackers.</li>
+          <li><strong>The pizza is rectangular or round, but always cut in squares.</strong> This is non-negotiable Chicago tradition.</li>
+          <li><strong>No cornicione, no empty rim.</strong> The entire surface is covered, cheese hanging off the edge.</li>
+        </ul>
+
+        <h3>The Pizza Cut Wars</h3>
+        <p>Chicago is the only major American pizza city that cuts pizza in squares by default. This goes back to bar culture: you could grab a square, drink a beer, grab another square. Triangle slices require committing to a whole side of the pizza, and bar drinkers wanted smaller, more shareable portions.</p>
+
+        <h3>Chicago Tavern Icons</h3>
+        <ul>
+          <li><strong>Vito & Nick's</strong> (Ashburn, since 1923) — Often called the originator. Family-run, no-frills, religious experience.</li>
+          <li><strong>Pat's Pizza</strong> (Lincoln Park) — Pizza in this style for over 70 years.</li>
+          <li><strong>Marie's Pizza & Liquors</strong> — Exactly what it sounds like; perfect Chicago bar.</li>
+          <li><strong>Phil's Pizza</strong> — Suburban beloved. Sausage edge-to-edge.</li>
+        </ul>
+
+        <h3>How to Make It at Home</h3>
+        <div class="steps">
+          <div class="step">
+            <h4>Mix a stiff dough</h4>
+            <p>50% hydration is correct. The dough should feel firm, not sticky. A pasta-dough texture.</p>
+          </div>
+          <div class="step">
+            <h4>Rest briefly (no long ferment needed)</h4>
+            <p>15–30 minute rest is enough. Long ferment isn't part of this style.</p>
+          </div>
+          <div class="step">
+            <h4>Roll thin</h4>
+            <p>Yes, use a rolling pin. Roll to about 1/16 inch. As thin as you can without tearing.</p>
+          </div>
+          <div class="step">
+            <h4>Top edge-to-edge</h4>
+            <p>Thin layer of sauce, edge to edge. Mozzarella, edge to edge. Sausage in a continuous layer (no pinching into pieces — spread it like spackle). Optional toppings.</p>
+          </div>
+          <div class="step">
+            <h4>Bake hot and direct</h4>
+            <p>500°F on a stone or steel for 8–12 minutes until the bottom is dark and crisp.</p>
+          </div>
+          <div class="step">
+            <h4>Cut in squares with a wheel or kitchen shears</h4>
+            <p>Cut into 1.5–2 inch squares. Serve with napkins. Open a beer.</p>
+          </div>
+        </div>
+      `
+    },
+
+    grandma: {
+      name: "Grandma",
+      origin: "Long Island, NY · 1980s",
+      icon: pizzaIcons.grandma,
+      content: `
+        <p>Italian-American home cooking that became a pizzeria style. The name comes from how Italian grandmothers (nonne) on Long Island would make weekend pizza in olive-oiled sheet pans at home — the same equipment everyone had, no special pizza pan needed. King Umberto in Elmont, NY is widely credited as the first pizzeria to put "Grandma pizza" on a menu in the 1980s.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Rectangular sheet pan:</strong> Typically 12×16" or 18×13".</li>
+          <li><strong>Thinner than Sicilian:</strong> Crust is 1/2" to 3/4" — substantial but not bready.</li>
+          <li><strong>Olive-oil-fried bottom:</strong> Generous oil in the pan creates a crispy, almost focaccia-like underside.</li>
+          <li><strong>Sauce on top of cheese (sometimes):</strong> Like Detroit, often sauced in a striped pattern on top, though variations exist.</li>
+          <li><strong>Cold-mixed dough:</strong> The traditional method skips a long bulk ferment.</li>
+        </ul>
+
+        <h3>Grandma vs. Sicilian — The Difference</h3>
+        <p>People confuse these constantly. The differences:</p>
+        <table class="compare-table">
+          <thead><tr><th></th><th>Grandma</th><th>Sicilian (NY)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Crust thickness</strong></td><td>1/2"–3/4"</td><td>3/4"–1"</td></tr>
+            <tr><td><strong>Dough ferment</strong></td><td>Short or none</td><td>Long, well-risen</td></tr>
+            <tr><td><strong>Bottom</strong></td><td>Olive-oil crispy</td><td>Lightly oiled, breadier</td></tr>
+            <tr><td><strong>Top texture</strong></td><td>Sparse, often patchy cheese</td><td>Full cheese cover</td></tr>
+            <tr><td><strong>Origin</strong></td><td>1980s, Long Island</td><td>NY-Sicilian immigrant adaptation</td></tr>
+          </tbody>
+        </table>
+
+        <h3>The Formula</h3>
+        <div class="meta-grid">
+          <div><strong>Flour</strong>Bread or all-purpose</div>
+          <div><strong>Hydration</strong>65–68%</div>
+          <div><strong>Salt</strong>2.0%</div>
+          <div><strong>Oil in dough</strong>2%</div>
+          <div><strong>Oil in pan</strong>3–4 tbsp (generous)</div>
+          <div><strong>Yeast</strong>0.4–0.6% IDY</div>
+          <div><strong>Ferment</strong>4h room temp, or 24h cold</div>
+          <div><strong>Bake</strong>500°F, 15–20 min</div>
+        </div>
+
+        <h3>The Topping Style</h3>
+        <p>Grandma pizza is loose with its topping rules. Some shops sauce first, then cheese; others reverse order. Some use crushed San Marzano with garlic; others use a more cooked-down sauce. Typical toppings beyond cheese and tomato:</p>
+        <ul>
+          <li>Whole basil leaves scattered after baking</li>
+          <li>Sliced fresh garlic (lots)</li>
+          <li>Olive oil drizzle</li>
+          <li>Sometimes anchovies (the original "white" grandma)</li>
+          <li>Crumbled sausage, sometimes</li>
+        </ul>
+      `
+    },
+
+    pinsa: {
+      name: "Pinsa Romana",
+      origin: "Rome, Italy · Modern revival",
+      icon: pizzaIcons.pinsa,
+      content: `
+        <p>The newcomer with an ancient name. Pinsa is an oval-shaped, high-hydration pizza developed and trademarked in Rome by the company Pinsa Romana SRL in the 2000s. The name comes from Latin <em>pinsere</em> ("to stretch/press"), and marketing claims it's a "revival" of ancient Roman flatbread — but the modern Pinsa is very much a 21st-century invention. It's also genuinely delicious and worth understanding.</p>
+
+        <h3>The Defining Features</h3>
+        <ul>
+          <li><strong>Oval shape:</strong> Hand-stretched to roughly 12×8" in an elongated oval.</li>
+          <li><strong>Multi-flour blend:</strong> Wheat + soy + rice flours. This is the trademarked formula's defining feature.</li>
+          <li><strong>Ultra-high hydration:</strong> 80%+. The crumb is extremely airy.</li>
+          <li><strong>Very long ferment:</strong> 48–72 hours minimum, often 96.</li>
+          <li><strong>Crisp outside, cloud inside:</strong> Bakes to a shatteringly crisp exterior with an exceptionally light interior.</li>
+          <li><strong>Sold as "easier to digest":</strong> The long ferment and flour blend are marketed as gentler on the stomach.</li>
+        </ul>
+
+        <h3>The Formula (Approximation)</h3>
+        <div class="meta-grid">
+          <div><strong>Flour blend</strong>80% wheat · 10% soy · 10% rice</div>
+          <div><strong>Hydration</strong>80–85%</div>
+          <div><strong>Salt</strong>2.5%</div>
+          <div><strong>Oil</strong>2–3%</div>
+          <div><strong>Yeast</strong>0.05% IDY (or sourdough)</div>
+          <div><strong>Ferment</strong>72h cold</div>
+          <div><strong>Bake</strong>500°F on steel, 6–8 min</div>
+        </div>
+
+        <p>Note: the "Pinsa Romana" name is trademarked, and the exact official flour blend is proprietary. The above ratios approximate what most home-baker adaptations use.</p>
+
+        <h3>Why the Three Flours?</h3>
+        <ul>
+          <li><strong>Wheat flour</strong> provides gluten structure and the base bread character.</li>
+          <li><strong>Soy flour</strong> contributes additional protein but doesn't form gluten; instead it adds moisture retention and a slightly sweet, almost-nutty flavor.</li>
+          <li><strong>Rice flour</strong> creates the signature crispness on the exterior — the cracker-snap that distinguishes Pinsa from regular pizza.</li>
+        </ul>
+
+        <h3>Topping Approach</h3>
+        <p>Pinsa is typically topped lightly. Common combinations:</p>
+        <ul>
+          <li>Mortadella with stracciatella and pistachio cream</li>
+          <li>Prosciutto and arugula (added post-bake)</li>
+          <li>Burrata with cherry tomatoes</li>
+          <li>Pumpkin cream with fried sage and pecorino</li>
+          <li>Classic Margherita</li>
+        </ul>
+
+        <p>The delicate crisp base doesn't pair well with heavy sauces or wet toppings; most Pinsa is finished with delicate, slightly luxurious ingredients added after baking.</p>
+
+        <h3>The Marketing vs. The Reality</h3>
+        <p>Pinsa Romana's marketing claims of ancient lineage and "75% easier to digest" are aggressive — there's no nutritional research backing the specific claims. What's true: a long-fermented, high-hydration dough is genuinely easier to digest than a same-day commercial-yeast dough, but that's true of any long-fermented bread, not unique to Pinsa.</p>
+        <p>That said: it's a legitimately distinctive style with excellent texture, and worth trying.</p>
+      `
+    }
+  };
+
+  // =================================================================
+  // ============= APP STATE & DOM HELPERS ===========================
+  // =================================================================
 
   const $ = (id) => document.getElementById(id);
   let tempUnit = "F";
-  let fermentMethod = "room"; // "room" or "cold"
+  let fermentMethod = "cold";
   let checkedIngredients = new Set();
-  let activePreset = "myrecipe";
-  let customValues = { h: 65, s: 2.5, o: 1, y: 0.1 };
+  let activePreset = "neapolitan";
+  let customValues = { h: 65, s: 2.5, o: 1, y: 0.10 };
+  let activeStyleDetail = null;
 
-  // ============ TAB SWITCHING ============
+  // =================================================================
+  // ============= TAB & SUBNAV SWITCHING ============================
+  // =================================================================
+
   document.querySelectorAll("#mainTabs .tab").forEach(t => {
     t.addEventListener("click", () => {
       document.querySelectorAll("#mainTabs .tab").forEach(b => b.classList.remove("active"));
@@ -1200,7 +2819,6 @@
     });
   });
 
-  // Subnav
   function setupSubnav(navId) {
     document.querySelectorAll("#" + navId + " button").forEach(b => {
       b.addEventListener("click", () => {
@@ -1215,14 +2833,81 @@
   setupSubnav("guidesSubnav");
   setupSubnav("referenceSubnav");
 
-  // Accordion
-  document.querySelectorAll(".accordion-head").forEach(h => {
-    h.addEventListener("click", () => {
-      h.closest(".accordion-item").classList.toggle("open");
-    });
+  // =================================================================
+  // ============= ACCORDION (delegate for dynamic content) ==========
+  // =================================================================
+
+  document.addEventListener("click", (e) => {
+    const head = e.target.closest(".accordion-head");
+    if (head) {
+      head.closest(".accordion-item").classList.toggle("open");
+    }
   });
 
-  // ============ PRESETS ============
+  // =================================================================
+  // ============= STYLES TAB ========================================
+  // =================================================================
+
+  function renderStyleGrid() {
+    const wrap = $("styleGrid");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    Object.keys(styleData).forEach(key => {
+      const s = styleData[key];
+      const card = document.createElement("div");
+      card.className = "style-card" + (activeStyleDetail === key ? " active" : "");
+      card.innerHTML = `
+        ${s.icon}
+        <div class="name">${s.name}</div>
+        <div class="origin">${s.origin.split('·')[0].trim()}</div>
+      `;
+      card.addEventListener("click", () => {
+        activeStyleDetail = (activeStyleDetail === key) ? null : key;
+        renderStyleGrid();
+        renderStyleDetail();
+        if (activeStyleDetail) {
+          setTimeout(() => $("styleDetail").scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+        }
+      });
+      wrap.appendChild(card);
+    });
+  }
+
+  function renderStyleDetail() {
+    const wrap = $("styleDetail");
+    if (!wrap) return;
+    if (!activeStyleDetail) {
+      wrap.innerHTML = "";
+      return;
+    }
+    const s = styleData[activeStyleDetail];
+    wrap.innerHTML = `
+      <div class="style-hero">
+        ${s.icon.replace('class="icon"', 'class="pizza-icon"')}
+        <div>
+          <div class="name">${s.name}</div>
+          <div class="origin">${s.origin}</div>
+        </div>
+      </div>
+      ${s.content}
+    `;
+  }
+
+  renderStyleGrid();
+
+  // =================================================================
+  // ============= CALCULATOR ========================================
+  // =================================================================
+
+  const ingredients = [
+    { key: "flour", label: "Flour",     color: "#e8d5a2" },
+    { key: "water", label: "Water",     color: "#7eb8d9" },
+    { key: "salt",  label: "Sea salt",  color: "#f0f0f0" },
+    { key: "oil",   label: "Olive oil", color: "#c9a86b" },
+    { key: "yeast", label: "Yeast",     color: "#d4a574" },
+  ];
+
+  // Build preset buttons
   const presetWrap = $("presets");
   styles.forEach((s) => {
     const b = document.createElement("button");
@@ -1237,9 +2922,6 @@
     activePreset = key;
     const s = styles.find(x => x.key === key);
 
-    // For "myrecipe", always reset to defaults (h:67, s:2.5, o:1, y:0.05)
-    // For other locked presets, set their values
-    // For custom, restore stored custom values
     if (s.key === "custom") {
       $("hydration").value = customValues.h;
       $("salt").value = customValues.s;
@@ -1252,18 +2934,14 @@
       $("yeast").value = s.y;
     }
 
-    // Lock/unlock inputs
     const disabled = s.locked;
     ["hydration","salt","oil","yeast"].forEach(id => $(id).disabled = disabled);
 
-    // Update active button
     document.querySelectorAll(".preset").forEach(p => {
       p.classList.toggle("active", p.dataset.key === key);
     });
 
-    // Update description
     $("styleDesc").innerHTML = s.desc;
-
     update();
   }
 
@@ -1273,7 +2951,6 @@
     return Math.round(n).toString();
   }
 
-  // ============ YEAST MODEL ============
   function suggestYeast(hours, tempF, isCold) {
     const effTemp = isCold ? 54 : tempF;
     const tempFactor = Math.pow(2, (72 - effTemp) / 17);
@@ -1281,8 +2958,7 @@
     return Math.max(0.03, Math.min(2, pct));
   }
 
-  // ============ DDT FORMULA ============
-  function waterTemp(roomF, flourF) {
+  function waterTempCalc(roomF, flourF) {
     const DDT = 78;
     const friction = 5;
     return (DDT * 3) - roomF - flourF - friction;
@@ -1290,7 +2966,6 @@
   const FtoC = f => (f - 32) * 5 / 9;
   const CtoF = c => c * 9 / 5 + 32;
 
-  // ============ MAIN UPDATE ============
   function update() {
     const ballCount = Math.max(1, parseInt($("ballCount").value) || 1);
     const ballWeight = Math.max(50, parseInt($("ballWeight").value) || 50);
@@ -1299,7 +2974,6 @@
     const oil = parseFloat($("oil").value) || 0;
     const yeast = parseFloat($("yeast").value) || 0;
 
-    // If on custom preset, keep customValues in sync
     if (activePreset === "custom") {
       customValues = { h: hydration, s: salt, o: oil, y: yeast };
     }
@@ -1387,7 +3061,7 @@
 
     const roomF = tempUnit === "F" ? roomVal : CtoF(roomVal);
     const flourF = tempUnit === "F" ? flourVal : CtoF(flourVal);
-    let waterF = waterTemp(roomF, flourF);
+    let waterF = waterTempCalc(roomF, flourF);
     waterF = Math.max(32, Math.min(110, waterF));
 
     const displayVal = tempUnit === "F" ? waterF : FtoC(waterF);
@@ -1459,14 +3133,12 @@
     });
   }
 
-  // ============ PERSISTENCE ============
   function save() {
     try {
       localStorage.setItem("doughCalc", JSON.stringify({
         ballCount: $("ballCount").value,
         ballWeight: $("ballWeight").value,
-        activePreset,
-        customValues,
+        activePreset, customValues,
         roomTemp: $("roomTemp").value,
         flourTemp: $("flourTemp").value,
         tempUnit,
@@ -1506,7 +3178,7 @@
     } catch(e) {}
   }
 
-  // ============ EVENT WIRING ============
+  // Temp unit toggle
   document.querySelectorAll("#tempUnitToggle button").forEach(btn => {
     btn.addEventListener("click", () => {
       const newUnit = btn.dataset.unit;
@@ -1523,6 +3195,7 @@
     });
   });
 
+  // Method toggle
   document.querySelectorAll("#methodToggle button").forEach(btn => {
     btn.addEventListener("click", () => {
       fermentMethod = btn.dataset.method;
@@ -1544,7 +3217,7 @@
     $(id).addEventListener("input", update);
   });
 
-  // ============ INIT ============
+  // ============= INIT =============
   load();
   applyStyle(activePreset);
 </script>
